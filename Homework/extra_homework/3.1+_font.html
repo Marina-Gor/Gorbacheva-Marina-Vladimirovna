@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Font</title>
+   <style>
+      p {
+         text-indent: 12px;
+      }
+   </style>
+</head>
+
+<body>
+   <p>Тег &lt;font&gt; представляет собой контейнер для изменения характеристик шрифта, таких как размер, цвет и
+      гарнитура.
+      Хотя этот тег до сих пор поддерживается всеми браузерами, он считается устаревшим и от его использования
+      рекомендуется отказаться в пользу стилей.</p>
+   <p>Атрибут <span style="text-decoration: underline;">color</span> устанавливает цет цекста.</p>
+   <p>Если задать цвет текста в HTML при помощи разных строк, например, строка
+      <code>&lt;font color="CANDY"&gt;...&lt;/font&gt;</code> сделает текст документа кроваво-красным во всех браузерах и
+      на всех платформах, или <code>&lt;font color="BruceWillis"&gt;...&lt;/font&gt;</code> тогда текст станет зеленым.</p>
+   <p>Например:</p>
+   <p><font color="CANDY">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quidem, quis natus obcaecati iusto, quaerat quam maiores, molestias possimus modi repudiandae porro voluptas.</font></p>
+   <p><font color="BruceWillis">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore ut hic reprehenderit in sunt itaque, doloribus totam reiciendis praesentium, dolores, illo quia. </font></p>
+   <p>Дело в том, что пропускаемые цифры распознаются как 0[...]. Некорректные символы распознаются как 0. Так что, например, значения #F0F0F0, F0F0F0, F0F0F, #FxFxFx и FxFxFx – одно и то же.</p>
+   <ul>
+      <li>Все неправильные шестнадцатеричные символы заменяются нулями 0;</li>
+      <li>“Добивается” число нулями до количества знаков, делимого на 3 (11 -> 12);</li>
+      <li>Разбивается на три группы, каждая из которых отвечает за одну компоненту RGB;</li>
+      <li>Обрезается каждый из аргументов справа, оставляя 2 символа, и получается результат.</li>
+   </ul>
+</body>
+
+</html>
