@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+   <title>Teg Area</title>
+   <style>
+      p {
+         text-indent: 12px;
+         text-align: justify;
+         padding: 5px 20px;
+         font-family: 'Oswald', sans-serif;
+      }
+
+      ul {
+         font-family: 'Oswald', sans-serif;
+      }
+   </style>
+</head>
+
+<body>
+   <h1 style="font-family: 'Oswald', sans-serif; text-align: center;">Тег &lt;area&gt;</h1>
+   <p>Элемент <b>&lt;area&gt;</b> определяет интерактивную область в изображении-карте (элемент <b>&lt;map&gt;</b>),
+      т.е. при клике на
+      определённую область изображения происходят определённые действия, например, открывается отдельная страница с
+      описанием данного участка изображения. Несколько областей могут перекрывать друг друга, сверху будет та, которая в
+      коде HTML располагается выше. Атрибутами тега <b>&lt;area&gt;</b> мы указываем как координаты области (атрибут
+      coords), так и
+      тип необходимой нам фигуры (атрибут shape):</p>
+   <ul> Атрибуты элемента <b>&lt;area&gt;</b>
+      <li><b>accesskey</b> - переход к области с помощью комбинации клавиш.</li>
+      <li><b>alt</b> - альтернативный текст для области изображения.</li>
+      <li><b>coords</b> - координаты активной области. </li>
+      <li><b>href</b> - задает адрес документа, на который следует перейти.</li>
+      <li><b>hreflang</b> - указывает язык документа, на который ведет ссылка.</li>
+      <li><b>nohref</b> - область без ссылки на другой документ.</li>
+      <li><b>shape</b> - форма области.</li>
+      <li><b>tabindex</b> - задает последовательность перехода между элементами с помощью клавиши Tab.</li>
+      <li><b>target</b> - имя окна или фрейма, куда браузер будет загружать документ.</li>
+      <li><b>type</b> - устанавливает MIME-тип документа, на который ведёт ссылка.</li>
+   </ul>
+   <div><img src="images_3/Planets.jpg" usemap="#Planets" alt="Доступны 9 фигуры для выборва">
+      <map name="Planets">
+         <area shape="circle" coords="103,68,44" href="https://ru.wikipedia.org/wiki/%D0%9B%D1%83%D0%BD%D0%B0" alt="Moon">
+         <area shape="circle" coords="245,67,48" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%80%D1%81" alt="Mars">
+         <area shape="circle" coords="378,59,43" href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D1%82%D1%83%D1%80%D0%BD" alt="Saturn">
+         <area shape="circle" coords="90,190,51" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%80%D0%BA%D1%83%D1%80%D0%B8%D0%B9" alt="Mercury">
+         <area shape="circle" coords="242,189,52" href="https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D0%BC%D0%BB%D1%8F" alt="Earth">
+         <area shape="circle" coords="382,181,41" href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%83%D1%82%D0%BE%D0%BD" alt="Pluto">
+         <area shape="circle" coords="88,328,36" href="https://ru.wikipedia.org/wiki/%D0%A3%D1%80%D0%B0%D0%BD_(%D0%BF%D0%BB%D0%B0%D0%BD%D0%B5%D1%82%D0%B0)" alt="Uranus">
+         <area shape="circle" coords="240,320,52" href="https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%BD%D0%B5%D1%80%D0%B0" alt="Venus">
+         <area shape="circle" coords="395,310,55" href="https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%BF%D1%82%D1%83%D0%BD" alt="Neptune">
+      </map>
+   </div>
+
+</body>
+
+</html>
