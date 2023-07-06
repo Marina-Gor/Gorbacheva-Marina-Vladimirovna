@@ -1,0 +1,16 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Component 2" clip-path="url(#clip0_635_5682)">
+<g id="Group 127">
+<rect id="Rectangle " opacity="0.3" x="30.75" y="60" width="30" height="29.25" transform="rotate(-90 30.75 60)" fill="#99FF99"/>
+<rect id="Rectangle _2" x="0.75" y="59.25" width="30" height="30" transform="rotate(-90 0.75 59.25)" stroke="white" stroke-width="1.5"/>
+<rect id="Rectangle _3" x="30" y="30" width="29.25" height="29.25" transform="rotate(-90 30 30)" stroke="white" stroke-width="1.5"/>
+<rect id="Rectangle _4" x="15.75" y="44.25" width="28.5" height="28.5" transform="rotate(-90 15.75 44.25)" fill="#99FF99"/>
+<path id="Rectangle _5" d="M0.375 31.125L0.375 0.375L31.125 0.375" stroke="white" stroke-width="1.9"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_635_5682">
+<rect width="60" height="60" fill="white" transform="matrix(0 -1 1 0 0 60)"/>
+</clipPath>
+</defs>
+</svg>

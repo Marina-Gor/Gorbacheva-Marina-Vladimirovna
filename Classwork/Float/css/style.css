@@ -1,0 +1,32 @@
+.clearfix:after{
+   content: ""; display: block; clear: both
+}
+
+.header{
+   background-color: #d1dd176b;
+    height: 50px;
+}
+
+.menu{
+   background-color: #90a355;
+   float: left;
+   width: 200px;
+   height: 200px; 
+}
+
+.baner{
+   background-color: #90a355;
+   float: right;
+   width: 200px;
+   height: 200px;
+}
+
+.content{
+   background-color: #e6f3f1;
+   margin: 0 200px;
+}
+
+.footer{
+   background-color: #d1dd176b;
+   height: 50px; 
+}

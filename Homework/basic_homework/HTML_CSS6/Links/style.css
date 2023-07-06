@@ -1,0 +1,19 @@
+a{
+   color: green;
+}
+a:hover{
+   color: red;
+}
+
+div.menu1>ul{
+   list-style: none;
+   :after{content: ""; display: block; clear: both
+   }
+}
+div.menu1>ul>li{
+   float: left;
+   padding: 0 40px;
+   border-right: solid 5px red;
+   
+   
+}

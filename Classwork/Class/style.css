@@ -1,0 +1,56 @@
+div>ul>li>a:nth-child(1) {
+   color: red;
+}
+
+div>ul>li>span>a:nth-child(1) {
+   color: green;
+}
+
+div>ul>li>em>a:nth-child(1) {
+   color: blue;
+}
+
+div>p>em>a:nth-child(1) {
+   color: yellow;
+}
+
+div>span>em>a:nth-child(1) {
+   color: black;
+}
+
+ul>li>a:nth-child(1) {
+   color: orange;
+}
+
+ul>li>span>a:nth-child(1) {
+   color: pink;
+}
+
+ul>li>em>a:nth-child(1) {
+   color: violet;
+}
+
+ul>li>p>em>a:nth-child(1) {
+   color: aqua;
+}
+
+ul>li>div>ul>li>a:nth-child(1) {
+   color: indigo;
+}
+
+ul>li>div>ul>li>em>a:nth-child(1) {
+   color: chocolate;
+}
+
+ul>li>div>ul>li>span>a:nth-child(1) {
+   color: brown;
+}
+
+ul>li>div>p>a:nth-child(1) {
+   color: white;
+   background-color: brown;
+}
+
+p>em>a:nth-child(1) {
+   color: gray;
+}

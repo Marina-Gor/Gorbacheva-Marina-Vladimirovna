@@ -1,0 +1,17 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Component 2" clip-path="url(#clip0_635_5693)">
+<g id="Group 128">
+<path id="Vector " d="M30 60V-7.44131e-07" stroke="#99FF99"/>
+<path id="Vector _2" d="M51 51L9 9.00002" stroke="#99FF99"/>
+<rect id="Rectangle " opacity="0.3" x="8.25" y="8.25" width="43.5" height="43.5" fill="#99FF99"/>
+<path id="Vector _3" d="M0.75 59.25L59.25 0.75" stroke="white" stroke-width="1.5"/>
+<rect id="Rectangle _2" x="16.5" y="16.5" width="27" height="27" fill="#99FF99"/>
+<rect id="Rectangle _3" x="0.75" y="0.75" width="58.5" height="58.5" stroke="white" stroke-width="1.5"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_635_5693">
+<rect width="60" height="60" fill="white"/>
+</clipPath>
+</defs>
+</svg>
