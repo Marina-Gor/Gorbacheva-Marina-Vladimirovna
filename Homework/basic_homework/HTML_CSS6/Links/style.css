@@ -1,19 +1,39 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
 a{
    color: green;
+   padding: 5px;
 }
 a:hover{
    color: red;
 }
 
-div.menu1>ul{
-   list-style: none;
-   :after{content: ""; display: block; clear: both
-   }
+div{
+   padding: 20px;
 }
-div.menu1>ul>li{
+
+.menu1>ul{
+   list-style: none;
+}
+.menu1>ul>li{
    float: left;
    padding: 0 40px;
-   border-right: solid 5px red;
-   
-   
+   border-right: solid 4px red;  
+}
+
+.menu1>ul>li:last-child{
+   border-right: none;  
+}
+
+.menu2>a{
+   float: left;
+   padding: 0 40px;
+   border-right: solid 4px red;  
+}
+
+.menu2>a:last-child{
+   border-right: none;  
 }

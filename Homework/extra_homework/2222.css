@@ -1,0 +1,19 @@
+.mCont{
+   background-color: brown;
+   min-height: 100%;
+   height: 100%;
+}
+.mCont:after{
+   content: ""; display: block; clear: both
+}
+.blok_1{
+   background: url(./images_4/ball2.png) no-repeat left top, 
+   url(./images_4/ball2.png) no-repeat right top, 
+   url(./images_4/ball2.png) no-repeat left bottom,
+   url(./images_4/ball2.png) no-repeat right bottom;
+   height: 100%;
+
+}
+.content{
+   height: 100%;
+}

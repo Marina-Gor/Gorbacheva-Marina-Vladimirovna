@@ -1,20 +1,30 @@
 @media screen and (max-width: 700px) {
-.menu{
-   float: left none;
-   background-color: rgb(169, 158, 126);
-}
+   .menu {
+      float: none;
+      background-color: rgb(169, 158, 126);
+      width: 100%;
+   }
 
-.baner{
-   float: right none;
-   background-color: rgb(89, 134, 149);
-}
-.clearfix:after{
-   content: ""; display: block; clear: both
-}
+   .content {
+      margin: 0;
+      width: 100%;
+   }
+
+   .baner {
+      float: none;
+      background-color: rgb(89, 134, 149);
+      width: 100%;
+   }
+
+   .clearfix:after {
+      content: "";
+      display: block;
+      clear: both
+   }
 }
 
 @media print {
-   .header{
+   .header {
       font-size: 52px;
       font-style: normal;
       font-weight: 400;

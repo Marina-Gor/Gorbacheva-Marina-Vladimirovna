@@ -1,0 +1,56 @@
+body{
+   max-width: 600px;
+   margin: 0 auto;
+}
+
+form{
+   width: 600px;
+}
+
+fieldset{
+   margin-bottom: 20px;
+}
+
+h1{
+   margin-bottom: 0;
+}
+
+p{
+   margin-top: 0;
+   font-style: italic;
+}
+
+b{
+   color: red;
+}
+
+label{
+   width: 110px;
+   display: inline-block;
+   vertical-align: top;
+   margin: 5px;
+}
+
+
+
+input{
+   width: 250px;
+}
+
+select{
+   width: 257px;
+}
+
+textarea{
+   width: 250px;
+   height: 100px;
+}
+
+input[type=checkbox]{
+   width: 20px;
+}
+
+input[type=submit]{
+   width: 180px;
+   padding: 10px;
+}

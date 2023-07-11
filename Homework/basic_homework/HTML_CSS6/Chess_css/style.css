@@ -1,0 +1,37 @@
+table.CHESS {
+  border-collapse: collapse;
+}
+
+table.CHESS td {
+  width: 50px;
+  height: 50px;
+  border: solid gray 1px;
+}
+
+tr:nth-child(odd) td:nth-child(even) {
+  background-color: black;
+}
+
+tr:nth-child(even) td:nth-child(odd) {
+  background-color: black;
+}
+
+.CHESS td:first-child {
+  background-color: rgb(139, 187, 139) !important;
+  width: 20px;
+}
+
+.CHESS td:last-child {
+  background-color: rgb(139, 187, 139) !important;
+  width: 20px;
+}
+
+.CHESS tr:first-child td {
+  background-color: rgb(139, 187, 139);
+  height: 20px;
+}
+
+.CHESS tr:last-child td {
+  background-color: rgb(139, 187, 139);
+  height: 20px;
+}

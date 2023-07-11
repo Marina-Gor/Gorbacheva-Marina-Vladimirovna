@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title>Form</title>
+</head>
+<body>
+      <form method="post" action="https://fe.it-academy.by/TestForm.php" target="_blank">
+         <h1>Форма заявки на работу в зоопарке</h1>
+         <p>Пожалуйста, заполните форму. Обязательные поля помечены <b>*</b></p>
+         <fieldset>
+            <legend>Контактная информация</legend>
+            <label for="name">Имя<b>*</b></label>
+            <input id="name" type="text" name="name"></label><br>
+            <label for="phone">Телефон</label>
+            <input id="phone" type="text" name="phone"><br>
+            <label for="email">Email<b>*</b></label>
+            <input id="email" type="text" name="email"><br>
+         </fieldset>
+         <fieldset>
+            <legend>Персональная информация</legend>
+            <label for="age">Возраст<b>*</b></label>
+            <input id="age" type="text" name="age"><br>
+            <label for="gender">Пол</label>
+            <select id="gender" name="gender">
+               <option value="female">Женщина</option>
+               <option value="male">Мужчина</option>
+            </select><br>
+            <label for="coments">Перечислите личные качества</label>
+            <textarea name="coments" id="coments"></textarea>
+         </fieldset>
+         <fieldset>
+            <legend>Выберите ваших любимых животных</legend>
+            <label for="pet_1"><input id="pet_1" type="checkbox" name="zebra" value="true">Зебра</label>
+            <label for="pet_2"><input id="pet_2" type="checkbox" name="cat" value="true">Кошак</label>
+            <label for="pet_3"><input id="pet_3" type="checkbox" name="anaconda" value="true">Анаконда</label>
+            <label for="pet_4"><input id="pet_4" type="checkbox" name="human" value="true">Человек</label>
+            <label for="pet_5"><input id="pet_5" type="checkbox" name="elephant" value="true">Слон</label>
+            <label for="pet_6"><input id="pet_6" type="checkbox" name="wildebeest" value="true">Антилопа</label>
+            <label for="pet_7"><input id="pet_7" type="checkbox" name="pigeon" value="true">Голубь</label>
+            <label for="pet_8"><input id="pet_8" type="checkbox" name="crab" value="true">Краб</label>
+         </fieldset>
+         <input type="submit" value="Отправить информацию">
+      </form>
+</body>
+</html>

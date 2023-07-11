@@ -1,0 +1,27 @@
+p {
+   color: blue;
+   font-style: italic;
+}
+
+p.hb {
+   color: black;
+   font-weight: bold;
+   font-size: x-large;
+   font-style: normal;
+}
+
+p.pc1 {
+   color: green;
+   font-style: normal;
+}
+
+p.pc2 {
+   color: red;
+   font-style: normal;
+   font-weight: bold;
+}
+
+a[href^='https://']{
+   padding-left: 15px;
+   background: url(../images/extref.png) no-repeat 0 6px;
+}
