@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background: rgb(196, 222, 226);
+   background: radial-gradient(circle, rgba(196, 222, 226, 0.5215336134453781) 0%, rgba(101, 157, 171, 0.8324579831932774) 100%);
+   font-family: 'Oswald', sans-serif;
+   font-style: normal;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.wrapper {
+   max-width: 600px;
+   margin: 0 auto;
+ }
+
+ .clearfix:after{
+   content: ""; display: block; clear: both
+ }
+
+ .blok{
+   width: 400px;
+   height: auto;
+   background: rgb(225, 226, 226);
+   background: radial-gradient(circle, rgba(225, 226, 226,1) 0%, rgba(149, 155, 162, 0.3477766106442577) 100%);
+   font-size: 12px;
+   border-radius: 10px;
+   margin: 20px;
+   padding: 10px;
+   margin: 20px 100px;
+ }
+
+.list{
+   width: 150px;
+   float: left;
+   text-align: center;
+   margin: 0 20px;
+}
+
+hr {
+   height: 3px;
+   background-color: rgb(63, 62, 62);
+}
+
+h1,h3{
+   text-align: center;
+   color: rgb(63, 62, 62);
+}
+
+h2{
+   width: 150px;
+   text-align: center;
+   font-style: normal;
+   color: rgb(63, 62, 62);
+   border: 3px double rgb(200, 179, 78);
+   border-radius: 10px;
+   margin: 0 115px;
+}
+
+a {
+   text-align: center;
+   color: black;
+   display: block;
+}

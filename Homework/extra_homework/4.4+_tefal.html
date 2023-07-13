@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .card {
+         position: relative;
+      }
+
+      .card img{
+         display: block;
+      }
+
+      img:first-child{
+         position: absolute;
+      }
+
+      img:last-child{
+         position: absolute;
+      }
+
+      img:nth-child(2){
+         position: absolute;
+         top: 0;
+         transition: 0.5s;
+      }
+
+      .card:hover img:nth-child(2){
+         position: absolute;
+         top: 170px;
+      }
+   </style>
+
+</head>
+
+<body>
+   <div class="card">
+      <img src="images_5/img2.png" alt="">
+      <img src="images_5/img1.png" alt="">
+      <img src="images_5/img3.png" alt="">
+   </div>
+</body>
+
+</html>

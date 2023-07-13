@@ -1,0 +1,21 @@
+@media screen and (max-width: 500px) {
+   div.body {
+      background: none;
+   }
+
+   div.menu {
+      float: none;
+      width: 100%;
+      overflow: hidden;
+      background-color: rgb(240, 231, 140);
+   }
+
+   h3 {
+      text-align: center;
+   }
+
+   div.content {
+      margin-left: 0;
+      overflow: none;
+   }
+}

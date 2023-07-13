@@ -52,22 +52,3 @@ textarea{
    width: 100%;
    margin-bottom: 5px;
 }
-
-@media screen and (max-width: 500px) {
-   .text{
-      padding-left: 0;
-   }
-
-   .menu{
-      float: none;
-      width: 140px;
-   }
-
-   select{
-      width: 100%;
-   }
-
-   .radio{
-      display: block;
-   }
-}

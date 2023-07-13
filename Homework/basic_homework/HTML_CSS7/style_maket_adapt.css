@@ -1,0 +1,45 @@
+div.header,
+div.footer {
+   background-color: #add8e6;
+   height: auto;
+   text-align: center;
+   color: blue;
+   font-size: 16px;
+   font-weight: 700;
+   overflow: hidden;
+}
+
+div.body {
+   background: url(../HTML_CSS5/images/background.jpg) left top repeat-y;
+}
+
+div.menu {
+   float: left;
+   width: 170px;
+}
+
+div.content {
+   margin-left: 170px;
+   overflow: hidden;
+   background: url(../HTML_CSS5/images/ball.png) repeat-y top right;
+}
+
+button{
+   width: 100px;
+   padding: 15px;
+   background-color: rgb(141, 225, 120);
+   border-color: rgb(53, 149, 53);
+   position: fixed;
+   top: 30px;
+   right: 30px;
+}
+
+p {
+   text-align: justify;
+   padding: 0px 20px;
+}
+
+img {
+   float: left;
+   padding: 0px 20px;
+}

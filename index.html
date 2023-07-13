@@ -1,75 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <ink rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Cormorant+Infant:ital,wght@0,600;1,600&family=Oswald:wght@300&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
    <title>Homework</title>
-   <style>
-   h1, h2{font-family: 'Oswald', sans-serif;}
-   </style>
-   <style>
-   div{font-family: 'Oswald', sans-serif; margin: 0px 300px;}
-   </style>
-   <style>
-   hr{height: 3px;
-      background-color: black; 
-      margin: 0px 300px;}
-   </style>
-   <style>
-      body{background: rgb(196,222,226); 
-         background: radial-gradient(circle, rgba(196,222,226,0.5215336134453781) 0%, rgba(101,157,171,0.8324579831932774) 100%);}
-         a{color: black;}
-   </style>
 </head>
-<body>
-   <h1 style="text-align: center;"><strong>Homework</strong></h1><hr>
-   <h2 style="margin: 0px 300px;">basic homework</h2>
-   <div><ul>
-      <li><a href="Homework/basic_homework/HTML_CSS1/diary.html">Diary</a></li>
-      <li><a href="Homework/basic_homework/HTML_CSS1/vizbor.html">Vizbor</a><br></li>
-      <li><a href="Homework/basic_homework/HTML_CSS2/child_book.html">Child book</a></li>
-      <li><a href="Homework/basic_homework/HTML_CSS3/font_gwf.html">Font gwf</a></li>
-      <li style="background-color: brown;"><a href="Homework/basic_homework/HTML_CSS4/div_frame.html">Div frame</a></li>
-      <li><a href="Homework/basic_homework/HTML_CSS4/chess.html">Chess</a></li>
-      <li><a href="Homework/basic_homework/HTML_CSS5/maket_table.html">Maket table</a></li>
-      <li><a href="Homework/basic_homework/HTML_CSS5/maket_div.html">Maket div</a></li>
-      <li style="background-color: brown"><a href="Homework/basic_homework/HTML_CSS6/Chess_css/chess.html">Chess</a></li>
-      <li style="background-color: brown"><a href="Homework/basic_homework/HTML_CSS6/Chess_before/index.html">Chess before</a></li>
-      <li style="background-color: brown"><a href="Homework/basic_homework/HTML_CSS6/Chess_without_before/index.html">Chess without before</a></li>
-      <li style="background-color: brown"><a href="Homework/basic_homework/HTML_CSS6/Stars/stars_index.html">Stars</a></li>
-      <li style="background-color: brown"><a href="Homework/basic_homework/HTML_CSS8/Maket_form/index.html">Maket form</a></li>
-   </ul></div>
-   <h2 style="margin: 0px 300px;">extra homework</h2>
-   <div><ul>
-      <li><a href="Homework/extra_homework/validator.html">exercise 1.1+ Validator</a></li>
-      <li><a href="Homework/extra_homework/1.2+_oldtag.html">exercise 1.2+ Old tag</a></li>
-      <li style="background-color: brown"><a href="Homework/extra_homework/2.1+_webP.html">exercise 2.1+ WebP</a></li>
-      <li><a href="Homework/extra_homework/2.2+_skobki2.html">exercise 2.2+ Skobki2</a></li>
-      <li><a href="Homework/extra_homework/3.1+_font.html">exercise 3.1+ Font</a></li>
-      <li><a href="Homework/extra_homework/3.3+_safe.html">exercise 3.3+ Web safe colors</a></li>
-      <li><a href="Homework/extra_homework/4.1+_frame_1tag.html">exercise 4.1+ Frame 1 tag</a></li>
-      <li><a href="Homework/extra_homework/4.2+_Area.html">exercise 4.2+ Area</a></li>
-      <li style="background-color: yellow"><a href="Homework/extra_homework/4.3+_frame_nocut.html">exercise 4.3+ Nocut</a></li>
-      <li style="background-color:brown"><a href="Homework/extra_homework/5.1+_12_ball.html">exercise 5.1+ Balls</a></li>
 
-   </ul></div>
-   <h1 style="text-align: center;">Maket</h1><hr>
-   <div><ul>
-      <li><a href="./GTHREES/gthrees.html">Maket float GTHREES</a></li>
-   </ul></div>
-   <h1 style="text-align: center;">Classwork</h1><hr>
-   <div><ul>
-      <li><a href="Classwork/3.30.html">exercise 3.30</a></li>
-      <li><a href="Classwork/3.75.html">exercise 3.75</a></li>
-      <li><a href="Classwork/4.30b.html">exercise 4.30b</a></li>
-      <li style="background-color: brown;"><a href="Classwork/4.40.html">exercise 4.40 Cards</a></li>
-      <li><a href="Classwork/4.80.html">exercise 4.80</a></li>
-      <li><a href="Classwork/Float/float.html">exercise float+media</a></li>
-      <li><a href="Classwork/Class/index.html">exercise without classes</a></li>
-      <li><a href="Classwork/Form/form.html">exercise form</a></li>
-   </ul></div>
+<body>
+   <div class="wrapper">
+      <h1>Homework</h1>
+      <hr>
+      <div class="homework">
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS1</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a href="Homework/basic_homework/HTML_CSS1/diary.html">Diary</a>
+                  <a href="Homework/basic_homework/HTML_CSS1/vizbor.html">Vizbor</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+                  <a href="Homework/extra_homework/validator.html">exercise 1.1+ Validator</a>
+                  <a href="Homework/extra_homework/1.2+_oldtag.html">exercise 1.2+ Old tag</a>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS2</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a href="Homework/basic_homework/HTML_CSS2/child_book.html">Child book</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+                  <a style="color: red;" href="Homework/extra_homework/2.1+_webP.html">exercise 2.1+ WebP</a>
+                  <a href="Homework/extra_homework/2.2+_skobki2.html">exercise 2.2+ Skobki2</a>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS3</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a href="Homework/basic_homework/HTML_CSS3/font_gwf.html">Font gwf</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+                  <a href="Homework/extra_homework/3.1+_font.html">exercise 3.1+ Font</a>
+                  <a href="Homework/extra_homework/3.3+_safe.html">exercise 3.3+ Web safe colors</a>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS4</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS4/div_frame.html">Div frame</a>
+                  <a href="Homework/basic_homework/HTML_CSS4/chess.html">Chess</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+                  <a href="Homework/extra_homework/4.1+_frame_1tag.html">exercise 4.1+ Frame 1 tag</a>
+                  <a href="Homework/extra_homework/4.2+_Area.html">exercise 4.2+ Area</a>
+                  <a style="color: yellow;" href="Homework/extra_homework/4.3+_frame_nocut.html">exercise 4.3+ Nocut</a>
+                  <a style="color: red;" href="Homework/extra_homework/4.4+_tefal.html">Tefal</a>
+                  <a style="color: red;" href="Classwork/4.40.html">Cards</a>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS5</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a href="Homework/basic_homework/HTML_CSS5/maket_table.html">Maket table</a>
+                  <a href="Homework/basic_homework/HTML_CSS5/maket_div.html">Maket div</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+                  <a style="color: red;" href="Homework/extra_homework/5.1+_12_ball.html">exercise 5.1+ Balls</a>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS6</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS6/Chess_css/chess.html">Chess</a>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS6/Chess_before/index.html">Chess before</a>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS6/Chess_without_before/index.html">Chess without before</a>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS6/Stars/stars_index.html">Stars</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS7</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS7/maket_adapt.html">Maket adapt</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+               </div>
+            </div>
+         </div>
+         <div class="blok">
+            <div class="clearfix">
+               <h2>HTML_CSS8</h2>
+               <div class="list">
+                  <h3>Basic homework</h3>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS8/Maket_form/index.html">Maket form</a>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS7/maket_adapt.html">Maket adapt fix</a>
+                  <a style="color: red;" href="Homework/basic_homework/HTML_CSS8/Maket_ABS/">Maket ABS fix</a>
+               </div>
+               <div class="list">
+                  <h3>Extra homework</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+      <h1>Maket</h1>
+      <hr>
+      <div class="maket">
+         <div class="blok">
+            <a style="color: red;" href="./GTHREES/gthrees.html">Maket float GTHREES</a>
+         </div>
+      </div>
+      <h1>Classwork</h1>
+      <hr>
+      <div class="classwork">
+         <div class="blok">
+            <a href="Classwork/3.30.html">exercise 3.30</a>
+            <a href="Classwork/3.75.html">exercise 3.75</a>
+            <a href="Classwork/4.30b.html">exercise 4.30b</a>
+            <a href="Classwork/4.40.html">exercise 4.40</a>
+            <a href="Classwork/4.80.html">exercise 4.80</a>
+            <a href="Classwork/Float/float.html">exercise float+media</a>
+            <a href="Classwork/Class/index.html">exercise without classes</a>
+            <a href="Classwork/Form/form.html">exercise form</a>
+         </div>
+      </div>
+   </div>
 </body>
+
 </html>
