@@ -16,7 +16,7 @@ body {
 }
 
 .wrapper {
-   max-width: 600px;
+   max-width: 1000px;
    margin: 0 auto;
  }
 
@@ -25,26 +25,27 @@ body {
  }
 
  .blok{
-   width: 400px;
+   width: 700px;
    height: auto;
-   background: rgb(225, 226, 226);
-   background: radial-gradient(circle, rgba(225, 226, 226,1) 0%, rgba(149, 155, 162, 0.3477766106442577) 100%);
-   font-size: 12px;
-   border-radius: 10px;
+   /* background: rgb(225, 226, 226);
+   background: radial-gradient(circle, rgba(225, 226, 226,1) 0%, rgba(149, 155, 162, 0.3477766106442577) 100%); */
+   border: 7px double rgb(200, 179, 78);
+   font-size: 16px;
+   border-radius: 30px;
    margin: 20px;
    padding: 10px;
-   margin: 20px 100px;
+   margin: 20px 150px;
  }
 
 .list{
-   width: 150px;
+   width: 300px;
    float: left;
    text-align: center;
-   margin: 0 20px;
+   margin: 0 16px;
 }
 
 hr {
-   height: 3px;
+   height: 5px;
    background-color: rgb(63, 62, 62);
 }
 
@@ -54,12 +55,9 @@ h1,h3{
 }
 
 h2{
-   width: 150px;
    text-align: center;
    font-style: normal;
    color: rgb(63, 62, 62);
-   border: 3px double rgb(200, 179, 78);
-   border-radius: 10px;
    margin: 0 115px;
 }
 

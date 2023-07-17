@@ -1,39 +1,75 @@
-* {
-   margin: 0;
-   padding: 0;
+*{
    box-sizing: border-box;
 }
-a{
+
+a[href^='http://'] {
    color: green;
-   padding: 5px;
 }
-a:hover{
+
+a:hover {
    color: red;
 }
 
-div{
-   padding: 20px;
+/* стили первого контейнера */
+table.type1 td {
+   padding: 18px;
+   width: 170px;
+   text-align: center;
 }
 
-.menu1>ul{
-   list-style: none;
-}
-.menu1>ul>li{
-   float: left;
-   padding: 0 40px;
-   border-right: solid 4px red;  
+table.type1 td:nth-child(even) {
+   border-left: 4px solid red;
+   border-right: 4px solid red;
+   border-collapse: collapse;
 }
 
-.menu1>ul>li:last-child{
-   border-right: none;  
+/* стили второго контейнера */
+div span {
+   display: inline-block;
+   padding: 18px;
+   width: 170px;
+   text-align: center;
 }
 
-.menu2>a{
-   float: left;
-   padding: 0 40px;
-   border-right: solid 4px red;  
+div span:nth-child(even) {
+   border-left: 4px solid red;
+   border-right: 4px solid red;
 }
 
-.menu2>a:last-child{
-   border-right: none;  
+/* стили третьего контейнера */
+div.type3 li {
+   display: inline-block;
+   width: 170px;
+   padding: 18px;
+   text-align: center;
+   white-space: nowrap;
+}
+
+div.type3 li:nth-child(even) {
+   border-left: 4px solid red;
+   border-right: 4px solid red;
+}
+/* стили четвертого контейнера */
+div.type4 div{
+   display: inline-block;
+   width: 170px;
+   text-align: center;
+   padding: 18px;
+}
+
+div.type4 div:nth-child(even){
+   border-left: 4px solid red;
+   border-right: 4px solid red;
+}
+/* стили пятого контейнера */
+div.type5 a{
+   display: inline-block;
+   width: 170px;
+   text-align: center;
+   padding: 18px;
+}
+
+div.type5 a:nth-child(even){
+   border-left: 4px solid red;
+   border-right: 4px solid red;
 }

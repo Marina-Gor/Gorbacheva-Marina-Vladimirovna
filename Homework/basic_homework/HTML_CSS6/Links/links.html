@@ -1,30 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="reset.css">
    <link rel="stylesheet" href="style.css">
    <title>LINKS</title>
 </head>
+
 <body>
-   <div class="menu1">
+   <!-- Вариант 1: table. Вставляем ссылки в каждый элемент строки, применяем свойсвто nth-child(odd) для td. 
+        Решение простое, но верстка в табличном варианте давно устарела и не актуальна по ряду причин-->
+   <table class="type1">
+      <tr>
+         <td><a href="http://#">Первая ссылка</a></td>
+         <td><a href="http://#">Вторая ссылка</a></td>
+         <td><a href="http://#">Третья ссылка</a></td>
+         <td><a href="http://#">Четвертая ссылка</a></td>
+         <td><a href="http://#">Пятая ссылка</a></td>
+      </tr>
+   </table>
+   <!-- Вариант 2: span. этот вариант прост и по стилевым свойствам идентичен варианту № 4,5 -->
+   <div class="type2">
+      <span><a href="http://#">Первая ссылка</a></span>
+      <span><a href="http://#">Вторая ссылка</a></span>
+      <span><a href="http://#">Третья ссылка</a></span>
+      <span><a href="http://#">Четвертая ссылка</a></span>
+      <span><a href="http://#">Пятая ссылка</a></span>
+   </div>
+   <!-- Вариант 3: ul-li. Уступает по решению варианту 2,4,5-->
+   <div class="type3">
       <ul>
-         <li><a href="https://oz.by/">первая ссылка</a></li>
-         <li><a href="https://oz.by/">вторая ссылка</a></li>
-         <li><a href="https://oz.by/">третья ссылка</a></li>
-         <li><a href="https://oz.by/">четвертая ссылка</a></li>
-         <li><a href="https://oz.by/">пятая ссылка</a></li>
+         <li><a href="http://#">Первая ссылка</a></li>
+         <li><a href="http://#">Вторая ссылка</a></li>
+         <li><a href="http://#">Третья ссылка</a></li>
+         <li><a href="http://#">Четвертая ссылка</a></li>
+         <li><a href="http://#">Пятая ссылка</a></li>
       </ul>
    </div>
-   <div class="menu2">
-      <a href="https://oz.by/">первая ссылка</a>
-      <a href="https://oz.by/">вторая ссылка</a>
-      <a href="https://oz.by/">третья ссылка</a>
-      <a href="https://oz.by/">четвертая ссылка</a>
-      <a href="https://oz.by/">пятая ссылка</a>
+   <!-- Вариант 4: div. этот вариант прост и по стилевым свойствам идентичен варианту № 2,5 -->
+   <div class="type4">
+      <div><a href="http://#">Первая ссылка</a></div>
+      <div><a href="http://#">Вторая ссылка</a></div>
+      <div><a href="http://#">Третья ссылка</a></div>
+      <div><a href="http://#">Четвертая ссылка</a></div>
+      <div><a href="http://#">Пятая ссылка</a></div>
    </div>
-   <div class="menu3"></div>
-   <div class="menu4"></div>
-   <div class="menu5"></div>
+   <!-- Вариант 5: a. этот вариант прост и по стилевым свойствам идентичен варианту № 2,4-->
+   <div class="type5">
+      <a href="http://#">Первая ссылка</a>
+      <a href="http://#">Вторая ссылка</a>
+      <a href="http://#">Третья ссылка</a>
+      <a href="http://#">Четвертая ссылка</a>
+      <a href="http://#">Пятая ссылка</a>
+   </div>
+   <!-- Для последующего удобства работы и коректировки при необходимости приложения я бы выбрала вариант с div. 
+      Но так как у нас есть flex выбор очивиден) -->
 </body>
+
 </html>

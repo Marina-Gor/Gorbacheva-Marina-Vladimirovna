@@ -25,3 +25,9 @@ a[href^='https://']{
    padding-left: 15px;
    background: url(../images/extref.png) no-repeat 0 6px;
 }
+
+@media print {
+   a::after{
+      content: "["attr(href)"]";
+   }
+}

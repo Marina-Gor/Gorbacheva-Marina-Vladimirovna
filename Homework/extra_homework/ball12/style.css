@@ -1,0 +1,60 @@
+/*Sizes*/
+.first {
+    width: 20%;
+    float: left;
+}
+.second {
+    margin-right: 300px;
+    margin-left: 100px;
+}
+.third {
+    width: 300px;
+    float: right;
+}
+
+/*Balls positions*/
+.ball_t_lr {
+    background:
+        url('ball2.png') left top no-repeat,
+        url('ball2.png') right top no-repeat;
+}
+.ball_b_l {
+    background:
+        url('ball2.png') left bottom no-repeat;
+}
+.ball_bt_lr {
+    background:
+        url('ball2.png') left bottom no-repeat,
+        url('ball2.png') right bottom no-repeat,
+        url('ball2.png') left top no-repeat,
+        url('ball2.png') right top no-repeat;
+}
+
+
+/*Third section*/
+.second_wrapper {
+    background:
+        url('ball2.png') right 200px bottom no-repeat,
+        url('ball2.png') right bottom no-repeat;
+    margin-left: 20%;
+
+}
+.second_wrapper_margin {
+    margin-left: -100px;
+    background-image: url('ball2.png');
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: 100%;
+}
+
+
+/*Backgrounds*/
+.bgColor1{
+    background-color: rgb(110, 171, 172);
+}
+.bgColor2{
+    background-color:rgb(209, 159, 218);
+}
+.bgColor3{
+    background-color:  rgb(192, 116, 118);
+}
