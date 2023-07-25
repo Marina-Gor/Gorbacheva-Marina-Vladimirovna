@@ -1,0 +1,606 @@
+$red: #EC1B2E;
+$black: #333;
+$white: #FFF;
+
+
+// @mixin standard-text() {
+//    font-family: Circe;
+//    font-size: 14px;
+//    font-style: normal;
+//    font-weight: 400;
+//    line-height: 140%;
+
+// }
+
+@mixin button-template($pt, $ps, $he) {
+   background-color: $red;
+   border: none;
+   padding: $pt $ps;
+   height: $he;
+   color: $white;
+   font-family: Circe;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 140%;
+   width: fit-content;
+}
+
+html {
+   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: inherit;
+}
+
+body {
+   font-family: 'Circe';
+   font-weight: normal;
+   font-style: normal;
+   font-size: 16px;
+   line-height: 140%;
+   min-width: 1280px;
+}
+
+.wrapper {
+   max-width: 1296px;
+   margin: 0 auto;
+}
+
+/*Header styles start*/
+.header {
+   margin: 20px 0;
+   font-family: Circe;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 140%;
+
+   &-list {
+      height: 60px;
+      border-bottom: 1px solid rgba($color: $black, $alpha: 0.3);
+      display: flex;
+      justify-content: space-between;
+
+      &-name {
+         width: 220px;
+         color: $red;
+         font-weight: 700;
+         letter-spacing: 0.28px;
+         text-transform: uppercase;
+      }
+
+      &-contacts {
+         width: 674px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         font-family: Circe;
+      }
+
+      & img {
+         padding-right: 20px;
+      }
+
+      &-btn {
+         @include button-template(10px, 20px, 40px);
+         font-size: 14px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 140%;
+      }
+   }
+
+   &-links {
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Circe;
+      font-weight: 700;
+      letter-spacing: 0.28px;
+      text-transform: uppercase;
+
+      &-list {
+         width: 1070px;
+         display: flex;
+         justify-content: space-between;
+      }
+
+      & img {
+         align-self: flex-end;
+      }
+   }
+}
+
+/*Header styles end*/
+
+/*Section1 styles start*/
+.section1 {
+   background: url(../image/rectangle31.png);
+   background-size: cover;
+   overflow: hidden;
+
+   &-container {
+      position: relative;
+
+      &-btn-right {
+         @include button-template(20px, 20px, 70px);
+         position: absolute;
+         right: -200px;
+         top: 189px;
+      }
+
+      &-btn-left {
+         @include button-template(20px, 20px, 70px);
+         position: absolute;
+         left: -200px;
+         top: 189px;
+      }
+
+   }
+
+   &-content {
+      width: 586px;
+      margin: 126px 0 50px 108px;
+      padding: 15px 30px;
+      background-color: rgba($color: $black, $alpha: 0.5);
+      font-family: Circe;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      color: $white;
+   }
+
+   &-btn {
+      @include button-template(15px, 30px, 58px);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin: 0 0 156px 108px;
+   }
+}
+
+/*Section1 styles end*/
+
+/*Section2 styles start*/
+.section2 {
+   overflow: hidden;
+
+   &-container {
+      margin: 191px 0 150px 108px;
+      display: flex;
+      justify-content: space-between;
+
+      &-content {
+         width: 638px;
+         padding: 86px 80px 76px 80px;
+         border: 10px solid $red;
+         position: relative;
+         font-family: Circe;
+         font-size: 18px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 140%;
+      }
+
+      &-name {
+         padding: 10px 30px;
+         position: absolute;
+         top: -51px;
+         font-family: Circe;
+         font-size: 48px;
+         font-style: normal;
+         font-weight: 800;
+         line-height: 140%;
+         letter-spacing: 0.48px;
+         background: $white;
+      }
+
+      &-logo {
+         width: 400px;
+         height: 400px;
+         background: url(../image/svg/subtract.svg) no-repeat center;
+         opacity: 0.1;
+         align-self: center;
+      }
+   }
+}
+
+/*Section2 styles end*/
+
+/*Section3 styles start*/
+.section3 {
+
+   &-name {
+      font-family: Circe;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0.48px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 52px
+   }
+
+   &-btn {
+      @include button-template(12px, 20px, 68px);
+      font-family: Circe;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      width: 175px;
+      text-align: center;
+      display: inline-block;
+      margin-left: 175px;
+   }
+
+   &-btn:nth-child(3) {
+      margin-left: 164px;
+   }
+
+   &-links {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0 100px 0;
+
+      & span {
+         font-family: Circe;
+         font-size: 24px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+         text-align: center;
+         width: 306px;
+      }
+
+      & span:first-child {
+         color: $red;
+      }
+   }
+}
+
+/*Section3 styles end*/
+
+/*Section4 styles start*/
+.section4 {
+   font-family: Circe;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 140%;
+   color: $black;
+
+   &-tab {
+      width: 1076px;
+      height: 842px;
+      margin: 0 110px;
+
+      &-name {
+         background-color: rgba(51, 51, 51, 0.05);
+         height: 48px;
+         font-size: 20px;
+         font-weight: 700;
+         line-height: 140%;
+         display: flex;
+
+         &-1 {
+            width: 180px;
+            padding: 10px 0 10px 20px;
+         }
+
+         &-2 {
+            width: 300px;
+            padding: 10px 0 10px 20px;
+         }
+
+         &-3 {
+            width: 596px;
+            padding: 10px 0 10px 20px;
+         }
+
+      }
+
+      &-line {
+         display: flex;
+         border-bottom: 1px solid rgba($color: $black, $alpha: 0.2);
+         padding: 40px 0 30px 0;
+
+         &-column1 {
+            width: 180px;
+            padding: 0 20px 0 20px;
+         }
+
+         &-column2 {
+            width: 300px;
+            padding: 0 20px 0 20px;
+         }
+
+         &-column3 {
+            width: 596px;
+            padding: 0 20px 0 20px;
+
+            & span {
+               color: $white;
+               background-color: $red;
+               padding: 5px 3px 3px 7px;
+            }
+         }
+
+         p:nth-child(2) {
+            margin: 18px 0;
+         }
+      }
+
+      &-line:last-child {
+         padding-bottom: 0;
+         border: none;
+      }
+   }
+
+}
+
+/*Section4 styles end*/
+
+/*Section5 styles start*/
+.section5 {
+
+   &-name {
+      font-family: Circe;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0.48px;
+      margin: 150px 0 100px 0;
+      display: flex;
+      justify-content: center;
+   }
+
+   &-contents {
+      display: flex;
+      justify-content: space-between;
+
+      & ul {
+         height: 164px;
+         padding: 0 20px;
+         list-style: disc;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+   }
+
+   &-content {
+      width: 306px;
+
+      &-title {
+         text-align: center;
+         font-family: Circe;
+         font-size: 24px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+         padding: 30px 20px 20px 20px;
+      }
+   }
+
+   &-btn {
+      @include button-template(15px, 30px, 58px);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin: 45px 71px 0 72px;
+   }
+}
+
+/*Section5 styles end*/
+
+/*Section6 styles start*/
+.section6 {
+
+   &-name {
+      font-family: Circe;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0.48px;
+      margin: 150px 0 100px 0;
+      display: flex;
+      justify-content: center;
+   }
+
+   &-contents {
+      display: flex;
+      justify-content: space-between;
+
+   }
+
+   &-content {
+      width: 416px;
+      height: 539px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &-img1 {
+         background: url(../image/rectangle\ 46.png) no-repeat;
+         width: 416px;
+         height: 250px;
+      }
+
+      &-img2 {
+         background: url(../image/rectangle\ 46-1.png) no-repeat;
+         width: 416px;
+         height: 250px;
+      }
+
+      &-img3 {
+         background: url(../image/rectangle\ 46-2.png) no-repeat;
+         width: 416px;
+         height: 250px;
+      }
+
+      &-title {
+         font-family: Circe;
+         font-size: 24px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+         margin-bottom: 15px;
+      }
+
+      &-blok {
+         padding: 0 30px
+      }
+
+      &-btn {
+         @include button-template(15px, 30px, 58px);
+         font-size: 20px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+         margin: 0 223px 0 30px;
+      }
+   }
+}
+
+/*Section6 styles end*/
+
+/*Section7 styles start*/
+.section7 {
+   margin-bottom: 120px;
+
+   &-name {
+      font-family: Circe;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+      letter-spacing: 0.48px;
+      margin: 150px 0 100px 0;
+      display: flex;
+      justify-content: center;
+   }
+
+   &-contents {
+      display: flex;
+      justify-content: space-between;
+
+   }
+
+   &-content {
+      width: 306px;
+      height: 352px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &-title {
+         font-family: Circe;
+         font-size: 24px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+         margin-bottom: 25px;
+      }
+
+      &-btn {
+         @include button-template(15px, 30px, 58px);
+         font-size: 20px;
+         font-style: normal;
+         font-weight: 700;
+         line-height: 140%;
+      }
+   }
+}
+
+/*Section7 styles end*/
+
+/*Footer styles start*/
+.footer {
+   background-color: rgba($color: $black, $alpha: 0.05);
+
+   &-content {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba($color: $black, $alpha: 0.3);
+      padding: 60px 0;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+
+      &-blok {
+         width: 200px;
+
+         &-name {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%;
+            margin-bottom: 25px;
+         }
+
+         &-name1 {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%;
+            letter-spacing: 0.28px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+         }
+
+         &-name2 {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 140%;
+            margin: 40px 0 25px 0;
+         }
+
+         &-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+         }
+
+         &-connection {
+            width: 180px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+         }
+      }
+
+      &-blok:first-child {
+         width: 221px;
+      }
+   }
+
+   &-bottom {
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Circe;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+
+   }
+}
+
+/*Footer styles end*/

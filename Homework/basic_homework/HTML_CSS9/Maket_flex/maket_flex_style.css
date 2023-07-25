@@ -1,0 +1,52 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+div.header,
+div.footer {
+   background-color: #add8e6;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 60px;
+   color: blue;
+   font-size: 18px;
+}
+
+.container{
+   display: flex;
+   justify-content: start;
+   background: url(../../HTML_CSS5/images/ball.png) right top repeat-y;
+}
+
+.menu{
+  background-color: rgb(241, 241, 157);
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.content{
+   padding: 20px;
+}
+
+h3{
+   padding: 20px 0 10px 20px;
+   align-self: flex-start;
+}
+
+p {
+   text-align: justify;
+   margin-bottom: 10px;
+}
+
+img {
+   float: left;
+   padding-right: 20px;
+}
+
+a{
+   color: blue;
+}

@@ -9,8 +9,9 @@ div.footer {
    overflow: hidden;
 }
 
-div.body {
-   background: url(../HTML_CSS5/images/background.jpg) left top repeat-y;
+div.container {
+   background: url(../HTML_CSS5/images/ball.png) repeat-y top right,
+   url(../HTML_CSS5/images/background.jpg) left top repeat-y;
 }
 
 div.menu {
@@ -21,13 +22,12 @@ div.menu {
 div.content {
    margin-left: 170px;
    overflow: hidden;
-   background: url(../HTML_CSS5/images/ball.png) repeat-y top right;
 }
 
 button{
    width: 100px;
    padding: 15px;
-   background-color: rgb(141, 225, 120);
+   background-color: rgba(141, 225, 120, 0.7);
    border-color: rgb(53, 149, 53);
    position: fixed;
    top: 30px;
@@ -42,4 +42,8 @@ p {
 img {
    float: left;
    padding: 0px 20px;
+}
+
+a{
+   color: blue;
 }

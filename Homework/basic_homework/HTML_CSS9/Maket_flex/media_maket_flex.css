@@ -1,0 +1,47 @@
+@media screen and (max-width: 600px) {
+   div.header,
+   div.footer{
+      display: none;  
+   }
+
+   div.container {
+      background: none;
+      flex-direction: column-reverse;
+      padding: 20px;
+   }
+
+   div.content{
+      padding: 0;
+   }
+
+   div.menu {
+      background-color: white;
+   }
+
+   h2{
+      margin: 10px 0;
+   }
+   
+   img{
+      float: none;
+      padding: 0;
+      width: 100%;
+   }
+
+   h3{
+      padding: 0;
+      margin-bottom: 10px;
+   }
+
+   ul{
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+   }
+
+
+   li{
+      padding-right: 10px;
+   }
+
+}
