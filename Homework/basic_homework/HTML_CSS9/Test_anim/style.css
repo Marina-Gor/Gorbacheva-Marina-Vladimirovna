@@ -1,0 +1,147 @@
+.blok {
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: flex;
+   align-items: center;
+   align-content: center;
+   justify-content: center;
+   overflow: auto;
+}
+
+.container {
+   background: rgb(3, 10, 51);
+   background: radial-gradient(circle, rgba(3, 10, 51, 0.7344187675070029) 0%, rgba(25, 21, 81, 1) 100%);
+   width: 1100px;
+   height: 600px;
+   overflow: hidden;
+   position: relative;
+   border-radius: 50px;
+   box-shadow: 0 0 150px rgb(27, 27, 24);
+}
+
+.container:hover .a {
+   position: absolute;
+   top: 400px;
+   right: 450px;
+}
+
+.container:hover .b {
+   transform: rotate(90deg);
+}
+
+.container:hover .c {
+   transform: scale(1.5);
+}
+
+.container:hover .d {
+   position: absolute;
+   top: 250px;
+   right: 300px;
+}
+
+.container:hover .e {
+   transform: scale(1.5);
+}
+
+.container:hover .f {
+   position: absolute;
+   top: 150px;
+   right: 150px;
+}
+
+.a,
+.b,
+.c,
+.d,
+.e,
+.f,
+.g {
+   width: 200px;
+   height: 188px;
+   background-size: cover;
+   border-radius: 50%;
+}
+
+.a {
+   background: url(./images/1.png);
+   position: absolute;
+   bottom: 0px;
+   right: 250px;
+}
+
+.b {
+   background: url(./images/2.png);
+   position: absolute;
+   top: 0px;
+   left: 0px;
+}
+
+.c {
+   background: url(./images/3.png);
+   position: absolute;
+   top: 0px;
+   right: 0px;
+}
+
+.d {
+   background: url(./images/4.png);
+   position: absolute;
+   top: 200px;
+   right: 350px;
+}
+
+.e {
+   background: url(./images/5.png);
+   position: absolute;
+   bottom: 50px;
+   right: 0px;
+}
+
+.f {
+   background: url(./images/7.png);
+   position: absolute;
+   top: -20px;
+   right: 250px;
+}
+
+@keyframes Animation-g {
+   from {
+      position: absolute;
+      bottom: -160px;
+   }
+
+   to {
+      position: absolute;
+      bottom: 100%;
+   }
+}
+
+.g {
+   background: url(./images/8.png);
+   position: absolute;
+   bottom: -160px;
+   left: 200px;
+   animation: Animation-g 8s infinite;
+}
+
+@keyframes Animation1 {
+   from {
+      background: url(./images/img_3.png) 0 0;
+   }
+
+   to {
+      background: url(./images/img_3.png) -600px 0;
+   }
+}
+
+.anim1 {
+   width: 120px;
+   height: 150px;
+   animation: Animation1 1s steps(5) infinite;
+   position: absolute;
+   bottom: 0px;
+   left: 50px
+}

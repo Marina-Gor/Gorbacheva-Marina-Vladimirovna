@@ -1,0 +1,48 @@
+@media screen and (max-width: 600px) {
+   header,
+   footer{ 
+      display: none;
+   }
+
+   .section-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      padding: 20px;
+   }
+
+   article{
+      padding: 0;
+      background: none;
+      grid-row: 1;
+      grid-column: span -1;
+   }
+
+   menu {
+      background-color: white;
+      padding: 0;
+      grid-row: 2;
+      grid-column: span 2;
+   }
+
+   h2{
+      margin: 10px 0;
+   }
+   
+   img{
+      float: none;
+      padding: 0;
+      width: 100%;
+   }
+
+   ul{
+      list-style-type: none;
+      margin: 0;
+   }
+
+
+   li{
+      display: inline;
+   }
+
+}

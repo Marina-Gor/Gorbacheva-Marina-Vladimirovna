@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      input#item {
+         display: none;
+      }
+
+      [for="item"] {
+         position: relative;
+         display: inline-block;
+         width: 150px;
+         height: 50px;
+         border-radius: 35px;
+         background-color: rgb(173, 176, 180);
+         user-select: none;
+         transition: 0.5s;
+      }
+
+      [for="item"]::before {
+         content: "";
+         position: absolute;
+         background-color: white;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         left: 10px;
+         top: 5px;
+         transition: 0.5s;
+      }
+
+      #item:checked+[for="item"] {
+         background-color: rgb(9, 192, 9);
+      }
+
+      #item:checked+[for="item"]::before {
+         left: 100px;
+         top: 5px;
+      }
+
+      input#item1 {
+         display: none;
+      }
+
+      [for="item1"] {
+         display: inline-block;
+         background: url(./images/pngtree-true-or-false-checkbox-grunge-sign-png-image_4476778.png) no-repeat -49px -29px;
+         background-size: 100px;
+         width: 50px;
+         height: 50px;
+         user-select: none;
+      }
+
+      #item1:checked+[for="item1"] {
+         background-position: 0px -29px;
+      }
+
+   </style>
+</head>
+
+<body>
+   <input type="checkbox" id="item">
+   <label for="item"></label>
+   <hr>
+   <input type="checkbox" id="item1">
+   <label for="item1"></label>
+</body>
+
+</html>

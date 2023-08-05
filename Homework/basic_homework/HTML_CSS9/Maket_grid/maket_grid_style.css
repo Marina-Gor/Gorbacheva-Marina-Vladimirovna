@@ -1,0 +1,66 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+.section-grid{
+   display: grid;
+   grid-template-columns: 200px 1fr;
+   grid-template-rows: 60px 1fr 60px;
+}
+
+header,
+footer{
+   grid-column: span 2;
+   background-color: #add8e6;
+   color: blue;
+   font-size: 18px;
+   font-size: 24px;
+   font-weight: 700;
+   text-align: center;
+   line-height: 60px;
+}
+
+footer {
+   grid-row: 3;
+}
+
+menu{
+  background-color: rgb(241, 241, 157);
+  grid-row: 2;
+  padding: 20px 0 20px 20px;
+}
+
+article{
+   grid-column: 2;
+   grid-row: 2;
+   padding: 20px;
+   background: url(../../HTML_CSS5/images/ball.png) right top repeat-y;
+}
+
+h2{
+   margin: 10px 0;
+}
+
+h3{
+   margin: 10px 0;
+}
+
+p {
+   text-align: justify;
+   margin-top: 10px;
+}
+
+ul{
+   margin-left: 15px;
+}
+
+img {
+   float: left;
+   padding-right: 20px;
+}
+
+a{
+   color: blue;
+}
