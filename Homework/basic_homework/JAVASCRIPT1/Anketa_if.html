@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Anketa if</title>
+</head>
+
+<body>
+   <script>
+      var lastname = prompt('Фамилия');
+      var name = prompt('Имя');
+      var surname = prompt('Отчество');
+      var age = Number(prompt('Возраст'));
+      var gender = confirm('Вы женщина?');
+
+      if (gender === true) {
+         gender = 'Женщина'
+      }
+      else {
+         gender = 'Мужчина'
+      }
+
+      var pension;
+
+      if (gender === 'Женщина') {
+         if (age < 60) {
+            pension = 'нет'
+         }
+
+         else {
+            pension = 'да'
+         }
+      }
+
+      else if (age < 65) {
+         pension = 'нет'
+      }
+      else {
+         pension = 'да'
+      }
+
+      alert('ваше ФИО: ' + lastname + ' ' + name + ' ' + surname + '\n'
+         + 'ваш возраст в годах: ' + age + '\n'
+         + 'ваш возраст в днях: ' + age * 365 + '\n'
+         + 'через 5 лет вам будет: ' + (age + 5) + '\n'
+         + 'ваш пол: ' + gender + '\n'
+         + 'вы на пенсии: ' + pension)
+   </script>
+</body>
+
+</html>

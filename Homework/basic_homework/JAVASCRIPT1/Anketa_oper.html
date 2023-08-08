@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Anketa oper</title>
+</head>
+
+<body>
+   <script>
+      var lastname = prompt('Фамилия');
+      var name = prompt('Имя');
+      var surname = prompt('Отчество');
+      var age = Number(prompt('Возраст'));
+      var gender = confirm('Вы женщина?');
+
+      gender === true ? gender = 'Женщина' : gender = 'Мужчина';
+
+      var pension;
+
+      gender === 'Женщина'?
+      (age < 60)?
+      pension = 'нет':
+      pension = 'да'
+      :
+      (age < 65)?
+      pension = 'нет':
+      pension = 'да'
+
+      alert('ваше ФИО: ' + lastname + ' ' + name + ' ' + surname + '\n'
+         + 'ваш возраст в годах: ' + age + '\n'
+         + 'ваш возраст в днях: ' + age * 365 + '\n'
+         + 'через 5 лет вам будет: ' + (age + 5) + '\n'
+         + 'ваш пол: ' + gender + '\n'
+         + 'вы на пенсии: ' + pension)
+   </script>
+</body>
+
+</html>
