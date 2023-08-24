@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cycle for</title>
+</head>
+
+<body>
+   <script>
+      var str = '';
+      for (var i = 1; i <= 5; i++) {
+         for (var n = 1; n < 4; n++) {
+            if (i%2 == 0 &&  n%2 == 0) {
+               str += ' '
+            }
+            else {
+                  str += '#';
+               }
+         }
+         str += '\n';
+      }
+      console.log(str)
+   </script>
+</body>
+
+</html>

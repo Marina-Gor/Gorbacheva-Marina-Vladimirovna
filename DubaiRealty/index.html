@@ -11,8 +11,8 @@
    <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Space+Grotesk:wght@700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
       rel="stylesheet">
-
    <link rel="stylesheet" href="./css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <title>DubaiRealty</title>
 </head>
 
@@ -21,25 +21,57 @@
       <div class="wrapper">
          <div class="container">
             <div class="logo">
-               <div class="logo-name">DubaiRealty</div>
-               <div class="logo-postscript">Real Estate</div>
-               <div class="logo-bor"></div>
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
             </div>
             <div class="container-blok1">
                <ul class="container-blok1-list">
-                  <li>Buy</li>
-                  <li>Blog</li>
-                  <li>About</li>
-                  <li>Contact</li>
+                  <li>
+                     <div class="dropdown">
+                        <button class="dropbtn" onclick="myFunction()">Buy&nbsp<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content" id="myDropdown">
+                           <ul class="container-blok1-list-list2">
+                              <li><a href="#">Category number one </a></li>
+                              <li><a href="category.html">Apartments in Dubai</a></li>
+                              <li><a href="#">Category number twenty five</a></li>
+                           </ul>
+                        </div>
+                  </li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="service.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
                </ul>
-               <div class="container-blok1-btn">Book a consultation</div>
             </div>
-            <div class="container-blok2">
-                  <div class="container-blok2-lang">
-                     <div class="container-blok2-lang-en">En</div>
-                     <div class="container-blok2-lang-ru">Ru</div>
+            <dialog id="favDialog">
+               <form method="dialog">
+                  <div class="content">
+                     <div class="class1">Leave your contacts</div>
+                     <div class="class2">we will contact you within three hours</div>
+                     <div class="enter-name">
+                        <label for="mane"></label>
+                        <input type="text" id="name" size="30" placeholder="Name" />
+                     </div>
+                     <div class="enter-email">
+                        <label for="email"></label>
+                        <input type="email" id="email" size="30" placeholder="Phone" />
+                     </div>
+                     <button value="cancel" class="cancel-btn ">
+                        <div class="close" value="cancel"></div>
+                     </button>
+                     <button id="confirmBtn" value="default">Send</button>
                   </div>
-                  <div class="container-blok2-phone">+7 (212) 674-25-10</div>
+               </form>
+            </dialog>
+            <div class="btn"><button class="container-blok1-btn" id="updateDetails">Book a consultation</button></div>
+            <div class="container-blok2">
+               <div class="container-blok2-lang">
+                  <div class="container-blok2-lang-en">En</div>
+                  <div class="container-blok2-lang-ru">Ru</div>
+               </div>
+               <div class="container-blok2-phone">+7 (212) 674-25-10</div>
             </div>
          </div>
       </div>
@@ -48,25 +80,325 @@
       <div class="wrapper">
          <div class="slider">
             <div class="slider-social"></div>
-            <div class="slider-head">
-               <div class="slider-head-name">
-                  <p>Lorem ipsum</p>
-                  <h1>Welcome home <span>to</span> luxury</h1>
-                  <a href="">Book a consultation</a>
-               </div>
-               <div class="slider-head-bor"></div>
+            <div class="slider-container">
+               <div class="slider-container-text">Lorem ipsum</div>
+               <div class="slider-container-name">Welcome home <span>to</span> luxury</div>
+               <div class="slider-container-link"><a href="">Book a consultation<img src="./image/svg/arrow.svg"
+                        alt=""></a></div>
+               <div class="slider-container-bor"></div>
             </div>
             <div class="slider-blok">
-               <div class="slider-blok-container">
-                  <div class="slider-blok-container-text">
-                     <span>01</span>
-                     <p>Lorem Ipsum Dolorem apset</p></div>
-                  <div class="slider-blok-container-text">
-                     <span>02</span>
-                     <p>Lorem Ipsum Dolorem apset</p></div>
-                  <div class="slider-blok-container-text">
-                     <span>03</span>
-                     <p>Lorem Ipsum Dolorem apset</p></div>
+               <div class="slider-blok-item">
+                  <div class="number"><span>01</span></div>
+                  <div class="text">Lorem Ipsum Dolorem apset</div>
+               </div>
+               <div class="slider-blok-item">
+                  <div class="number">02</div>
+                  <div class="text">Lorem Ipsum Dolorem apset</div>
+               </div>
+               <div class="slider-blok-item">
+                  <div class="number">03</div>
+                  <div class="text">Lorem Ipsum Dolorem apset</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section2">
+      <div class="wrapper">
+         <div class="section2-blok">
+            <div class="section2-blok-name">Latest projects</div>
+            <ul>
+               <li><a href="#">All</a></li>
+               <li><a href="#">Building</a></li>
+               <li><a href="#"> Interior</a></li>
+               <li><a href="#">View all projects</a></li>
+            </ul>
+         </div>
+         <div class="section2-slider">
+            <div class="section2-slider-item i-1">Villas</div>
+            <div class="section2-slider-item i-2">
+               <div class="section2-slider-item-name">Dubai</div>
+               <div class="section2-slider-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Consequat molestie integer aliquam
+                  consectetur. Faucibus vitae dui massa tellus magna sit.</div>
+               <div class="section2-slider-item-link"><a href="">See project<img src="./image/svg/arrow-black.svg"
+                        alt="arrow"></a></div>
+            </div>
+            <div class="section2-slider-item i-3">Houses</div>
+            <div class="section2-slider-item i-4">Villas</div>
+            <div class="section2-slider-item i-1">Houses</div>
+            <div class="section2-slider-item i-3">Villas</div>
+            <div class="section2-slider-item i-4">Houses</div>
+            <div class="section2-slider-item i-1">Villas</div>
+            <div class="section2-slider-item i-3">Houses</div>
+            <div class="section2-slider-item i-4">Villas</div>
+         </div>
+      </div>
+   </div>
+   <div class="section3">
+      <div class="wrapper">
+         <div class="section3-container">
+            <div class="section3-container-text">Our expertise</div>
+            <div class="section3-container-name">"The best apartment in Dubai" we will find your dream</div>
+            <div class="section3-container-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+               nibh massa, euismod ut libero id,
+               blandit posuere augue. Morbi porta volutpat diam egestas ultrices. Phasellus tempus fringilla neque, nec
+               viverra orci tristique vel. In efficitur vehicula magna, varius pellentesque nisl vehicula vel. Aenean
+               vel sem ac elit commodo finibus in nec massa. Nulla facilisi. Nulla vestibulum venenatis sollicitudin.
+               Etiam auctor mollis justo eu tincidunt. Aliquam varius varius tortor. Cras id venenatis sem. Quisque ut
+               risus ex. Sed et tempor massa. Praesent ac eros hendrerit, congue justo ac, molestie urna. Fusce nec
+               neque vitae dolor dapibus elementum. Maecenas nec orci quis sem condimentum dapibus varius a lorem. Lorem
+               ipsum dolor sit amet, consectetur adipiscing elit.</div>
+         </div>
+      </div>
+   </div>
+   <div class="section4">
+      <div class="wrapper">
+         <div class="section4-video">
+            <iframe width="1800" height="922" src="https://www.youtube.com/embed/xgZd_vFNkUs?controls=0"
+               title="YouTube video player" frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+               allowfullscreen></iframe>
+            <!-- <div class="section4-play"></div> -->
+         </div>
+      </div>
+   </div>
+   <div class="section5">
+      <div class="wrapper">
+         <div class="section5-container">
+            <div class="section5-container-blok1">“Don’t limit yourself. Many people limit themselves to what they think
+               they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.” —
+               Mary Kay Ash </div>
+            <div class="section5-container-blok2">
+               <div class="section5-container-blok2-img1"></div>
+               <div class="section5-container-blok2-img2"></div>
+               <div class="section5-container-blok2-text">Sed in sem pellentesque, eleifend erat vitae, tincidunt
+                  turpis. Pellentesque augue elit, rutrum sit amet commodo vel, porta quis purus. Nullam faucibus, odio
+                  eu bibendum auctor, eros dolor aliquet purus, sit amet pellentesque neque est id tortor. In egestas,
+                  erat a dapibus dapibus, mi augue ornare lorem, nec pretium ligula purus nec tellus. Aenean a
+                  scelerisque nisi. Nullam pretium fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis
+                  justo consequat risus. Donec imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget
+                  auctor. Ut sed ante quis nulla tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra
+                  ultrices est vitae suscipit. Pellentesque elementum purus non nisl pharetra consequat. Nunc in
+                  venenatis orci.</div>
+               <div class="section5-container-blok2-text">Vivamus non diam vel lorem efficitur mattis in gravida ante.
+                  Ut ullamcorper dapibus ante, eu tincidunt orci feugiat vel. Curabitur eget lectus lectus. Pellentesque
+                  malesuada, felis at accumsan interdum, nisl mi fermentum est, eu suscipit dui lorem a dui. Aliquam
+                  rhoncus risus in leo vestibulum efficitur. Suspendisse tortor quam, faucibus a lacinia a, bibendum
+                  vitae quam. Suspen disse et metus et orci rutrum dictum eu eu nibh. Suspendisse blandit in diam in
+                  rhoncus. Nam volutpat hendrerit enim, sed aliquet quam gravida at. Nullam dictum sagittis nisi, eu
+                  porta sem mollis eu. Nulla faucibus sed ipsum sed sodales. Curabitur varius iaculis felis, in aliquet
+                  sem suscipit quis. Ut vulputate, magna ac bibendum elementum, nulla magna tincidunt urna, a venenatis
+                  dolor arcu sed leo. </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section6">
+      <div class="wrapper">
+         <div class="section6-rectangle">
+            <div class="section6-rectangle-container">
+               <div class="section6-rectangle-container-text">Do you have any questions?</div>
+               <div class="section6-rectangle-container-name">Contact us</div>
+               <form action="https://fe.it-academy.by/TestForm.php" method="post" class="input-form">
+                  <label for="email"></label>
+                  <input id="email" type="text" name="email" placeholder="Enter your mail">
+                  <input type="submit" value="Send">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section7">
+      <div class="wrapper">
+         <div class="section7-container">
+            <div class="section7-container-blok1">
+               <div class="section7-container-blok1-name">Useful articles</div>
+               <div class="section7-container-blok1-link"><a href="#">View all articles<img src="./image/svg/arrow.svg"
+                        alt="arrow"></a></div>
+            </div>
+            <div class="section7-container-blok2">
+               <div class="section7-container-blok2-item1">Discover Architecture</div>
+               <div class="section7-container-blok2-item2">
+                  <div class="section7-container-blok2-item2-text">Jule 03, 2022</div>
+                  <div class="section7-container-blok2-item2-name">Discover Architecture</div>
+                  <div class="section7-container-blok2-item2-text">Projects for many large domestic and foreign
+                     corporations, enterprises in many elds such</div>
+                  <div class="section7-container-blok2-item2-link"><a href="#">Learn more<img
+                           src="./image/svg/arrow yellow.svg" alt="arrow"></a></div>
+               </div>
+               <div class="section7-container-blok2-item3">Discover Architecture</div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section8">
+      <div class="wrapper2">
+         <div class="section8-container">
+            <div class="section8-container-slider">
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/about101.png" alt="">
+                     </div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Tom</div>
+                        <div class="section8-container-slider-items-employee-role">Actor<span class="yell"> from
+                              UK</span></div>
+                        <div class="section8-container-slider-items-employee-about">English actor, producer and
+                           screenwriter. BAFTA winner and Oscar nominee. Girls love him, but he loves boys
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/photo2.jpg" alt=""></div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Harold</div>
+                        <div class="section8-container-slider-items-employee-role">Famous <span
+                              class="yell">GrandPa</span></div>
+                        <div class="section8-container-slider-items-employee-about">Character in a series of stock
+                           photos made popular by the man's unusual expression. Harold's strained smile reveals a deep
+                           hidden pain.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/cropped.jpg" alt="">
+                     </div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Leonardo </div>
+                        <div class="section8-container-slider-items-employee-role">Winner of <span
+                              class="yell">Oscar</span></div>
+                        <div class="section8-container-slider-items-employee-about">If you're over the age of 25, you
+                           and I are out of your league.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/cropped2.jpg" alt="">
+                     </div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Sasha</div>
+                        <div class="section8-container-slider-items-employee-role">Not owner her <span
+                              class="yell">...</span></div>
+                        <div class="section8-container-slider-items-employee-about">No matter what I'm doing right now.
+                           You'll always remember what I was doing.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/cropped_4.jpg" alt="">
+                     </div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Moms investor</div>
+                        <div class="section8-container-slider-items-employee-role">Owner <span class="yell">1000₽</span>
+                        </div>
+                        <div class="section8-container-slider-items-employee-about">Has mined 500 rubles, paid the light
+                           bill for 5000 rubles. Whose ass is gonna burn tonight?
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="section8-container-slider-items">
+                  <div class="section8-container-slider-items-item">
+                     <div class="section8-container-slider-items-foto exmpl"><img src="./image/mask.jpg" alt=""></div>
+                     <div class="section8-container-slider-items-quotes">”</div>
+                     <div class="section8-container-slider-items-employee">
+                        <div class="section8-container-slider-items-employee-name">Elon </div>
+                        <div class="section8-container-slider-items-employee-role">Owner in <span class="yell">Tesla and
+                              SpaceX</span></div>
+                        <div class="section8-container-slider-items-employee-about">Knows how to spend money on stuff.
+                           An innovator, an educator, and an overall cool dude. He made his first million at Zip2
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section9">
+      <div class="wrapper">
+         <div class="section9-container">
+            <div class="section9-container-name">FAQ</div>
+            <div class="section9-container-acor">
+               <input type="checkbox" name="chacor" id="chacor1" checked="checked" />
+               <label for="chacor1">The largest and oldest Quotations Page on the Web with about 30 categories</label>
+               <div class="acor-body">
+                  <p>Sed in sem pellentesque, eleifend erat vitae, tincidunt turpis. Pellentesque augue elit, rutrum sit
+                     amet commodo vel, porta quis purus. Nullam faucibus, odio eu bibendum auctor, eros dolor aliquet
+                     purus, sit amet pellentesque neque est id tortor. In egestas, erat a dapibus dapibus, mi augue
+                     ornare lorem, nec pretium ligula purus nec tellus. Aenean a scelerisque nisi. Nullam pretium
+                     fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis justo consequat risus. Donec
+                     imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget auctor. Ut sed ante quis nulla
+                     tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra ultrices est vitae suscipit.
+                     Pellentesque elementum purus non nisl pharetra consequat. Nunc in venenatis orci.</p>
+               </div>
+
+               <input type="checkbox" name="chacor" id="chacor2" />
+               <label for="chacor2">A huge collection of inspirational quotes, thoughts of greatest minds in
+                  history</label>
+               <div class="acor-body">
+                  <p>Sed in sem pellentesque, eleifend erat vitae, tincidunt turpis. Pellentesque augue elit, rutrum sit
+                     amet commodo vel, porta quis purus. Nullam faucibus, odio eu bibendum auctor, eros dolor aliquet
+                     purus, sit amet pellentesque neque est id tortor. In egestas, erat a dapibus dapibus, mi augue
+                     ornare lorem, nec pretium ligula purus nec tellus. Aenean a scelerisque nisi. Nullam pretium
+                     fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis justo consequat risus. Donec
+                     imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget auctor. Ut sed ante quis nulla
+                     tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra ultrices est vitae suscipit.
+                     Pellentesque elementum purus non nisl pharetra consequat. Nunc in venenatis orci.</p>
+               </div>
+
+               <input type="checkbox" name="chacor" id="chacor3" />
+               <label for="chacor3">Quotations from the great works of literature</label>
+               <div class="acor-body">
+                  <p>Sed in sem pellentesque, eleifend erat vitae, tincidunt turpis. Pellentesque augue elit, rutrum sit
+                     amet commodo vel, porta quis purus. Nullam faucibus, odio eu bibendum auctor, eros dolor aliquet
+                     purus, sit amet pellentesque neque est id tortor. In egestas, erat a dapibus dapibus, mi augue
+                     ornare lorem, nec pretium ligula purus nec tellus. Aenean a scelerisque nisi. Nullam pretium
+                     fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis justo consequat risus. Donec
+                     imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget auctor. Ut sed ante quis nulla
+                     tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra ultrices est vitae suscipit.
+                     Pellentesque elementum purus non nisl pharetra consequat. Nunc in venenatis orci.</p>
+               </div>
+
+               <input type="checkbox" name="chacor" id="chacor4" />
+               <label for="chacor4">Read quotes and sayings from famous people in history</label>
+               <div class="acor-body">
+                  <p>Sed in sem pellentesque, eleifend erat vitae, tincidunt turpis. Pellentesque augue elit, rutrum sit
+                     amet commodo vel, porta quis purus. Nullam faucibus, odio eu bibendum auctor, eros dolor aliquet
+                     purus, sit amet pellentesque neque est id tortor. In egestas, erat a dapibus dapibus, mi augue
+                     ornare lorem, nec pretium ligula purus nec tellus. Aenean a scelerisque nisi. Nullam pretium
+                     fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis justo consequat risus. Donec
+                     imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget auctor. Ut sed ante quis nulla
+                     tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra ultrices est vitae suscipit.
+                     Pellentesque elementum purus non nisl pharetra consequat. Nunc in venenatis orci.</p>
+               </div>
+
+               <input type="checkbox" name="chacor" id="chacor5" />
+               <label for="chacor5">Collected quotes from Albert Einstein</label>
+               <div class="acor-body">
+                  <p>Sed in sem pellentesque, eleifend erat vitae, tincidunt turpis. Pellentesque augue elit, rutrum sit
+                     amet commodo vel, porta quis purus. Nullam faucibus, odio eu bibendum auctor, eros dolor aliquet
+                     purus, sit amet pellentesque neque est id tortor. In egestas, erat a dapibus dapibus, mi augue
+                     ornare lorem, nec pretium ligula purus nec tellus. Aenean a scelerisque nisi. Nullam pretium
+                     fermentum nunc, feugiat placerat urna rutrum eget. Nullam mattis justo consequat risus. Donec
+                     imperdiet enim id efficitur pharetra. Nam sollicitudin at est eget auctor. Ut sed ante quis nulla
+                     tincidunt auctor. Quisque accumsan pretium tincidunt. Etiam viverra ultrices est vitae suscipit.
+                     Pellentesque elementum purus non nisl pharetra consequat. Nunc in venenatis orci.</p>
                </div>
             </div>
          </div>
@@ -76,60 +408,63 @@
       <div class="wrapper">
          <div class="container">
             <div class="logo">
-               <div class="logo-name">DubaiRealty</div>
-               <div class="logo-postscript">Real Estate</div>
-               <div class="logo-bor"></div>
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
             </div>
             <div class="container-content">
                <div class="container-content-blok">
                   <p class="container-content-blok-name">Buy</p>
                   <ul class="container-content-blok-list">
-                     <li>Apartment in Dubai</li>
-                     <li>House in Dubai</li>
-                     <li>Apartments in Dubai</li>
-                     <li>Loft in Dubai</li>
-                     <li>Penthouse in Dubai</li>
-                     <li>Villa in Dubai</li>
+                     <li><a href="#">Apartment in Dubai</a></li>
+                     <li><a href="#">House in Dubai</a></li>
+                     <li><a href="#">Apartments in Dubai</a></li>
+                     <li><a href="#">Loft in Dubai</a></li>
+                     <li><a href="#">Penthouse in Dubai</a></li>
+                     <li><a href="#">Villa in Dubai</a></li>
                   </ul>
                </div>
                <div class="container-content-blok">
                   <p class="container-content-blok-name">Services</p>
                   <ul class="container-content-blok-list">
-                     <li>Property management in Dubai, UAE</li>
-                     <li>Sell ​​property in Dubai, UAE</li>
-                     <li>Rent property in Dubai, UAE</li>
-                     <li>Investments in Dubai, UAE</li>
-                     <li>Real estate for cryptocurrency in Dubai</li>
-                     <li>Moving to Dubai, UAE</li>
+                     <li><a href="#">Property management in Dubai, UAE</a></li>
+                     <li><a href="#">Sell ​​property in Dubai, UAE</a></li>
+                     <li><a href="#">Rent property in Dubai, UAE</a></li>
+                     <li><a href="#">Investments in Dubai, UAE</a></li>
+                     <li><a href="#">Real estate for cryptocurrency in Dubai</a></li>
+                     <li><a href="#">Moving to Dubai, UAE</a></li>
                   </ul>
                </div>
                <div class="container-content-blok">
                   <p class="container-content-blok-name">Information</p>
                   <ul class="container-content-blok-list">
-                     <li>Video</li>
-                     <li>Podcasts</li>
-                     <li>Laws</li>
-                     <li>Questions and answers</li>
-                     <li>Books</li>
-                     <li>Articles</li>
+                     <li><a href="#">Video</a></li>
+                     <li><a href="#">Podcasts</a></li>
+                     <li><a href="#">Laws</a></li>
+                     <li><a href="#">Questions and answers</a></li>
+                     <li><a href="#">Books</a></li>
+                     <li><a href="#">Articles</a></li>
                   </ul>
                </div>
                <div class="container-content-blok">
                   <p class="container-content-blok-name">About company</p>
                   <ul class="container-content-blok-list">
-                     <li>Jobs</li>
-                     <li>Story</li>
-                     <li>Licenses</li>
-                     <li>Why are we</li>
-                     <li>Real estate agency</li>
+                     <li><a href="#">Jobs</a></li>
+                     <li><a href="#">Story</a></li>
+                     <li><a href="#">Licenses</a></li>
+                     <li><a href="#">Why are we</a></li>
+                     <li><a href="#">Real estate agency</a></li>
                   </ul>
                </div>
                <div class="container-content-blok">
                   <p class="container-content-blok-name">Contact</p>
                   <ul class="container-content-blok-list">
-                     <li>964 Worthington Drive Dubai, UAE</li>
-                     <li>dubairealty@mail.com</li>
-                     <div class="container-content-blok-list-btn">Book a consultation</div>
+                     <li><a href="#">964 Worthington Drive<br>
+                           Dubai, UAE</a></li>
+                     <li><a href="#">dubairealty@mail.com</a></li>
+                     <button class="container-content-blok-list-btn">Book a consultation</button>
                   </ul>
                </div>
             </div>
@@ -140,6 +475,30 @@
          </div>
       </div>
    </footer>
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script src="./js/slick.min.js"></script>
+   <script src="./js/script.js"></script>
+   <script src="./js/dropButton.js"></script>
+   <script>
+      const updateButton = document.getElementById("updateDetails");
+      const favDialog = document.getElementById("favDialog");
+      const selectEl = favDialog.querySelector("select");
+      const confirmBtn = favDialog.querySelector("#confirmBtn");
+      if (typeof favDialog.showModal !== "function") {
+         favDialog.hidden = true;
+      }
+      updateButton.addEventListener("click", () => {
+         if (typeof favDialog.showModal === "function") {
+            favDialog.showModal();
+
+         } else {
+            outputBox.value = "Sorry, the dialog API is not supported by this browser.";
+         }
+      });
+      selectEl.addEventListener("change", () => {
+         confirmBtn.value = selectEl.value;
+      });
+   </script>
 </body>
 
 </html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/reset.css">
+   <link rel="stylesheet" href="./fonts/Gilroy/stylesheet.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Space+Grotesk:wght@700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./css/category.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>DubaiRealty</title>
+
+</head>
+
+<body>
+   <header>
+      <div class="wrapper">
+         <div class="container">
+            <div class="logo">
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
+            </div>
+            <div class="container-blok1">
+               <ul class="container-blok1-list">
+                  <li>
+                     <div class="dropdown">
+                        <button class="dropbtn" onclick="myFunction()">Buy&nbsp<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content" id="myDropdown">
+                           <ul class="container-blok1-list-list2">
+                              <li><a href="#">Category number one </a></li>
+                              <li><a href="category.html">Apartments in Dubai</a></li>
+                              <li><a href="#">Category number twenty five</a></li>
+                           </ul>
+                        </div>
+                  </li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="service.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+               </ul>
+            </div>
+            <dialog id="favDialog">
+               <form method="dialog">
+                  <div class="content">
+                     <div class="class1">Leave your contacts</div>
+                     <div class="class2">we will contact you within three hours</div>
+                     <div class="enter-name">
+                        <label for="mane"></label>
+                        <input type="text" id="name" size="30" placeholder="Name" />
+                     </div>
+                     <div class="enter-email">
+                        <label for="email"></label>
+                        <input type="email" id="email" size="30" placeholder="Phone" />
+                     </div>
+                     <button value="cancel" class="cancel-btn ">
+                        <div class="close" value="cancel"></div>
+                     </button>
+                     <button id="confirmBtn" value="default">Send</button>
+                  </div>
+               </form>
+            </dialog>
+            <div class="btn"><button class="container-blok1-btn" id="updateDetails">Book a consultation</button></div>
+            <div class="container-blok2">
+               <div class="container-blok2-lang">
+                  <div class="container-blok2-lang-en">En</div>
+                  <div class="container-blok2-lang-ru">Ru</div>
+               </div>
+               <div class="container-blok2-phone">+7 (212) 674-25-10</div>
+            </div>
+         </div>
+      </div>
+      <script src="./js/dropButton.js"></script>
+   </header>
+   <div class="section">
+      <div class="wrapper">
+         <div class="section-container">
+            <div class="section-container-item"><a href="index.html">Main</a><img src="./image/svg/arrow-mini.svg" alt="arrow">
+            </div>
+            <div class="section-container-item"><a href="#">Buy</a><img src="./image/svg/arrow-mini.svg" alt="arrow">
+            </div>
+            <div class="section-container-item">Apartments in Dubai</div>
+         </div>
+      </div>
+   </div>
+   <div class="section1">
+      <div class="wrapper">
+         <div class="container">
+            <div class="container-name">Apartments <span><br> in Dubai</span></div>
+         </div>
+      </div>
+   </div>
+   <div class="section2">
+      <div class="wrapper">
+         <div class="section2-container">
+            <div class="section2-container-name">All Apartments <br> Category</div>
+            <div class="section2-container-blok">
+               <div class="section2-container-blok-item">
+                  <div class="section2-container-blok-item-name">Townhous</div>
+                  <div class="section2-container-blok-item-link"><a href="#">Learn more<img src="./image/svg/arrow.svg"
+                           alt="arrow"></a></div>
+               </div>
+               <div class="section2-container-blok-item">
+                  <div class="section2-container-blok-item-name">Villa</div>
+                  <div class="section2-container-blok-item-link"><a href="#">Learn more<img src="./image/svg/arrow.svg"
+                           alt="arrow"></a></div>
+               </div>
+               <div class="section2-container-blok-item">
+                  <div class="section2-container-blok-item-name">Commercial</div>
+                  <div class="section2-container-blok-item-link"><a href="#">Learn more<img src="./image/svg/arrow.svg"
+                           alt="arrow"></a></div>
+               </div>
+               <div class="section2-container-blok-item1">
+                  <div class="section2-container-blok-item1-name">Apartments</div>
+                  <div class="section2-container-blok-item1-text">Lorem ipsum dolor sit amet, consectetur adipiscing
+                     elit.
+                     Consequat molestie integer aliquam consectetur. Faucibus vitae dui massa tellus magna sit.</div>
+                  <div class="section2-container-blok-item1-link"><a href="#">Learn more<img
+                           src="./image/svg/arrow-black.svg" alt="arrow"></a></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section3">
+      <div class="wrapper">
+         <div class="section3-container">
+            <div class="section3-container-name">Best Offers</div>
+            <div class="section3-container-slider">
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img1.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Townhous</div>
+                     <div class="section3-container-slider-blok-content-name">Arabian Ranches</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to
+                        own a luxurious property in Dubai.</div>
+                     <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img2.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Villa</div>
+                     <div class="section3-container-slider-blok-content-name">Dubai Hills Estate</div>
+                     <div class="section3-container-slider-blok-content-text">Al Barsha South, Downtown Dubai are two
+                        popular areas that lie close to this neighbourhood.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img3.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Commercial</div>
+                     <div class="section3-container-slider-blok-content-name">Shell and Core</div>
+                     <div class="section3-container-slider-blok-content-text">TThe launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img4.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Apartments</div>
+                     <div class="section3-container-slider-blok-content-name">Luxury Living</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img5.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Townhous</div>
+                     <div class="section3-container-slider-blok-content-name">Arabian Ranches</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai. </div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img6.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Commercial</div>
+                     <div class="section3-container-slider-blok-content-name">Shell and Core</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img7.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Commercial</div>
+                     <div class="section3-container-slider-blok-content-name">Shell and Core</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img8.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Apartments</div>
+                     <div class="section3-container-slider-blok-content-name">Luxury Living</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img9.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Townhous</div>
+                     <div class="section3-container-slider-blok-content-name">Arabian Ranches</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img10.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Commercial</div>
+                     <div class="section3-container-slider-blok-content-name">Shell and Core</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img11.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Commercial</div>
+                     <div class="section3-container-slider-blok-content-name">Shell and Core</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+               <div class="section3-container-slider-blok">
+                  <div class="section3-container-slider-blok-img"><img src="./image/category-s3/img12.png" alt=""></div>
+                  <div class="section3-container-slider-blok-content">
+                     <div class="section3-container-slider-blok-content-view">Apartments</div>
+                     <div class="section3-container-slider-blok-content-name">Luxury Living</div>
+                     <div class="section3-container-slider-blok-content-text">The launch of this community enabled
+                        expats to own a luxurious property in Dubai.</div>
+                        <div class="section3-container-slider-blok-content-link"><a href="#">Learn more <div id="arrow"></div></a></div>
+                  </div>
+               </div>
+            </div>
+            <div class="section3-container-item"><img src="./image/svg/left.svg"
+                  alt="arrow"><span>1</span><span>2</span><span>3</span><span>...</span><span>94</span><span>95</span><span>96</span><img
+                  src="./image/svg/right.svg" alt="arrow"></div>
+         </div>
+      </div>
+   </div>
+   <div class="section4">
+      <div class="wrapper">
+         <div class="section4-container">
+            <div class="section4-container-blok1">
+               <div class="section4-container-blok1-name">Apartments</div>
+               <div class="section4-container-blok1-text">To and from, fascinated her: every pebble, ant, stick, leaf,
+                  blade of grass, and crack in the sidewalk
+                  was something to be picked up, looked at, tasted, smelled, and shaken. Everything was interesting to
+                  her. She knew nothing. I knew everything…been there, done that. She was in the moment, I was in the
+                  past. She was mindful. I was mindless.</div>
+            </div>
+            <div class="section4-container-blok2">
+               <div class="section4-container-blok2-name">Everything along the way</div>
+               <div class="section4-container-blok2-text">One touch of a red-hot stove is usually all we need to avoid
+                  that kind of discomfort in the future. The same is true as we experience the emotional sensation of
+                  stress from our first instances of social rejection or ridicule. We quickly learn to fear and thus
+                  automatically avoid potentially stressful situations of all kinds, including the most common of all:
+                  making mistakes.</div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section5">
+      <div class="wrapper">
+         <div class="section5-rectangle">
+            <div class="section5-rectangle-container">
+               <div class="section5-rectangle-container-text">Do you have any questions?</div>
+               <div class="section5-rectangle-container-name">Contact us</div>
+               <form action="https://fe.it-academy.by/TestForm.php" method="post" class="input-form">
+                  <label for="email"></label>
+                  <input id="email" type="text" name="email" placeholder="Enter your mail">
+                  <input type="submit" value="Send">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <footer>
+      <div class="wrapper">
+         <div class="container">
+            <div class="logo">
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
+            </div>
+            <div class="container-content">
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Buy</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Apartment in Dubai</a></li>
+                     <li><a href="#">House in Dubai</a></li>
+                     <li><a href="#">Apartments in Dubai</a></li>
+                     <li><a href="#">Loft in Dubai</a></li>
+                     <li><a href="#">Penthouse in Dubai</a></li>
+                     <li><a href="#">Villa in Dubai</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Services</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Property management in Dubai, UAE</a></li>
+                     <li><a href="#">Sell ​​property in Dubai, UAE</a></li>
+                     <li><a href="#">Rent property in Dubai, UAE</a></li>
+                     <li><a href="#">Investments in Dubai, UAE</a></li>
+                     <li><a href="#">Real estate for cryptocurrency in Dubai</a></li>
+                     <li><a href="#">Moving to Dubai, UAE</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Information</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Video</a></li>
+                     <li><a href="#">Podcasts</a></li>
+                     <li><a href="#">Laws</a></li>
+                     <li><a href="#">Questions and answers</a></li>
+                     <li><a href="#">Books</a></li>
+                     <li><a href="#">Articles</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">About company</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Jobs</a></li>
+                     <li><a href="#">Story</a></li>
+                     <li><a href="#">Licenses</a></li>
+                     <li><a href="#">Why are we</a></li>
+                     <li><a href="#">Real estate agency</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Contact</p>
+                  <ul class="container-content-blok-list">
+                     <a href="#">
+                        <li>964 Worthington Drive<br>
+                           Dubai, UAE</li>
+                     </a>
+                     <li><a href="#">dubairealty@mail.com</a></li>
+                     <button class="container-content-blok-list-btn">Book a consultation</button>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="bottom">
+            <div class="bottom-name">Copyright © 2022 Dubai Realty</div>
+            <div class="bottom-social"></div>
+         </div>
+      </div>
+   </footer>
+   <script src="./js/dropButton.js"></script>
+   <script>
+      const updateButton = document.getElementById("updateDetails");
+      const favDialog = document.getElementById("favDialog");
+      const selectEl = favDialog.querySelector("select");
+      const confirmBtn = favDialog.querySelector("#confirmBtn");
+      if (typeof favDialog.showModal !== "function") {
+         favDialog.hidden = true;
+      }
+      updateButton.addEventListener("click", () => {
+         if (typeof favDialog.showModal === "function") {
+            favDialog.showModal();
+            
+         } else {
+            outputBox.value = "Sorry, the dialog API is not supported by this browser.";
+         }
+      });
+      selectEl.addEventListener("change", () => {
+         confirmBtn.value = selectEl.value;
+      });
+   </script>
+</body>
+
+</html>

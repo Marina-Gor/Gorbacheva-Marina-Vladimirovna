@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/reset.css">
+   <link rel="stylesheet" href="./fonts/Gilroy/stylesheet.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Space+Grotesk:wght@700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="./css/contact.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>DubaiRealty</title>
+
+</head>
+
+<body>
+   <header>
+      <div class="wrapper">
+         <div class="container">
+            <div class="logo">
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
+            </div>
+            <div class="container-blok1">
+               <ul class="container-blok1-list">
+                  <li>
+                     <div class="dropdown">
+                        <button class="dropbtn" onclick="myFunction()">Buy&nbsp<i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content" id="myDropdown">
+                           <ul class="container-blok1-list-list2">
+                              <li><a href="#">Category number one </a></li>
+                              <li><a href="category.html">Apartments in Dubai</a></li>
+                              <li><a href="#">Category number twenty five</a></li>
+                           </ul>
+                        </div>
+                  </li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="service.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+               </ul>
+            </div>
+            <dialog id="favDialog">
+               <form method="dialog">
+                  <div class="content">
+                     <div class="class1">Leave your contacts</div>
+                     <div class="class2">we will contact you within three hours</div>
+                     <div class="enter-name">
+                        <label for="mane"></label>
+                        <input type="text" id="name" size="30" placeholder="Name" />
+                     </div>
+                     <div class="enter-email">
+                        <label for="email"></label>
+                        <input type="email" id="email" size="30" placeholder="Phone" />
+                     </div>
+                     <button value="cancel" class="cancel-btn ">
+                        <div class="close" value="cancel"></div>
+                     </button>
+                     <button id="confirmBtn" value="default">Send</button>
+                  </div>
+               </form>
+            </dialog>
+            <div class="btn"><button class="container-blok1-btn" id="updateDetails">Book a consultation</button></div>
+            <div class="container-blok2">
+               <div class="container-blok2-lang">
+                  <div class="container-blok2-lang-en">En</div>
+                  <div class="container-blok2-lang-ru">Ru</div>
+               </div>
+               <div class="container-blok2-phone">+7 (212) 674-25-10</div>
+            </div>
+         </div>
+      </div>
+      <script src="./js/dropButton.js"></script>
+   </header>
+   <div class="section1">
+      <div class="wrapper">
+         <div class="section1-container">
+            <div class="section1-container-name">Contact</div>
+            <div class="section1-container-map">
+               <div style="position:relative;overflow:hidden;"><a
+                     href="https://yandex.by/maps/11499/dubai/?utm_medium=mapframe&utm_source=maps"
+                     style="color:#eee;font-size:12px;position:absolute;top:0px;">Дубай</a><a
+                     href="https://yandex.by/maps/11499/dubai/?ll=55.312582%2C25.163367&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DEmnYp9mE2KXZhdin2LHYp9iqINin2YTYudix2KjZitipINin2YTZhdiq2K3Yr9ipLCDYpdmF2KfYsdipINiv2KjZiiwg2KzZhdmK2LHYpywg2KjZhtin2YrYqSDYsdmI2LIg2YfYp9mI2LMiCg3_F11CFVLVyUE%2C&utm_medium=mapframe&utm_source=maps&z=11.96"
+                     style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты</a><iframe
+                     src="https://yandex.by/map-widget/v1/?ll=55.312582%2C25.163367&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DEmnYp9mE2KXZhdin2LHYp9iqINin2YTYudix2KjZitipINin2YTZhdiq2K3Yr9ipLCDYpdmF2KfYsdipINiv2KjZiiwg2KzZhdmK2LHYpywg2KjZhtin2YrYqSDYsdmI2LIg2YfYp9mI2LMiCg3_F11CFVLVyUE%2C&z=11.96"
+                     width="1800" height="768" frameborder="1" allowfullscreen="true"
+                     style="position:relative;"></iframe></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="section2">
+      <div class="wrapper">
+         <div class="section2-container">
+            <div class="section2-container-name"><span>Be in touch</span><br>with us</div>
+            <div class="section2-container-form">
+               <form action="https://fe.it-academy.by/TestForm.php" method="post">
+                  <label for="name"></label>
+                  <input id="name" type="text" name="name" placeholder="Name">
+                  <label for="emaill"></label>
+                  <input id="emaill" type="text" name="email" placeholder="Email *">
+                  <label for="subject"></label>
+                  <input id="subject" type="text" name="subject" placeholder="Subject">
+                  <label for="message"></label>
+                  <textarea id="message" name="message" placeholder="Message *"></textarea>
+                  <input type="submit" value="SUBMIT">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <footer>
+      <div class="wrapper">
+         <div class="container">
+            <div class="logo">
+               <a href="index.html">
+                  <div class="logo-name">DubaiRealty</div>
+                  <div class="logo-postscript">Real Estate</div>
+                  <div class="logo-bor"></div>
+               </a>
+            </div>
+            <div class="container-content">
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Buy</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Apartment in Dubai</a></li>
+                     <li><a href="#">House in Dubai</a></li>
+                     <li><a href="#">Apartments in Dubai</a></li>
+                     <li><a href="#">Loft in Dubai</a></li>
+                     <li><a href="#">Penthouse in Dubai</a></li>
+                     <li><a href="#">Villa in Dubai</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Services</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Property management in Dubai, UAE</a></li>
+                     <li><a href="#">Sell ​​property in Dubai, UAE</a></li>
+                     <li><a href="#">Rent property in Dubai, UAE</a></li>
+                     <li><a href="#">Investments in Dubai, UAE</a></li>
+                     <li><a href="#">Real estate for cryptocurrency in Dubai</a></li>
+                     <li><a href="#">Moving to Dubai, UAE</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Information</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Video</a></li>
+                     <li><a href="#">Podcasts</a></li>
+                     <li><a href="#">Laws</a></li>
+                     <li><a href="#">Questions and answers</a></li>
+                     <li><a href="#">Books</a></li>
+                     <li><a href="#">Articles</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">About company</p>
+                  <ul class="container-content-blok-list">
+                     <li><a href="#">Jobs</a></li>
+                     <li><a href="#">Story</a></li>
+                     <li><a href="#">Licenses</a></li>
+                     <li><a href="#">Why are we</a></li>
+                     <li><a href="#">Real estate agency</a></li>
+                  </ul>
+               </div>
+               <div class="container-content-blok">
+                  <p class="container-content-blok-name">Contact</p>
+                  <ul class="container-content-blok-list">
+                     <a href="#">
+                        <li>964 Worthington Drive<br>
+                           Dubai, UAE</li>
+                     </a>
+                     <li><a href="#">dubairealty@mail.com</a></li>
+                     <button class="container-content-blok-list-btn">Book a consultation</button>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="bottom">
+            <div class="bottom-name">Copyright © 2022 Dubai Realty</div>
+            <div class="bottom-social"></div>
+         </div>
+      </div>
+   </footer>
+   <script src="./js/dropButton.js"></script>
+   <script>
+      const updateButton = document.getElementById("updateDetails");
+      const favDialog = document.getElementById("favDialog");
+      const selectEl = favDialog.querySelector("select");
+      const confirmBtn = favDialog.querySelector("#confirmBtn");
+      if (typeof favDialog.showModal !== "function") {
+         favDialog.hidden = true;
+      }
+      updateButton.addEventListener("click", () => {
+         if (typeof favDialog.showModal === "function") {
+            favDialog.showModal();
+
+         } else {
+            outputBox.value = "Sorry, the dialog API is not supported by this browser.";
+         }
+      });
+      selectEl.addEventListener("change", () => {
+         confirmBtn.value = selectEl.value;
+      });
+   </script>
+</body>
+
+</html>
