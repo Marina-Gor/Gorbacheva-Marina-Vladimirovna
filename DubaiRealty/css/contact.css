@@ -328,7 +328,8 @@ header {
       line-height: normal;
       line-height: 26px;
       color: #272727;
-      padding: 14px 43px; }
+      padding: 14px 43px;
+      border: none; }
 
 /*Section1 styles end*/
 /*Footer styles end*/

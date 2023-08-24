@@ -115,8 +115,8 @@ a:hover {
    padding: 68px 140px 44px;
 }
 
-dialog::backdrop{
-   background-color:  rgba(39, 39, 39, 0.90);
+dialog::backdrop {
+   background-color: rgba(39, 39, 39, 0.90);
 }
 
 
@@ -136,40 +136,46 @@ dialog::backdrop{
    width: 32px;
    height: 32px;
    opacity: 0.9;
- }
- .close:hover {
+}
+
+.close:hover {
    opacity: 1;
- }
- .close:before, .close:after {
+}
+
+.close:before,
+.close:after {
    position: absolute;
    left: 15px;
    content: ' ';
    height: 33px;
    width: 2px;
    background-color: $yellow;
- }
- .close:before {
+}
+
+.close:before {
    transform: rotate(45deg);
- }
- .close:after {
+}
+
+.close:after {
    transform: rotate(-45deg);
- }
-.content{
+}
+
+.content {
    // padding: 64px 144px 40px;
    text-align: center;
 
-   & .class1{
-      @include headlines($black,48px,700,normal);
+   & .class1 {
+      @include headlines($black, 48px, 700, normal);
       margin-bottom: 8px;
    }
 
-   & .class2{
-      @include main-font($w-s,20px,400);
+   & .class2 {
+      @include main-font($w-s, 20px, 400);
       color: $black;
       margin-bottom: 8px;
    }
 
-   & input{
+   & input {
       height: 52px;
       width: 452px;
       border: none;
@@ -184,6 +190,7 @@ dialog::backdrop{
       border: none;
    }
 }
+
 /*Modal window styles end*/
 
 /*Header styles start*/
@@ -395,13 +402,15 @@ header {
          text-align: center;
       }
 
-      &-blok {
+      &-slider {
          display: flex;
-         justify-content: space-between;
-         flex-wrap: wrap;
+         // justify-content: space-between;
+         // flex-wrap: wrap;
+         flex-direction: column;
          gap: 24px;
+         min-width: 0;
 
-         &-item {
+         &-item1 {
             width: 426px;
             height: 433px;
             padding: 0 24px 40px 24px;
@@ -409,6 +418,7 @@ header {
             flex-direction: column;
             justify-content: end;
             gap: 72px;
+            min-width: 0;
 
             &-name {
                @include main-font($g, 48px, 700);
@@ -429,21 +439,20 @@ header {
                   margin-left: 14px;
                }
             }
-         }
 
-         &-item:nth-child(1) {
-            background: url(../image/category-s2-img1.png) no-repeat;
-         }
+            &.i-1 {
+               background: url(../image/category-s2-img1.png) no-repeat;
+            }
 
-         &-item:nth-child(2) {
-            background: url(../image/category-s2-img2.png) no-repeat;
-         }
+            &.i-2 {
+               background: url(../image/category-s2-img2.png) no-repeat;
+            }
 
-         &-item:nth-child(3) {
-            background: url(../image/category-s2-img3.png) no-repeat;
+            &.i-3 {
+               background: url(../image/category-s2-img3.png) no-repeat;
+            }
          }
-
-         &-item1 {
+         &-item2 {
             width: 426px;
             height: 433px;
             padding: 52px 24px 40px 32px;
@@ -451,6 +460,8 @@ header {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-width: 0;
+            
 
             &-name {
                @include main-font($g, 48px, 700);
@@ -482,6 +493,44 @@ header {
          }
       }
 
+      & .slick-slide{
+         margin: 0 10px;
+      }
+
+      & .slick-list {
+         overflow: hidden;
+      }
+
+      & .slick-track {
+         display: flex;
+         align-items: flex-start;
+      }
+
+      & .slick-dots {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-top: 56px;
+      }
+
+      & .slick-dots li {
+         list-style: none;
+         margin: 0 10px;
+
+         &.slick-active button {
+            background-color: $yellow;
+            border: none;
+         }
+      }
+
+      & .slick-dots button {
+         font-size: 0;
+         width: 13px;
+         height: 13px;
+         border: none;
+         border-radius: 50%;
+         background-color: $grey;
+      }
    }
 
 }
@@ -537,11 +586,10 @@ header {
                      gap: 10px;
                   }
 
-                  & #arrow{
+                  & #arrow {
                      width: 13px;
                      height: 22px;
                      background: url(../image/svg/arrow.svg) no-repeat;
-                     // display: inline-block;
                   }
                }
             }
@@ -550,20 +598,24 @@ header {
          &-blok:hover {
             background-color: $yellow;
          }
-         &-blok:hover .section3-container-slider-blok-content-name{
+
+         &-blok:hover .section3-container-slider-blok-content-name {
             color: $light-black;
          }
 
-         &-blok:hover .section3-container-slider-blok-content-view{
+         &-blok:hover .section3-container-slider-blok-content-view {
             color: $light-black;
          }
-         &-blok:hover .section3-container-slider-blok-content-text{
+
+         &-blok:hover .section3-container-slider-blok-content-text {
             color: $light-black;
          }
-         &-blok:hover .section3-container-slider-blok-content-link a{
+
+         &-blok:hover .section3-container-slider-blok-content-link a {
             color: $light-black;
          }
-         &-blok:hover .section3-container-slider-blok-content-link #arrow{
+
+         &-blok:hover .section3-container-slider-blok-content-link #arrow {
             background: url(../image/svg/arrow-black.svg) no-repeat;
          }
       }
@@ -586,6 +638,7 @@ header {
 
          & span:hover {
             background-color: $yellow;
+            color: $light-black;
          }
       }
    }

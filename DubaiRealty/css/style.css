@@ -340,8 +340,6 @@ header {
         font-style: normal;
         line-height: normal;
         line-height: 58px; }
-        .section1 .slider-blok-item .number span {
-          color: #FCD54C; }
       .section1 .slider-blok-item .text {
         width: 116px;
         font-family: "Work Sans", sans-serif;
@@ -351,6 +349,8 @@ header {
         font-style: normal;
         line-height: normal;
         line-height: 26px; }
+    .section1 .slider-blok-item:hover .number {
+      color: #FCD54C; }
 
 /*Section1 styles end*/
 /*Section2 styles start*/
@@ -396,8 +396,6 @@ header {
         font-style: italic; }
         .section2-blok ul li:last-child a {
           color: #929292; }
-        .section2-blok ul li:last-child a:hover {
-          color: #d2d2d2; }
   .section2-slider {
     margin-top: 78px;
     display: flex;
@@ -646,11 +644,17 @@ header {
           font-style: normal;
           line-height: normal;
           line-height: 21px;
-          color: #929292; }
-        .section7-container-blok1-link img {
-          margin-left: 21px; }
+          color: #929292;
+          display: flex; }
+          .section7-container-blok1-link a .arrow {
+            width: 13px;
+            height: 20px;
+            background: url(../image/svg/arrow-grey.svg) no-repeat;
+            margin-left: 21px; }
         .section7-container-blok1-link a:hover {
-          color: #d2d2d2; }
+          color: #FCD54C; }
+          .section7-container-blok1-link a:hover .arrow {
+            background: url(../image/svg/arrow\ yellow.svg) no-repeat; }
     .section7-container-blok2 {
       display: flex;
       justify-content: space-between;
@@ -682,7 +686,7 @@ header {
           line-height: normal;
           color: #929292;
           line-height: 26px; }
-        .section7-container-blok2-item2 :first-child {
+        .section7-container-blok2-item2:first-child {
           color: #E8E8E8; }
         .section7-container-blok2-item2-name {
           margin: 16px 0 28px 0; }
@@ -725,7 +729,7 @@ header {
 .section8 {
   margin-top: 170px; }
   .section8-container {
-    width: 1920px;
+    width: 1800px;
     margin: 0 auto; }
     .section8-container-slider {
       position: relative; }
@@ -738,7 +742,7 @@ header {
         .section8-container-slider-items.slick-center {
           opacity: 1;
           position: relative;
-          top: 18px; }
+          top: 20px; }
         .section8-container-slider-items-item {
           position: relative;
           width: 520px;
@@ -759,12 +763,13 @@ header {
           position: absolute;
           top: 58px;
           right: 40px;
-          font-family: "Gilroy";
+          font-family: "Work Sans", sans-serif;
           color: #FFF;
-          font-size: 150px;
+          font-size: 120px;
           font-weight: 600;
           font-style: normal;
           line-height: normal;
+          line-height: 200px;
           color: #FCD54C; }
         .section8-container-slider-items-employee {
           font-family: "Gilroy";
@@ -802,15 +807,6 @@ header {
       .section8-container-slider .slick-track {
         display: flex;
         align-items: flex-start; }
-      .section8-container-slider .slick-arrow {
-        position: absolute;
-        top: 50%;
-        z-index: 10;
-        font-size: 0; }
-      .section8-container-slider .slick-arrow.slick-prev {
-        left: 0; }
-      .section8-container-slider .slick-arrow.slick-next {
-        right: 0; }
       .section8-container-slider .slick-dots {
         display: flex;
         align-items: center;

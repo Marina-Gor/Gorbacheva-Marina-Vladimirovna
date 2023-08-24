@@ -86,7 +86,8 @@ dialog::backdrop {
 .close:hover {
   opacity: 1; }
 
-.close:before, .close:after {
+.close:before,
+.close:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -308,20 +309,21 @@ header {
     line-height: 80px;
     margin: 36px 0 84px 0;
     text-align: center; }
-  .section2-container-blok {
+  .section2-container-slider {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 24px; }
-    .section2-container-blok-item {
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0; }
+    .section2-container-slider-item1 {
       width: 426px;
       height: 433px;
       padding: 0 24px 40px 24px;
       display: flex;
       flex-direction: column;
       justify-content: end;
-      gap: 72px; }
-      .section2-container-blok-item-name {
+      gap: 72px;
+      min-width: 0; }
+      .section2-container-slider-item1-name {
         font-family: "Gilroy";
         color: #FFF;
         font-size: 48px;
@@ -329,7 +331,7 @@ header {
         font-style: normal;
         line-height: normal;
         text-align: center; }
-      .section2-container-blok-item-link {
+      .section2-container-slider-item1-link {
         font-family: "Work Sans", sans-serif;
         color: #FFF;
         font-size: 16px;
@@ -338,25 +340,26 @@ header {
         line-height: normal;
         line-height: none;
         text-align: end; }
-        .section2-container-blok-item-link a {
+        .section2-container-slider-item1-link a {
           color: #FFF; }
-        .section2-container-blok-item-link img {
+        .section2-container-slider-item1-link img {
           margin-left: 14px; }
-    .section2-container-blok-item:nth-child(1) {
-      background: url(../image/category-s2-img1.png) no-repeat; }
-    .section2-container-blok-item:nth-child(2) {
-      background: url(../image/category-s2-img2.png) no-repeat; }
-    .section2-container-blok-item:nth-child(3) {
-      background: url(../image/category-s2-img3.png) no-repeat; }
-    .section2-container-blok-item1 {
+      .section2-container-slider-item1.i-1 {
+        background: url(../image/category-s2-img1.png) no-repeat; }
+      .section2-container-slider-item1.i-2 {
+        background: url(../image/category-s2-img2.png) no-repeat; }
+      .section2-container-slider-item1.i-3 {
+        background: url(../image/category-s2-img3.png) no-repeat; }
+    .section2-container-slider-item2 {
       width: 426px;
       height: 433px;
       padding: 52px 24px 40px 32px;
       background-color: #FCD54C;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; }
-      .section2-container-blok-item1-name {
+      justify-content: space-between;
+      min-width: 0; }
+      .section2-container-slider-item2-name {
         font-family: "Gilroy";
         color: #FFF;
         font-size: 48px;
@@ -364,7 +367,7 @@ header {
         font-style: normal;
         line-height: normal;
         color: #272727; }
-      .section2-container-blok-item1-text {
+      .section2-container-slider-item2-text {
         width: 364px;
         font-family: "Work Sans", sans-serif;
         color: #FFF;
@@ -374,7 +377,7 @@ header {
         line-height: normal;
         color: #272727;
         line-height: 26px; }
-      .section2-container-blok-item1-link {
+      .section2-container-slider-item2-link {
         font-family: "Work Sans", sans-serif;
         color: #FFF;
         font-size: 16px;
@@ -383,10 +386,35 @@ header {
         line-height: normal;
         line-height: 24px;
         text-align: end; }
-        .section2-container-blok-item1-link a {
+        .section2-container-slider-item2-link a {
           color: #272727; }
-        .section2-container-blok-item1-link img {
+        .section2-container-slider-item2-link img {
           margin-left: 14px; }
+  .section2-container .slick-slide {
+    margin: 0 10px; }
+  .section2-container .slick-list {
+    overflow: hidden; }
+  .section2-container .slick-track {
+    display: flex;
+    align-items: flex-start; }
+  .section2-container .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 56px; }
+  .section2-container .slick-dots li {
+    list-style: none;
+    margin: 0 10px; }
+    .section2-container .slick-dots li.slick-active button {
+      background-color: #FCD54C;
+      border: none; }
+  .section2-container .slick-dots button {
+    font-size: 0;
+    width: 13px;
+    height: 13px;
+    border: none;
+    border-radius: 50%;
+    background-color: #929292; }
 
 /*Section2 styles end*/
 /*Section3 styles start*/
@@ -468,7 +496,8 @@ header {
       justify-content: center;
       align-items: center; }
     .section3-container-item span:hover {
-      background-color: #FCD54C; }
+      background-color: #FCD54C;
+      color: #272727; }
 
 /*Section3 styles end*/
 /*Section4 styles start*/

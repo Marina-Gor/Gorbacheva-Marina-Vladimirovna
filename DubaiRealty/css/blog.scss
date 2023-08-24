@@ -155,7 +155,6 @@ dialog::backdrop{
    transform: rotate(-45deg);
  }
 .content{
-   // padding: 64px 144px 40px;
    text-align: center;
 
    & .class1{
@@ -422,21 +421,38 @@ header {
                &-link {
                   font-weight: 600px;
                   line-height: 24px;
+                  display: flex;
 
                   & a {
                      color: $white;
+                     display: flex;
+                     gap: 10px;
                   }
 
-                  & img{
-                     margin-left: 19px;
+                  & #arrow{
+                     width: 13px;
+                     height: 22px;
+                     background: url(../image/svg/arrow.svg) no-repeat;
                   }
                }
             }
-         }
 
-         &-blok:hover {
-            background-color: $yellow;
-            color: $light-black;
+            &-content:hover {
+               background-color: $yellow;
+            }
+
+            &-content:hover .section1-container-slider-blok-content-name {
+               color: $light-black;
+            }
+            &-content:hover .section1-container-slider-blok-content-text {
+               color: $light-black;
+            }
+            &-content:hover .section1-container-slider-blok-content-link a {
+               color: $light-black;
+            }
+            &-content:hover .section1-container-slider-blok-content-link #arrow{
+               background: url(../image/svg/arrow-black.svg) no-repeat;
+            }
          }
       }
 
@@ -458,6 +474,7 @@ header {
 
          & span:hover{
             background-color: $yellow;
+            color: $light-black;
          }
       }
    }

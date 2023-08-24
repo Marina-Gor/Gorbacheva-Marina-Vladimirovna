@@ -430,10 +430,6 @@ header {
             & .number {
                @include main-font($g, 60px, 700);
                line-height: 58px;
-
-               & span {
-                  color: $yellow;
-               }
             }
 
             & .text {
@@ -441,6 +437,9 @@ header {
                @include main-font($w-s, 16px, 600);
                line-height: 26px;
             }
+         }
+         &-item:hover .number{
+            color: $yellow;
          }
       }
    }
@@ -486,10 +485,6 @@ header {
 
             a {
                color: $grey;
-            }
-
-            a:hover {
-               color: $extra-grey;
             }
          }
       }
@@ -555,8 +550,6 @@ header {
       & .slick-slide{
          margin: 0 10px;
       }
-
-
 
       & .slick-list {
          overflow: hidden;
@@ -781,14 +774,22 @@ header {
                @include main-font($g, 16px, 600);
                line-height: 21px;
                color: $grey;
-            }
+               display: flex;
 
-            & img {
-               margin-left: 21px;
+               & .arrow {
+                  width: 13px;
+                  height: 20px;
+                  background: url(../image/svg/arrow-grey.svg)no-repeat;
+                  margin-left: 21px;
+               }
             }
 
             & a:hover {
-               color: $extra-grey;
+               color: $yellow;
+
+               & .arrow{
+                  background: url(../image/svg/arrow\ yellow.svg)no-repeat;
+               }
             }
          }
       }
@@ -820,7 +821,7 @@ header {
                line-height: 26px;
             }
 
-            :first-child {
+            &:first-child {
                color: $light-gray;
             }
 
@@ -878,7 +879,7 @@ header {
    margin-top: 170px;
 
    &-container {
-      width: 1920px;
+      width: 1800px;
       margin: 0 auto;
 
 
@@ -895,7 +896,7 @@ header {
             &.slick-center {
                opacity: 1;
                position: relative;
-               top: 18px;
+               top: 20px;
             }
 
 
@@ -924,7 +925,8 @@ header {
                position: absolute;
                top: 58px;
                right: 40px;
-               @include main-font($g, 150px, 600);
+               @include main-font($w-s, 120px, 600);
+               line-height: 200px;
                color: $yellow;
             }
 
@@ -970,21 +972,6 @@ header {
          & .slick-track {
             display: flex;
             align-items: flex-start;
-         }
-
-         & .slick-arrow {
-            position: absolute;
-            top: 50%;
-            z-index: 10;
-            font-size: 0;
-         }
-
-         & .slick-arrow.slick-prev {
-            left: 0;
-         }
-
-         & .slick-arrow.slick-next {
-            right: 0;
          }
 
          & .slick-dots {

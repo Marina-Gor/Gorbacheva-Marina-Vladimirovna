@@ -155,7 +155,6 @@ dialog::backdrop{
    transform: rotate(-45deg);
  }
 .content{
-   // padding: 64px 144px 40px;
    text-align: center;
 
    & .class1{
@@ -403,6 +402,7 @@ header {
             line-height: 26px;
             color: $light-black;
             padding: 14px 43px;
+            border: none;
          }
 
       }

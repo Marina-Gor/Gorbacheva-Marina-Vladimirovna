@@ -86,7 +86,8 @@ dialog::backdrop {
 .close:hover {
   opacity: 1; }
 
-.close:before, .close:after {
+.close:before,
+.close:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -226,7 +227,8 @@ header {
   font-style: normal;
   line-height: normal; }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
   color: #FCD54C;
   text-decoration: underline; }
 
@@ -645,11 +647,17 @@ header {
         font-style: normal;
         line-height: normal;
         line-height: 21px;
-        color: #929292; }
-        .section9-container-blok1-link a img {
+        color: #929292;
+        display: flex; }
+        .section9-container-blok1-link a .arrow {
+          width: 13px;
+          height: 20px;
+          background: url(../image/svg/arrow-grey.svg) no-repeat;
           margin-left: 13px; }
       .section9-container-blok1-link a:hover {
-        color: #d2d2d2; }
+        color: #FCD54C; }
+      .section9-container-blok1-link a:hover .arrow {
+        background: url(../image/svg/arrow\ yellow.svg) no-repeat; }
     .section9-container-blok2 {
       display: flex;
       justify-content: space-between;
