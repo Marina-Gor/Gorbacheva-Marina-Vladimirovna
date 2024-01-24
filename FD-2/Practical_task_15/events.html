@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		div {
+			margin: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<a href="https://learn.javascript.ru/" title="book">link 1</a>
+		<a href="https://www.codewars.com/" title="exercises">link 2</a>
+		<a href="https://developer.mozilla.org/ru/" title="book">link 3</a>
+
+	</div>
+
+	<div>
+		<input type="text" name="" id="task2" value="value 1">
+		<input type="text" name="" id="task2" value="value 2">
+		<input type="text" name="" id="task2" value="value 3">
+
+	</div>
+
+	<div>
+		<p>2</p>
+		<p>3</p>
+		<p>4</p>
+	</div>
+
+
+	<div>
+		<input type="text" name="" id="task4" data-length="4" value="valu 1">
+		<input type="text" name="" id="task4" data-length="4" value="value 2">
+		<input type="text" name="" id="task4" data-length="4" value="value 3">
+	</div>
+	<script>
+		const links = document.querySelectorAll("a");
+		links.forEach(function (link) {
+			const originalText = link.innerText;
+			const originalHref = link.getAttribute("href");
+			const handler = function () {
+				link.innerText = `${link.getAttribute("title")} (${originalHref})`;
+				link.removeEventListener('mouseover', handler);
+			}
+			link.addEventListener("mouseover", handler);
+		});
+
+		const inputsTask2 = document.querySelectorAll('input[id="task2"]');
+		inputsTask2.forEach(function (input) {
+			input.addEventListener('blur', function () {
+				console.log(input.value);
+			}, { once: true });
+		});
+
+		const paragraphs = document.querySelectorAll('p');
+		paragraphs.forEach(function (p) {
+			let number = Number(p.textContent);
+			number **= 2;
+			p.addEventListener('click', function () {
+				p.innerText = `${number}`;
+			}, { once: true });
+		});
+
+		const inputsTask4 = document.querySelectorAll('input[id="task4"]');
+		inputsTask4.forEach(function (input) {
+			const length = parseInt(input.getAttribute('data-length'));
+			const handler = function () {
+				if (input.value.length === length) {
+					input.style.border = "2px solid green";
+				} else {
+					input.style.border = "2px solid red";
+				};
+			}
+			input.addEventListener('blur', handler);
+		});
+	</script>
+</body>
+
+</html>

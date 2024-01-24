@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <button class="btn" type="button">tap</button>
+   <button class="btn" type="button">press</button>
+   <button class="btn" type="button">click</button>
+   <button class="btn" type="button">push</button>
+   <script>
+      function makeCounter() {
+         let count = 0;
+         return function () {
+            return count += 1;
+         };
+      }
+      const buttons = document.querySelectorAll('.btn');
+      // вверху готовый кусок что выдали на занятии
+
+      for (let i = 0; i < buttons.length; i++) {
+         const count = makeCounter();/// обязательно внутри цикла такак если вынести наружу то будет перепрыгивать с кнопки на кнопку
+         let arr = buttons[i].textContent/// сохранил в массив названия всех кнопочек
+         console.log(arr);
+         buttons[i].onclick = function () {
+            this.textContent = (arr + " = " + count()); // this - обращение к этому элементу. textContent заменить всё содержание внутри тега
+
+         }
+      }
+   </script>
+</body>
+
+</html>

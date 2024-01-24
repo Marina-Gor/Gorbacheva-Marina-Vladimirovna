@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			font-family: "Roboto", sans-serif;
+			font-size: 10px;
+		}
+
+		table {
+			width: 250px;
+			height: 100px;
+			background: #272727;
+			color: #d2d2d2;
+			border-collapse: collapse;
+			height: 100%;
+		}
+
+		th {
+			border: 1px solid #FCD54C;
+			width: 20px;
+		}
+
+		td {
+			text-align: center;
+			width: 20px;
+		}
+
+		.prev-month-days {
+			color: rgb(209, 209, 209, 0.3)
+		}
+
+		.next-month-days {
+			color: rgb(209, 209, 209, 0.3)
+		}
+
+		.weekend {
+			color: #FCD54C;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="calendarContainer"></div>
+	<script>
+		let month = Number(prompt('Ввидите номер месяца:'));
+		let year = Number(prompt('Ввидите год:'));
+		function getCalendar(year, month) {
+			const weekdays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+			const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+			const firstDayOfMonth = new Date(year, month - 1, 1 - 1).getDay();
+			const daysInMonth = new Date(year, month, 0).getDate();
+
+			const calendarContainer = document.getElementById('calendarContainer');
+			calendarContainer.innerHTML = '';
+
+			const table = document.createElement('table');
+			const title = document.createElement('tr');
+			const prevYear = document.createElement('td');
+			prevYear.textContent = '<<';
+			title.appendChild(prevYear);
+			const prevMonth = document.createElement('td');
+			prevMonth.textContent = '<';
+			title.appendChild(prevMonth);
+			const nameMonthandYear = document.createElement('td');
+			nameMonthandYear.setAttribute('colspan', '3')
+			nameMonthandYear.textContent = `${monthNames[month - 1]} ${year}`;
+			title.appendChild(nameMonthandYear);
+			const nextMonth = document.createElement('td');
+			nextMonth.textContent = '>';
+			title.appendChild(nextMonth);
+			const nextYear = document.createElement('td');
+			nextYear.textContent = '>>';
+			title.appendChild(nextYear);
+			table.appendChild(title);
+
+
+			const daysOftheWeek = document.createElement('tr');
+			for (const weekday of weekdays) {
+				const th = document.createElement('th');
+				th.textContent = weekday;
+				daysOftheWeek.appendChild(th);
+			}
+			table.appendChild(daysOftheWeek);
+
+			const tbody = document.createElement('tbody');
+			const today = new Date();
+			const lastDayOfPrevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+			const daysInPrevMonth = lastDayOfPrevMonth.getDate();
+
+			let prevMonthDays = daysInPrevMonth - firstDayOfMonth + 1;
+			let nextMonthDays = 1;
+			let day = 1;
+			for (let i = 0; i < 5; i++) {
+				const tr = document.createElement('tr');
+				for (let j = 0; j < 7; j++) {
+					const td = document.createElement('td');
+					if (i === 0 && j < firstDayOfMonth) {
+						td.textContent = prevMonthDays;
+						td.className = 'prev-month-days';
+						prevMonthDays++;
+					} else if (day > daysInMonth && j < 7) {
+						td.textContent = nextMonthDays;
+						td.className = 'next-month-days';
+						nextMonthDays++;
+					} else if (day > daysInMonth && j === 7) {
+						break;
+					} else {
+						td.textContent = day;
+						if (j === 5 || j === 6) {
+							td.classList.add('weekend');
+						}
+						day++;
+					}
+					tr.appendChild(td);
+				}
+				tbody.appendChild(tr);
+			}
+			table.appendChild(tbody);
+
+			calendarContainer.appendChild(table);
+
+			prevYear.addEventListener('click', function () {
+				year = year - 1;
+				getCalendar(year, month);
+			});
+
+			prevMonth.addEventListener('click', function () {
+				if (month === 1) {
+					year = year - 1;
+					month = 12;
+				} else {
+					month = month - 1;
+				}
+				getCalendar(year, month);
+			});
+
+			nextMonth.addEventListener('click', function () {
+				if (month === 12) {
+					year = year + 1;
+					month = 1;
+				} else {
+					month = month + 1;
+				}
+				getCalendar(year, month);
+			});
+
+			nextYear.addEventListener('click', function () {
+				year = year + 1;
+				getCalendar(year, month);
+			});
+		};
+		getCalendar(year, month);
+
+	</script>
+</body>
+
+</html>

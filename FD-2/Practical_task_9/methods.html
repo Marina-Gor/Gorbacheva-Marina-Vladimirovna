@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		const numbers = [2, 3, 5, 7, 11, 13, 17];
+		function currentSums(numbers) {
+			let array1 = [];
+			let array2 = [];
+			numbers.reduce((sum, current, i) => {
+				array1[i] = (i === 0) ? current : `${array1[i - 1]}+${current}`;
+				array2[i] = (sum + current);
+				return sum + current;
+			}, 0);
+			console.log(array1, '=', array2);
+		}
+		currentSums(numbers);
+
+		const str = "Каждый охотник желает знать, где сидит фазан.";
+		const newArr = firstLettersFromString(str);
+		function firstLettersFromString(str) {
+			let result = str.split(' ').map(item => item[0]);
+			return result
+		}
+		console.log(newArr);
+
+		const startArray = [-1, 2, 3.5, -12, 0, 1.25, 16];
+		const newArray = filteredArray(startArray);
+		function filteredArray(startArray) {
+			let result = startArray.filter(item => item >= 0 && item % 1 === 0)
+			return result
+		}
+		console.log(newArray);
+
+		const array1 = [false, 1, 0, NaN, 2, 0, null, 3, 4, 0, 5];
+		const array2 = [0, 2, 0, 4, 0, 6];
+		const array3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+		function moveZeros(array1) {
+			let result = array1.sort((a, b) => {
+				if (b === 0) {
+					return -1
+				}
+			})
+			return result
+		}
+		console.log(moveZeros(array1));
+		console.log(moveZeros(array2));
+		console.log(moveZeros(array3));
+
+		const Array1 = [1, 2, 3, 4, 5];
+		const Array2 = [1, 2];
+		const Array3 = [1, 2, 3, 4, 5, 6, 7, 8];
+		function changeArray(Array1) {
+			let midIndex = Math.floor(Array1.length / 2);
+			if (Array1.length % 2 == 0) {
+				return result = Array1.slice(midIndex).concat(Array1.slice(0, midIndex));
+			} else {
+				return result = Array1.slice(midIndex + 1).concat(Array1.slice(midIndex, midIndex + 1)).concat(Array1.slice(0, midIndex));
+			}
+		}
+	</script>
+</body>
+
+</html>

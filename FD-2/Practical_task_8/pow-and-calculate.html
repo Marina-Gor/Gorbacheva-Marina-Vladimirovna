@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		let pow = null;
+		function getDegree() {
+			let result = 1;
+			function degree(x) {
+				return (y) => {
+					for (let i = 0; i < (Math.abs(y)); i++) {
+						if (y >= 0 && x >= 0) {
+							result *= (Math.abs(x));
+						} else if (x < 0) {
+							result *= -((Math.abs(x)));
+						}
+						else {
+							result *= ((Math.abs(x)));
+						}
+					}
+					y >= 0 ? console.log(`${x}^${y} = ${result}`) : console.log(`${x}^${y} = 1/${result}`);
+				}
+			}
+			pow = degree;
+		}
+		getDegree();
+		pow(-2)(-3);
+
+		let calculate = null;
+		function getResult() {
+			let result = '';
+			function operation(a) {
+				return (operator) => {
+					return (b) => {
+						if (operator == '+') {
+							result += a + b;
+						} else if (operator == '-') {
+							result += a - b;
+						} else if (operator == '*') {
+							result += a * b;
+						} else if (operator == '/') {
+							b !== 0 ? result += a / b : result += 'На ноль делить нельзя';
+						}
+						console.log(`${a}${operator}${b}=${result}`);
+					}
+				}
+			}
+			calculate = operation;
+		}
+		getResult();
+		calculate(10)('*')(20);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.clock {
+			margin: 0 auto;
+			width: 400px;
+			height: 400px;
+			border-radius: 50%;
+			background-color: #fcca66;
+			position: relative;
+
+		}
+
+		.hand-hours {
+			width: 140px;
+			height: 10px;
+			border-radius: 20px;
+			background-color: #9acd32;
+			position: absolute;
+			top: 195px;
+			left: 200px;
+			transform-origin: 0;
+			z-index: 5;
+		}
+
+		.hand-minutes {
+			width: 150px;
+			height: 6px;
+			border-radius: 20px;
+			background-color: #ff0000;
+			position: absolute;
+			top: 197px;
+			left: 200px;
+			transform-origin: 0;
+			z-index: 6;
+		}
+
+		.hand-seconds {
+			width: 180px;
+			height: 2px;
+			border-radius: 20px;
+			background-color: #000000;
+			position: absolute;
+			top: 199px;
+			left: 200px;
+			z-index: 7;
+			transform-origin: 0;
+		}
+
+		.number-element {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: #48b382;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			transform-origin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="clock"></div>
+	<script>
+		const clockContainer = document.querySelector('.clock');
+		const width = clockContainer.offsetWidth; //ширина часов
+		const height = clockContainer.offsetHeight; // высота часов
+		const clockRadius = width / 2; // Радиус часов
+		const radius = 0.95 * clockRadius; // Радиус круга на котором распологаются кружки с цифрами - делаем так чтобы он был меньше радиуса основного круга
+
+		const hoursElement = document.createElement("div");
+		hoursElement.classList.add('hand-hours');
+		const minutesElement = document.createElement("div");
+		minutesElement.classList.add('hand-minutes');
+		const secondsElement = document.createElement("div");
+		secondsElement.classList.add('hand-seconds');
+		clockContainer.appendChild(hoursElement);
+		clockContainer.appendChild(minutesElement);
+		clockContainer.appendChild(secondsElement);
+
+		const angle = 30; // градус угла
+		for (let i = 1; i <= 12; i++) {
+			const number = document.createElement("div");
+			number.classList.add('number-element');
+			let angleRadian = (angle * i * Math.PI) / 180;
+			let hourCenterX = (clockRadius + (radius - 20) * Math.sin(angleRadian)) - 20;
+			let hourCenterY = (clockRadius - (radius - 20) * Math.cos(angleRadian)) - 20;
+			number.style.left = `${hourCenterX}px`;
+			number.style.top = `${hourCenterY}px`;
+			number.textContent = i;
+			clockContainer.appendChild(number);
+		}
+
+		function updateClock() {
+			const now = new Date();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+			const seconds = now.getSeconds();
+
+			const hoursAngle = (hours * 30 + (minutes / 60)) - 90;
+			const minutesAngle = (minutes * 6 + (seconds / 60)) - 90;
+			const secondsAngle = (seconds * 6) - 90;
+
+			hoursElement.style.transform = `rotate(${hoursAngle}deg)`;
+			minutesElement.style.transform = `rotate(${minutesAngle}deg)`;
+			secondsElement.style.transform = `rotate(${secondsAngle}deg)`;
+			console.log(now);
+		}
+		setInterval(updateClock, 1000);
+		updateClock();
+	</script>
+</body>
+
+</html>

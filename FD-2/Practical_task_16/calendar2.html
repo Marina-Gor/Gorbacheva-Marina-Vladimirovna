@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			font-family: "Roboto", sans-serif;
+			font-size: 10px;
+		}
+
+		.header {
+			width: 250px;
+		}
+
+		select,
+		button {
+			width: 125px;
+			background: #272727;
+			color: #d2d2d2;
+			padding: 2px;
+		}
+
+		table {
+			width: 250px;
+			height: 100px;
+			background: #272727;
+			color: #d2d2d2;
+			border-collapse: collapse;
+			height: 100%;
+		}
+
+		th {
+			border: 1px solid #FCD54C;
+			width: 20px;
+		}
+
+		td {
+			text-align: center;
+			width: 20px;
+			padding: 1px;
+		}
+
+		td:hover {
+			background-color: #d2d2d254;
+		}
+
+		td.active {
+			background-color: #fcd64c60;
+		}
+
+		.prev-month-days {
+			color: rgb(209, 209, 209, 0.3)
+		}
+
+		.next-month-days {
+			color: rgb(209, 209, 209, 0.3)
+		}
+
+		.weekend {
+			color: #FCD54C;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		const header = document.createElement('div');
+		header.classList.add('header');
+
+		const selectMonth = document.createElement('select');
+		selectMonth.id = 'monthSelect';
+		const monthOptions = ['Выбрать месяц', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+		for (const monthOption of monthOptions) {
+			const option = document.createElement('option');
+			option.value = monthOption;
+			option.text = monthOption;
+			selectMonth.appendChild(option);
+		}
+
+		const selectYear = document.createElement('select');
+		selectYear.id = 'yearSelect';
+		const yearOptions = ['Выбрать год', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
+		for (const yearOption of yearOptions) {
+			const option = document.createElement('option');
+			option.value = yearOption;
+			option.text = yearOption;
+			selectYear.appendChild(option);
+		}
+
+		const createButton = document.createElement('button');
+		createButton.textContent = 'Создать';
+		createButton.addEventListener('click', createCalendar);
+
+		const deleteButton = document.createElement('button');
+		deleteButton.textContent = 'Удалить';
+		deleteButton.addEventListener('click', deleteCalendar);
+
+		header.appendChild(selectMonth);
+		header.appendChild(selectYear);
+		header.appendChild(createButton);
+		header.appendChild(deleteButton);
+		document.body.appendChild(header);
+		let calendarCount = 0;
+
+		function createCalendar() {
+			let monthName = selectMonth.value;
+			let year = selectYear.value;
+
+			if (monthName === 'Выбрать месяц' || year === 'Выбрать год') {
+				return;
+			}
+
+			let month = monthOptions.indexOf(monthName);
+			const calendarContainer = document.createElement('div');
+			calendarContainer.id = `calendarContainer${calendarCount}`;
+			calendarContainer.classList.add('calendar-container');
+
+			const weekdays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+			const firstDayOfMonth = new Date(year, month - 1, 1 - 1).getDay();
+			const daysInMonth = new Date(year, month, 0).getDate();
+
+			const table = document.createElement('table');
+			const title = document.createElement('tr');
+			const prevYear = document.createElement('td');
+			const daysOftheWeek = document.createElement('tr');
+
+			for (const weekday of weekdays) {
+				const th = document.createElement('th');
+				th.textContent = weekday;
+				daysOftheWeek.appendChild(th);
+			}
+			table.appendChild(daysOftheWeek);
+
+			const tbody = document.createElement('tbody');
+			const today = new Date();
+			const lastDayOfPrevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+			const daysInPrevMonth = lastDayOfPrevMonth.getDate();
+
+			let prevMonthDays = daysInPrevMonth - firstDayOfMonth + 1;
+			let nextMonthDays = 1;
+			let day = 1;
+			for (let i = 0; i < 5; i++) {
+				const tr = document.createElement('tr');
+				for (let j = 0; j < 7; j++) {
+					const td = document.createElement('td');
+					if (i === 0 && j < firstDayOfMonth) {
+						td.textContent = prevMonthDays;
+						td.className = 'prev-month-days';
+						prevMonthDays++;
+					} else if (day > daysInMonth && j < 7) {
+						td.textContent = nextMonthDays;
+						td.className = 'next-month-days';
+						nextMonthDays++;
+					} else if (day > daysInMonth && j === 7) {
+						break;
+					} else {
+						td.textContent = day;
+						if (j === 5 || j === 6) {
+							td.classList.add('weekend');
+						}
+						day++;
+					}
+					tr.appendChild(td);
+				}
+				tbody.appendChild(tr);
+			}
+			table.appendChild(tbody);
+
+			calendarContainer.appendChild(table);
+			document.body.appendChild(calendarContainer);
+			calendarCount++;
+
+			let activeCell = null;
+			const tdList = table.getElementsByTagName('td');
+
+			for (const td of tdList) {
+				td.addEventListener('mouseover', highlightCell);
+				td.addEventListener('click', setActiveCell);
+			}
+
+			function highlightCell(event) {
+				const target = event.target;
+				if (target.classList.contains('active')) {
+					return;
+				}
+				for (const td of tdList) {
+					td.classList.remove('highlighted');
+				}
+				target.classList.add('highlighted');
+			}
+
+			function setActiveCell(event) {
+				const target = event.target;
+				if (activeCell !== null) {
+					activeCell.classList.remove('active');
+				}
+				target.classList.add('active');
+				activeCell = target;
+			}
+		};
+
+		function deleteCalendar() {
+			if (calendarCount === 0) {
+				return;
+			}
+
+			const calendarContainer = document.getElementById(`calendarContainer${calendarCount - 1}`);
+			calendarContainer.remove();
+
+			calendarCount--;
+		}
+	</script>
+</body>
+
+</html>

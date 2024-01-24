@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <script>
+      function quadraticEquation(a, b, c) {
+         let aa = a;
+         let bb = b;
+         let cc = c;
+         let disc = b ** 2 - 4 * a * c;
+         let linearEquation = a === 0 ? `Уравнение является линейным` : false;
+
+         if (a === 1) {
+            aa = `x^2`;
+         } else if (a === -1) {
+            aa = `-x^2`;
+         } else if (a > 0) {
+            aa = `${Math.abs(a)}x^2`;
+         } else if (a < 0) {
+            aa = `- ${Math.abs(a)}x^2`;
+         }
+
+         if (b === 1) {
+            bb = `+ x`;
+         } else if (b === -1) {
+            bb = `- x`;
+         } else if (b === 0) {
+            bb = ` `;
+         } else if (b < 0) {
+            bb = `- ${Math.abs(b)}x`;
+         } else if (b > 0) {
+            bb = `+ ${Math.abs(b)}x`;
+         }
+
+         if (c === 0) {
+            cc = ` `;
+         } else if (c < 0) {
+            cc = `- ${Math.abs(c)}`;
+         } else if (c > 0) {
+            cc = `+ ${Math.abs(c)}`;
+         }
+
+         if (disc < 0) {
+            message = `не имеет вещественных корней`;
+         } else if (disc === 0) {
+            let x = -b / (2 * a);
+            message = `имеет один корень x = ${x}`;
+         } else if (disc > 0) {
+            let x1 = (-b + disc ** (1 / 2)) / (2 * a);
+            let x2 = (-b - disc ** (1 / 2)) / (2 * a);
+            message = (`имеет корни x1 = ${x1} и x2 = ${x2}`);
+         }
+         result = linearEquation || `Уравнение ${aa} ${bb} ${cc} = 0 ${message}`;
+         return (result);
+      }
+      quadraticEquation(0, 2, 1);
+
+      console.log(result)
+   </script>
+</body>
+
+</html>

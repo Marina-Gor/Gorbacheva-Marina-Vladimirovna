@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		body {
+			width: 100%;
+			height: 100vh;
+			background: radial-gradient(#aaa1b6, #141414);
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 600px;
+			height: 400px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			border-radius: 10px;
+			transform: translate(-50%, -50%);
+			background: rgba(239, 239, 240, 0.495);
+			box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+		}
+
+		#myForm {
+			text-align: center;
+		}
+
+		#greetings {
+			text-align: center;
+		}
+
+		#name,
+		#birthdate {
+			width: 100%;
+			height: 30px;
+			border-radius: 6px;
+			margin: 8px;
+		}
+
+		#btn {
+			width: 120px;
+			height: 32px;
+			border: none;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<form id="myForm">
+			<label for="name">Ваше имя:</label>
+			<input type="text" id="name" name="name"><br><br>
+
+			<label for="birthdate">Ваш день рождения:</label>
+			<input type="date" id="birthdate" name="birthdate"><br><br>
+
+			<input type="button" id="btn" value="Отправить">
+		</form>
+		<div id="greetings"></div>
+	</div>
+	<script>
+		const btn = document.getElementById('btn');
+		const form = document.getElementById('myForm');
+
+		// Проверяем, впервые ли открыта страница
+		if (localStorage.getItem('name') !== null || localStorage.getItem('birthdate') !== null) {
+			// Иначе поздороваемся с пользователем по имени
+			const greetings = document.getElementById('greetings');
+
+			// Вычисляем время до следующего дня рождения
+			let dob = new Date(localStorage.getItem('birthdate'));
+			let today = new Date();
+			let nextBirthday = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
+			if (today > nextBirthday) {
+				nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+			}
+			let timeDiff = nextBirthday - today;
+			let seconds = Math.floor(timeDiff / 1000);
+			let minutes = Math.floor(seconds / 60);
+			let hours = Math.floor(minutes / 60);
+			let days = Math.floor(hours / 24);
+			let months = Math.floor(days / 30);
+			seconds %= 60;
+			minutes %= 60;
+			hours %= 24;
+			days %= 30;
+
+			// Выводим обратный отсчет до дня рождения
+			form.style.display = "none";
+			greetings.textContent = 'Привет, ' + name + '!';
+			greetings.textContent = 'До твоего дня рождения осталось ' + months + ' месяцев, ' + days + ' дней, ' + hours + ' часов, ' + minutes + ' минут, и ' + seconds + ' секунд.';
+
+			localStorage.removeItem('name');
+			localStorage.removeItem('birthdate');
+		}
+
+		btn.addEventListener("click", function (event) {
+			event.preventDefault();
+			name = document.getElementById("name").value; // Присваиваем значение переменной
+			birthdate = document.getElementById("birthdate").value; // Присваиваем значение переменной
+
+			// Сохраняем имя и дату рождения в localStorage
+			localStorage.setItem('name', name);
+			localStorage.setItem('birthdate', birthdate);
+		});
+	</script>
+</body>
+
+</html>

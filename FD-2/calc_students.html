@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>MVC example</title>
+	<style>
+		body {
+			font-size: 21px;
+			text-align: center;
+		}
+
+		input {
+			min-width: 180px;
+			padding: 8px 12px;
+			border: 1px gray solid;
+			border-radius: 3px;
+			margin: 0 5px;
+		}
+
+		button {
+			font-size: 18px;
+			line-height: 21px;
+			padding: 10px;
+			border-radius: 5px;
+		}
+
+		select {
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Пример решения задачи "в лоб"</h1>
+
+	<h3>пример умножения двух чисел</h3>
+	<form>
+		<fieldset>
+			<legend>Магия чисел</legend>
+			<p>
+				<input type="number" placeholder="Введите первое значение" name="input_1" id="input_1">
+				<select name="select" id="sign-select"></select>
+				<input type="number" placeholder="Введите второе значение" name="input_2" id="input_2">
+			</p>
+			<p>
+				<button id="calculate-btn">Вычислить</button>
+			</p>
+			<div id="show-result"></div>
+		</fieldset>
+	</form>
+
+	<script>
+
+		const model = {
+			update: function () {
+				view.showRes();
+			},
+			plus: function (num1, num2) {
+				result = num1 + num2;
+				this.update();
+			},
+			minus: function (num1, num2) {
+				result = num1 - num2;
+				this.update();
+			},
+			multiply: function (num1, num2) {
+				result = num1 * num2;
+				this.update();
+			},
+			divide: function (num1, num2) {
+				result = num1 / num2;
+				this.update();
+			},
+			zeroCheck: function () {
+				result = 'На ноль делить нельзя';
+				this.update();
+			},
+		}
+
+		const view = {
+			res: document.getElementById('show-result'),
+			showRes: function () {
+				this.res.textContent = 'Результат вычислений = ' + result;
+			},
+		}
+
+		const controller = {
+			signArr: ['+', '-', '*', '/'],
+
+			checkInputs: function () {
+				const input1 = document.getElementById('input_1');
+				const input2 = document.getElementById('input_2');
+				const button = document.getElementById('calculate-btn');
+
+				if (input1.value === '' || input2.value === '') {
+					button.setAttribute("disabled", 'disabled');
+				}
+				else {
+					button.removeAttribute("disabled");
+				}
+			},
+
+			operatorInstallation: function () {
+				const select = document.getElementById('sign-select');
+
+				for (let key in this.signArr) {
+					const option = document.createElement('option');
+					option.value = this.signArr[key];
+					option.text = this.signArr[key];
+					select.append(option);
+				}
+				this.addListener(select);
+			},
+
+			addListener: function (operators) {
+				const form = document.querySelector('form');
+				const button = document.getElementById('calculate-btn');
+				const input1 = document.getElementById('input_1');
+				const input2 = document.getElementById('input_2');
+
+				form.addEventListener('input', this.checkInputs);
+
+				button.addEventListener('click', (e) => {
+					const value1 = Number(input1.value);
+					const value2 = Number(input2.value);
+
+					switch (operators.value) {
+						case '+':
+							model.plus(value1, value2);
+							break;
+						case '-':
+							model.minus(value1, value2);
+							break;
+						case '*':
+							model.multiply(value1, value2);
+							break;
+						case '/':
+							value2 !== 0 ? model.divide(value1, value2) : model.zeroCheck();
+							break;
+					}
+					e.preventDefault();
+				});
+			},
+		}
+		controller.checkInputs();
+		controller.operatorInstallation();
+	</script>
+	<!-- Здесь пишем скрипт, который позволит решить поставленную задачу:
+	1) Кнопка "вычислить" должна быть не активна, пока не введены оба числа
+	2) Если введены оба числа (т.е. инпуты не пустые), то делаем кнопку активной
+	3) по клику на эту кнопку - произвести вычисление и вывод результата в div с id="show-result" в формате:
+	"Результат вычислений = " + результат -->
+</body>
+
+</html>

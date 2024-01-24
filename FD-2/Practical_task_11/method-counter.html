@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		function getCounter(value = 0) {
+			const obj = {};
+			obj.value = value;
+			obj.log = function () {
+				console.log(value);
+				return obj;
+			};
+			obj.count = function (n) {
+				value += n;
+				return obj;
+			};
+			obj.reset = function () {
+				value = 0;
+				return obj;
+			};
+			return obj;
+		}
+		const counter = getCounter(5);
+		counter.log().count(4).log().count(3).log().reset().log().count(8).log();
+	</script>
+</body>
+
+</html>

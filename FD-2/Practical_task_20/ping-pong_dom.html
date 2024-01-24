@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.score {
+			font-size: 32px;
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin: 20px;
+		}
+
+		#start {
+			width: 80px;
+			height: 20px;
+		}
+
+		#timer {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+			font-size: 72px;
+			color: rgba(0, 0, 0, 0.7)
+		}
+
+		.field {
+			width: 500px;
+			height: 300px;
+			background-color: rgb(241, 235, 123);
+			border: 2px solid #000000;
+			position: relative;
+		}
+
+		.ball {
+			border-radius: 50%;
+			background-color: #ff0000;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+		}
+
+		.left-racket,
+		.right-racket {
+			position: absolute;
+			width: 10px;
+			height: 80px;
+		}
+
+		.left-racket {
+			background-color: #0000ff;
+		}
+
+		.right-racket {
+			background-color: #008000;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<button type="button" id="start">Старт!</button>
+		<div class="score">0 : 0</div>
+		<div class="field">
+			<div id="timer"></div>
+			<div class="ball"></div>
+			<div class="left-racket"></div>
+			<div class="right-racket"></div>
+		</div>
+	</div>
+	<script>
+		const ball = document.querySelector('.ball');
+		const field = document.querySelector('.field');
+		const leftRacket = document.querySelector('.left-racket');
+		const rightRacket = document.querySelector('.right-racket');
+		const start = document.getElementById('start');
+		const score = document.querySelector('.score');
+		const timer = document.getElementById('timer');
+
+		const fieldWidth = field.offsetWidth;
+		const fieldHeight = field.offsetHeight;
+		const racketHeight = leftRacket.offsetHeight;
+		const racketWidth = leftRacket.offsetWidth;
+		const ballSize = ball.offsetWidth;
+
+		let leftScore = 0; // счет игрока слева
+		let rightScore = 0; // счет игрока справа
+
+		const ballH = {
+			posX: fieldWidth / 2 - ballSize / 2,
+			posY: fieldHeight / 2 - ballSize / 2,
+			speedX: 2,
+			speedY: 2,
+			moving: false,
+			update: function () {
+				ball.style.left = Math.round(this.posX) + "px";
+				ball.style.top = Math.round(this.posY) + "px";
+			}
+		};
+
+		const rightR = {
+			posX: 0,
+			posY: fieldHeight / 2 - racketHeight / 2,
+			speed: 5,
+			pressingUp: false,
+			pressingDown: false,
+			update: function () {
+				rightRacket.style.right = this.posX + "px";
+				rightRacket.style.top = this.posY + "px";
+			}
+		};
+
+		const leftR = {
+			posX: 0,
+			posY: fieldHeight / 2 - racketHeight / 2,
+			speed: 5,
+			pressingUp: false,
+			pressingDown: false,
+			update: function () {
+				leftRacket.style.left = this.posX + "px";
+				leftRacket.style.top = this.posY + "px";
+			}
+		};
+
+		start.addEventListener('click', startGame);
+
+		function startGame() {
+			ballH.posX = fieldWidth / 2 - ballSize / 2;
+			ballH.posY = fieldHeight / 2 - ballSize / 2;
+			ballH.speedX = Math.random() < 0.5 ? -2 : 2;
+			ballH.speedY = Math.random() < 0.5 ? -2 : 2;
+			ballH.moving = true;
+			moveBall();
+		}
+
+		function moveBall() {
+			ballH.posX += ballH.speedX;
+			ballH.posY += ballH.speedY;
+			checkCollision();
+			ballH.update();
+			if (ballH.moving) {
+				requestAnimationFrame(moveBall);
+			}
+		};
+
+		function checkCollision() {
+			if (ballH.posY <= 0 || ballH.posY >= fieldHeight - ballSize) {
+				ballH.speedY = -ballH.speedY;
+			}
+
+			if (ballH.posX <= racketWidth && (ballH.posY + ballSize >= leftR.posY && ballH.posY <= leftR.posY + racketHeight)) {
+				ballH.speedX = Math.abs(ballH.speedX);
+			}
+
+			if (ballH.posX + ballSize >= fieldWidth - racketWidth && (ballH.posY + ballSize >= rightR.posY && ballH.posY <= rightR.posY + racketHeight)) {
+				ballH.speedX = -Math.abs(ballH.speedX);
+			}
+
+			if (ballH.posX <= 0) {
+				ballH.moving = false;
+				rightScore++;
+				updateScore();
+				if (leftScore === 5 || rightScore === 5) {
+					endGame();
+				} else {
+					startCountdown();
+				}
+			}
+			if (ballH.posX >= fieldWidth - ballSize) {
+				ballH.moving = false;
+				leftScore++;
+				updateScore();
+				if (leftScore === 5 || rightScore === 5) {
+					endGame();
+				} else {
+					startCountdown();
+				}
+			}
+		}
+
+		function startCountdown() {
+			let count = 3;
+			let countdown = setInterval(function () {
+				if (count > 0) {
+					timer.textContent = count;
+					count--;
+				} else {
+					timer.textContent = '';
+					clearInterval(countdown);
+					startGame();
+				}
+			}, 1000);
+		}
+
+		function updateScore() {
+			score.innerHTML = `${leftScore} : ${rightScore}`;
+		}
+
+		function endGame() {
+			ballH.posX = fieldWidth / 2 - ballSize / 2;
+			ballH.posY = fieldHeight / 2 - ballSize / 2;
+			ballH.moving = false;
+			leftScore = 0;
+			rightScore = 0;
+			updateScore();
+		}
+
+		document.addEventListener('keydown', function (event) {
+			if (event.code === "ShiftLeft") {
+				leftR.pressingUp = true;
+				moveLeftRacket();
+			} else if (event.code === "ControlLeft") {
+				leftR.pressingDown = true;
+				moveLeftRacket();
+			} else if (event.code === "ArrowUp") {
+				rightR.pressingUp = true;
+				moveRightRacket();
+			} else if (event.code === "ArrowDown") {
+				rightR.pressingDown = true;
+				moveRightRacket();
+			}
+		});
+
+		document.addEventListener('keyup', function (event) {
+			if (event.code === "ShiftLeft") {
+				leftR.pressingUp = false;
+			} else if (event.code === "ControlLeft") {
+				leftR.pressingDown = false;
+			} else if (event.code === "ArrowUp") {
+				rightR.pressingUp = false;
+			} else if (event.code === "ArrowDown") {
+				rightR.pressingDown = false;
+			}
+		});
+
+		function moveLeftRacket() {
+			if (leftR.pressingUp && leftR.posY > 0) {
+				leftR.posY -= leftR.speed;
+			}
+			if (leftR.pressingDown && leftR.posY < fieldHeight - racketHeight) {
+				leftR.posY += leftR.speed;
+			}
+			leftRacket.style.top = leftR.posY + 'px';
+
+			if (leftR.pressingUp || leftR.pressingDown) {
+				requestAnimationFrame(moveLeftRacket);
+			}
+		}
+
+		function moveRightRacket() {
+			if (rightR.pressingUp && rightR.posY > 0) {
+				rightR.posY -= rightR.speed;
+			}
+			if (rightR.pressingDown && rightR.posY < fieldHeight - racketHeight) {
+				rightR.posY += rightR.speed;
+			}
+			rightRacket.style.top = rightR.posY + 'px';
+
+			if (rightR.pressingUp || rightR.pressingDown) {
+				requestAnimationFrame(moveRightRacket);
+			}
+		}
+		ballH.update();
+		rightR.update();
+		leftR.update();
+	</script>
+</body>
+
+</html>

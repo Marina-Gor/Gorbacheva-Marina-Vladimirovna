@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Modal default</title>
+	<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Создание простейшего модального окошка!</h1>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab
+			illo veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab
+			illo veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fuga sunt voluptas, ullam, sed consequuntur ab
+			illo veniam ad totam alias voluptatibus sequi officiis, unde autem reiciendis magnam labore voluptatum?</p>
+		<p class="btn"><a href="#" id="modal-open" class="modal-open" title="Покажите мне модальное окошко">Открыть
+				окно</a></p>
+
+		<div class="modal-data"></div>
+		<p class="btn"><a href="#" id="clear-data" class="clear-data" style="display: none;">Очистить данные</a></p>
+	</div>
+
+	<div class="modal-overlay modal_closed" id="modal-overlay"></div>
+	<div class="modal modal_closed" id="modal">
+		<header class="modal__header">
+			<a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>
+			<h2>Введите данные</h2>
+		</header>
+
+		<main class="modal__content">
+			<div class="form-field">
+				<label for="name">Ваше имя:</label>
+				<input class="input__default" type="text" id="name" name="name">
+			</div>
+			<div class="form-field">
+				<label>Ваш день рождения:</label>
+				<input type="text" class="input__date-birth" id="birth-day" name="name" placeholder="День"> -
+				<input type="text" class="input__date-birth" id="birth-month" name="name" placeholder="Месяц"> -
+				<input type="text" class="input__date-birth" id="birth-year" name="name" placeholder="Год">
+			</div>
+		</main>
+
+		<footer class="modal__footer">
+			<button id="modal-cancel" class="modal__cancel" title="Отмена">Отмена</button>
+			<button id="modal-save" class="modal__save" title="Сохранить">Сохранить данные</button>
+		</footer>
+	</div>
+
+	<script>
+		function ModalView() {
+			let myModalContainer = null;
+			let myModal = null;
+			let myModalOverlay = null;
+			let modalData = null;
+			let btnClearDate = null;
+			let inpName = null;
+			let inpBirthDay = null;
+			let inpBirthMonth = null;
+			let inpBirthYear = null;
+			let btnSave = null;
+
+			this.init = function (container) {
+				myModalContainer = container;
+				myModal = document.getElementById('modal');
+				myModalOverlay = document.getElementById('modal-overlay');
+				modalData = document.querySelector('.modal-data');
+				btnClearDate = document.getElementById('clear-data');
+				btnSave = document.getElementById('modal-save');
+				inpName = document.getElementById('name');
+				inpBirthDay = document.getElementById('birth-day');
+				inpBirthMonth = document.getElementById('birth-month');
+				inpBirthYear = document.getElementById('birth-year');
+			}
+
+			this.show = function () {
+				myModal.classList.remove('modal_closed');
+				myModalOverlay.classList.remove('modal_closed');
+			}
+
+			this.hide = function () {
+				myModal.classList.add('modal_closed');
+				myModalOverlay.classList.add('modal_closed');
+			}
+
+			this.printViewData = function (info) {
+				modalData.innerHTML = `Привет, ${info.name} <br>  Да у тебя ДР ${info.birthYear}/${info.birthDay}/${info.birthMonth}`;
+				btnClearDate.style.display = 'block';
+			}
+
+			this.clearViewData = function () {
+				modalData.innerHTML = 'Данные отсутствуют...';
+				btnClearDate.style.display = 'none';
+			}
+
+			this.clearForm = function () {
+				inpName.value = "";
+				inpBirthDay.value = "";
+				inpBirthMonth.value = "";
+				inpBirthYear.value = "";
+			}
+
+			this.addDisable = function () {
+				btnSave.setAttribute("disabled", "disabled");
+			}
+
+			this.removeDisable = function () {
+				btnSave.removeAttribute("disabled");
+			}
+
+		};
+
+		function ModalModel() {
+			let myModalView = null;
+			let userData = {};
+
+			this.init = function (view) {
+				myModalView = view;
+			}
+
+			this.openModal = function () {
+				myModalView.show();
+			}
+
+			this.closeModal = function () {
+				myModalView.hide();
+			}
+
+			this.saveModalData = function (userInfo) {
+				userData = userInfo;
+			}
+
+			this.storeData = function (userInfo) {
+				localStorage.setItem('info', JSON.stringify(userData));
+			}
+
+			this.getData = function () {
+				if (localStorage.getItem('info')) {
+					infoUser = JSON.parse(localStorage.getItem('info'));
+					myModalView.printViewData(infoUser);
+				}
+
+			}
+
+			this.clearData = function () {
+				localStorage.removeItem('info');
+				myModalView.clearViewData();
+			}
+
+			this.clearForm = function (userData) {
+				myModalView.clearForm(userData);
+			}
+
+			this.checkSaveBtn = function (inpName, inpBirthDay, inpBirthMonth, inpBirthYear) {
+				if (inpName === "" || inpBirthDay === "" || inpBirthMonth === "" || inpBirthYear === "") {
+					myModalView.addDisable();
+				} else {
+					myModalView.removeDisable();
+				}
+			}
+		}
+
+		function ModalController() {
+			let myModalContainer = null;
+			let myModalModel = null;
+			let inpName = null;
+			let inpBirthDay = null;
+			let inpBirthMonth = null;
+			let inpBirthYear = null;
+			let inputMain = null;
+			let userInfo = {};
+
+			this.init = function (model, container) {
+				myModalModel = model;
+				myModalContainer = container;
+				inpName = document.getElementById('name');
+				inpBirthDay = document.getElementById('birth-day');
+				inpBirthMonth = document.getElementById('birth-month');
+				inpBirthYear = document.getElementById('birth-year');
+				inputMain = document.querySelector('.modal__content');
+
+				const btnOpen = document.getElementById('modal-open');
+				btnOpen.addEventListener('click', this.openModal);
+				const btnClose = document.getElementById('modal-close');
+				btnClose.addEventListener('click', this.hideModal);
+				const btnCancel = document.getElementById('modal-cancel');
+				btnCancel.addEventListener('click', this.hideModal);
+				const btnSave = document.getElementById('modal-save');
+				btnSave.addEventListener('click', this.saveModal);
+				const btnClearDate = document.getElementById('clear-data');
+				btnClearDate.addEventListener('click', this.clearData);
+				const modal = document.getElementById('modal');
+				modal.addEventListener('input', this.checkSelects)
+				myModalModel.getData();
+				myModalModel.checkSaveBtn(inpName.value, inpBirthDay.value, inpBirthMonth.value, inpBirthYear.value);
+			}
+
+			this.checkSelects = function () {
+				myModalModel.checkSaveBtn(inpName.value, inpBirthDay.value, inpBirthMonth.value, inpBirthYear.value);
+			}
+
+			this.openModal = function () {
+				myModalModel.clearForm();
+				myModalModel.openModal();
+			}
+
+			this.hideModal = function () {
+				myModalModel.closeModal();
+			}
+
+			this.saveModal = function () {
+				myModalModel.closeModal();
+				userInfo = {
+					name: inpName.value,
+					birthDay: inpBirthDay.value,
+					birthMonth: inpBirthMonth.value,
+					birthYear: inpBirthYear.value,
+				};
+				myModalModel.saveModalData(userInfo);
+				myModalModel.storeData();
+				myModalModel.getData();
+			}
+
+			this.clearData = function () {
+				myModalModel.clearData();
+			}
+		};
+
+		const appModalView = new ModalView();
+		const appModalModel = new ModalModel();
+		const appModalController = new ModalController();
+		const appModalContainer = document.querySelector(".container");
+
+		appModalView.init(appModalContainer);
+		appModalModel.init(appModalView);
+		appModalController.init(appModalModel, appModalContainer);
+	</script>
+</body>
+
+</html>

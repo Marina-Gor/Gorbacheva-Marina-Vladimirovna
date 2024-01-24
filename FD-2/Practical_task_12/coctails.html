@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		html {
+			box-sizing: border-box;
+			font-size: 12px;
+		}
+
+		.wrapper {
+			width: 550px;
+			margin: 0 auto;
+		}
+
+		.container {
+			display: flex;
+			flex-flow: wrap;
+			justify-content: space-between;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		p,
+		ul {
+			margin: 0;
+		}
+
+		h3 {
+			margin: 0;
+			text-decoration: underline;
+			font-weight: normal;
+		}
+
+		button {
+			padding: 8px;
+			border: none;
+			width: fit-content;
+			border-radius: 20px;
+			background-color: rgba(61, 90, 128, 0.305);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h1>Coctails Storage</h1>
+		<div class="container">
+			<button type="button" onclick="addRecipe()">Ввод рецепта</button>
+			<button type="button" onclick="getRecipe()">Рецепт напитка</button>
+			<button type="button" onclick="deleteRecipe()">Удаление рецепта</button>
+			<button type="button" onclick="listAllCoctails()">Перечень всех коктелей</button>
+		</div>
+		<div id="recipeContainer"></div>
+	</div>
+	<script>
+		function HashStorage() {
+			this.storage = {};
+			this.addValue = function (key, value) {
+				this.storage[key] = value;
+			};
+			this.getValue = function (key) {
+				return this.storage[key];
+			};
+			this.deleteValue = function (key) {
+				if (key in this.storage) {
+					delete this.storage[key];
+					return true;
+				} else {
+					return false;
+				}
+			};
+			this.getKeys = function () {
+				return Object.keys(this.storage);
+			};
+		}
+
+		const coctailsStorage = new HashStorage();
+
+		coctailsStorage.addValue('Margarita', {
+			isAlcoholic: true,
+			ingredients: ['50 мл текилы', '15 мл свежевыжатого сока лайма', '20 мл ликёра Triple Sec', 'лёд', 'соль'],
+			recipe: `Все компоненты смешиваются в шейкере со льдом, после чего коктейль фильтруется от льда, мякоти цитрусовых (лайма). 
+	 Подаётся в бокале «Маргарита», края которого украшены солью.`,
+		});
+		coctailsStorage.addValue('Cuba libre', {
+			isAlcoholic: true,
+			ingredients: ['50 мл светлого рома', '120 мл Coca-Cola', '10 мл свежего сока лайма'],
+			recipe: `Наполнить стакан льдом, смешать ингредиенты, перемешать.
+	Коктейль подаётся в бокале хайбол, украшается долькой лайма.`,
+		});
+		coctailsStorage.addValue('Mojito', {
+			isAlcoholic: true,
+			ingredients: ['45 мл светлого рома', '6 веток перечной мяты', '20 мл свежевыжатого сока лайма', '2 чайные ложки белого сахара', 'газированная вода'],
+			recipe: `Листья мяты разминаются с сахаром и соком лайма, наполняют стакан дроблёным льдом, перемешивают, добавляют ром и содовую.
+	Коктейль подается в бокале хайбол (высокий стакан) с соломинкой, украшается долькой лайма и листками мяты.`,
+		});
+
+		function addRecipe() {
+			const name = prompt('Введите название напитка:');
+			const isAlcoholic = confirm('Это алкогольный напиток?');
+			const ingredients = prompt('Введите ингредиенты и их пропорции через запятую:');
+			const recipe = prompt('Введите рецепт приготовления:');
+			coctailsStorage.addValue(name, {
+				isAlcoholic: isAlcoholic,
+				ingredients: ingredients.split(','),
+				recipe: recipe,
+			});
+			alert('Рецепт успешно добавлен!');
+		};
+		function getRecipe() {
+			const name = prompt('Введите название напитка:');
+			const recipe = coctailsStorage.getValue(name);
+			if (recipe) {
+				const recipeContainer = document.getElementById('recipeContainer');
+				recipeContainer.innerHTML = '';
+
+				const h2 = document.createElement('h2');
+				h2.textContent = `Коктейль "${name}" (aлкогольный: ${recipe.isAlcoholic ? 'да' : 'нет'})`;
+				recipeContainer.appendChild(h2);
+
+				const h3 = document.createElement('h3');
+				h3.innerHTML = `Необходимые ингредиенты: `;
+				recipeContainer.appendChild(h3);
+
+				const ul = document.createElement('ul');
+				for (const i of recipe.ingredients) {
+					const li = document.createElement('li');
+					li.textContent = i;
+					ul.appendChild(li);
+				}
+				recipeContainer.appendChild(ul);
+
+				const h3_1 = document.createElement('h3');
+				h3_1.innerHTML = `Рецепт приготовления: `;
+				recipeContainer.appendChild(h3_1);
+
+				const p = document.createElement('p');
+				p.innerHTML = recipe.recipe;
+				recipeContainer.appendChild(p);
+			} else {
+				alert('Напиток не найден!');
+			}
+		};
+		function deleteRecipe() {
+			const name = prompt('Введите название напитка:');
+			const deleted = coctailsStorage.deleteValue(name);
+			if (deleted) {
+				alert('Рецепт успешно удален!');
+			} else {
+				alert('Напиток не найден!');
+			}
+		};
+		function listAllCoctails() {
+			const keys = coctailsStorage.getKeys();
+			const recipeContainer = document.getElementById('recipeContainer');
+			recipeContainer.innerHTML = '';
+			if (keys.length > 0) {
+				const ul = document.createElement('ul');
+				for (const key of keys) {
+					const li = document.createElement('li');
+					li.textContent = key;
+					ul.appendChild(li);
+				}
+				recipeContainer.appendChild(ul);
+			} else {
+				const p = document.createElement('p');
+				p.textContent = 'Нет доступных коктейлей';
+				recipeContainer.appendChild(p);
+			}
+		};
+	</script>
+</body>
+
+</html>

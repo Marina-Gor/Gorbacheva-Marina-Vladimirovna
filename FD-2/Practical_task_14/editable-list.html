@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<ol id="list"></ol>
+	<input type="text" id="itemInput" value="">
+	<button type="button" id="addBtn">add</button>
+	<button type="button" id="removeBtn">remove</button>
+	<script>
+		const items = ['item 1', 'item 2', 'item 3', 'item 4'];
+		function getList(items) {
+			const list = document.getElementById('list');
+			const itemInput = document.getElementById('itemInput');
+			const addBtn = document.getElementById('addBtn');
+			const removeBtn = document.getElementById('removeBtn');
+			function addEditfunctionTolistItem(item) {
+				item.onclick = function () {
+					const listItemValue = this.textContent;
+					const inputField = document.createElement('input');
+					inputField.type = 'text';
+					inputField.value = listItemValue;
+
+					this.textContent = '';
+					this.appendChild(inputField);
+					inputField.focus();
+
+					inputField.onblur = function () {
+						const newValue = inputField.value;
+						this.parentElement.textContent = newValue;
+					};
+				};
+			}
+
+			for (let i = 0; i < items.length; i++) {
+				const listItem = document.createElement('li');
+				listItem.textContent = items[i];
+				list.appendChild(listItem);
+			};
+
+			const listItems = document.querySelectorAll("li");
+			listItems.forEach(addEditfunctionTolistItem);
+
+			addBtn.onclick = function () {
+				const newItem = itemInput.value;
+				if (newItem !== '') {
+					const listItem = document.createElement('li');
+					listItem.textContent = newItem;
+					addEditfunctionTolistItem(listItem);
+					list.appendChild(listItem);
+					itemInput.value = '';
+					removeBtn.disabled = false;
+					addBtn.focus();
+				} else {
+					itemInput.placeholder = 'Введите значение';
+				}
+			};
+
+			removeBtn.onclick = function () {
+				const listItem = list.lastElementChild;
+				list.removeChild(listItem);
+				if (list.children.length === 0) {
+					removeBtn.disabled = true;
+				}
+				removeBtn.focus();
+			};
+
+			const buttons = document.querySelectorAll('button');
+			buttons.forEach(button => {
+				button.addEventListener('click', function () {
+					button.focus();
+				});
+				button.addEventListener('blur', function () {
+					button.blur();
+				});
+			});
+			// buttons.forEach(button => {
+			// 	button.addEventListener('focus', function () {
+			// 		button.blur();
+			// 	});
+			// });
+		};
+		getList(items);
+	</script>
+</body>
+
+</html>

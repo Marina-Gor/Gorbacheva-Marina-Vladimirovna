@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<svg id="clock" width="400" height="400"></svg>
+	<script>
+		const svgClock = document.getElementById('clock');
+		const svgNS = "http://www.w3.org/2000/svg";
+		const width = parseFloat(svgClock.getAttributeNS(null, 'width')); //ширина часов
+		const height = parseFloat(svgClock.getAttributeNS(null, 'height')); // высота часов
+		const clockRadius = width / 2; // Радиус часов
+		const radius = 0.85 * clockRadius; // Радиус круга на котором распологаются кружки с цифрами - делаем так чтобы он был меньше радиуса основного круга
+
+		let widthHalf = width / 2; //Половин ширины
+		let heightHalf = height / 2; //Половин высоты
+
+		function drawClockBody() {
+			let clockBodystyle = document.createElementNS(svgNS, 'circle');
+			clockBodystyle.setAttributeNS(null, 'cx', widthHalf);
+			clockBodystyle.setAttributeNS(null, 'cy', heightHalf);
+			clockBodystyle.setAttributeNS(null, 'r', widthHalf);
+			clockBodystyle.setAttributeNS(null, 'fill', '#fcca66');
+			clockBodystyle.setAttributeNS(null, 'stroke', 'none');
+			svgClock.appendChild(clockBodystyle);
+		}
+		drawClockBody();
+
+		function drawHours() {
+			const angle = 30; // градус угла
+			for (let i = 1; i <= 12; i++) {
+				let hourCircle = document.createElementNS(svgNS, 'circle');
+				svgClock.appendChild(hourCircle);
+				let angleRadian = (angle * i * Math.PI) / 180;
+				let hourCenterX = (clockRadius + (radius) * Math.sin(angleRadian));
+				let hourCenterY = (clockRadius - (radius) * Math.cos(angleRadian));
+				hourCircle.setAttributeNS(null, 'cx', hourCenterX);
+				hourCircle.setAttributeNS(null, 'cy', hourCenterY);
+				hourCircle.setAttributeNS(null, 'r', 20);
+				hourCircle.setAttributeNS(null, 'fill', '#48b382');
+				hourCircle.setAttributeNS(null, 'stroke', 'none');
+
+				let text = document.createElementNS(svgNS, 'text');
+				svgClock.appendChild(text);
+				text.textContent = i;
+				text.setAttributeNS(null, 'x', hourCenterX);
+				text.setAttributeNS(null, 'y', hourCenterY + 8);
+				text.style.width = '40';
+				text.style.height = '40';
+				text.style.fontSize = '24';
+				text.style.fontWeight = 'bold';
+				text.style.textAnchor = 'middle';
+			}
+		}
+		drawHours();
+
+		function drawArrows() {
+			const hourArrow = document.createElementNS(svgNS, 'line');
+			hourArrow.setAttributeNS(null, 'x1', widthHalf);
+			hourArrow.setAttributeNS(null, 'x2', widthHalf);
+			hourArrow.setAttributeNS(null, 'y1', widthHalf);
+			hourArrow.setAttributeNS(null, 'y2', 60);
+			hourArrow.setAttributeNS(null, 'stroke', '#9acd32');
+			hourArrow.setAttributeNS(null, 'stroke-linecap', 'round');
+			hourArrow.setAttributeNS(null, 'stroke-width', 10);
+			hourArrow.setAttributeNS(null, 'id', 'hours');
+			svgClock.appendChild(hourArrow);
+
+			const minuteArrow = document.createElementNS(svgNS, 'line');
+			minuteArrow.setAttributeNS(null, 'x1', widthHalf);
+			minuteArrow.setAttributeNS(null, 'x2', widthHalf);
+			minuteArrow.setAttributeNS(null, 'y1', widthHalf);
+			minuteArrow.setAttributeNS(null, 'y2', 50);
+			minuteArrow.setAttributeNS(null, 'stroke', '#ff0000');
+			minuteArrow.setAttributeNS(null, 'stroke-linecap', 'round');
+			minuteArrow.setAttributeNS(null, 'stroke-width', 6);
+			minuteArrow.setAttributeNS(null, 'id', 'minutes');
+			svgClock.appendChild(minuteArrow);
+
+			const secondArrow = document.createElementNS(svgNS, 'line');
+			secondArrow.setAttributeNS(null, 'x1', widthHalf);
+			secondArrow.setAttributeNS(null, 'x2', widthHalf);
+			secondArrow.setAttributeNS(null, 'y1', widthHalf);
+			secondArrow.setAttributeNS(null, 'y2', 20);
+			secondArrow.setAttributeNS(null, 'stroke', '#000000');
+			secondArrow.setAttributeNS(null, 'stroke-linecap', 'round');
+			secondArrow.setAttributeNS(null, 'stroke-width', 2);
+			secondArrow.setAttributeNS(null, 'id', 'seconds');
+			svgClock.appendChild(secondArrow);
+		}
+		function moveArrows() {
+			const now = new Date();
+			const seconds = now.getSeconds() * 6;
+			const minutes = now.getMinutes() * 6;
+			const hours = (now.getHours() + now.getMinutes() / 60 + now.getSeconds() * 3600) * 30;
+
+			let hoursStyle = document.getElementById('hours');
+			let minutesStyle = document.getElementById('minutes');
+			let secondsStyle = document.getElementById('seconds');
+
+			secondsStyle.setAttributeNS(null, 'transform', 'rotate(' + seconds + ' ' + widthHalf + ' ' + heightHalf + ')');
+			minutesStyle.setAttributeNS(null, 'transform', 'rotate(' + minutes + ' ' + widthHalf + ' ' + heightHalf + ')');
+			hoursStyle.setAttributeNS(null, 'transform', 'rotate(' + hours + ' ' + widthHalf + ' ' + heightHalf + ')');
+
+
+			const textTime = document.createElementNS(svgNS, 'text');
+			svgClock.appendChild(textTime);
+			textTime.setAttributeNS(null, 'x', 200);
+			textTime.setAttributeNS(null, 'y', 150);
+			textTime.setAttributeNS(null, 'id', 'text-time');
+			textTime.style.fontSize = '32';
+			textTime.style.fontWeight = 'bold';
+			textTime.style.textAnchor = 'middle';
+
+			function showTime(time) {
+				const textHour = now.getHours();
+				const textMinutes = now.getMinutes();
+				const textSeconds = now.getSeconds();
+				document.getElementById("text-time").textContent = textHour + ':' + textMinutes + ':' + textSeconds;
+			}
+			showTime();
+		};
+		drawArrows();
+		setInterval(moveArrows, 1000);
+	</script>
+</body>
+
+</html>

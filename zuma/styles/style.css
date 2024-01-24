@@ -1,0 +1,122 @@
+html {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+body {
+  background-color: #272727;
+  font-family: "Bangers", system-ui;
+  color: #3c342e;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  background-image: url(../images/game-cover.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh; }
+
+.hidden {
+  display: none; }
+
+.show {
+  display: block; }
+
+/*App styles start*/
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .app header {
+    display: flex;
+    justify-content: center; }
+  .app .main-menu {
+    position: fixed;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+    text-align: end; }
+    .app .main-menu .menu-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap; }
+      .app .main-menu .menu-list .menu-link {
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 10px;
+        height: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px 40px #3c342e inset, 0 0 0 0 #3c342e;
+        font-family: "Bangers", system-ui;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #FCD54C;
+        transition: .15s ease-in-out;
+        width: 150px;
+        margin: 10px;
+        height: auto; }
+        .app .main-menu .menu-list .menu-link:hover {
+          box-shadow: 0 0 10px 0 #3c342e inset, 0 0 10px 4px #3c342e;
+          color: #3c342e;
+          transform: translateY(-10px); }
+        .app .main-menu .menu-list .menu-link:active {
+          background-color: #3c342e;
+          box-shadow: none; }
+    .app .main-menu .sound {
+      margin-left: 20px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0);
+      border: none; }
+  .app .main .content {
+    position: relative; }
+    .app .main .content section {
+      width: 500px;
+      max-width: 100%;
+      height: 300px;
+      max-height: 100%;
+      position: fixed;
+      left: 50%;
+      top: 45%;
+      border-radius: 10px;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.8); }
+    .app .main .content .rules-page {
+      padding: 10px; }
+      .app .main .content .rules-page .rules-title {
+        text-align: center;
+        margin-bottom: 20px; }
+      .app .main .content .rules-page .rules-text {
+        text-align: justify; }
+    .app .main .content .records-page {
+      padding: 10px; }
+      .app .main .content .records-page .records-title {
+        text-align: center;
+        margin-bottom: 20px; }
+      .app .main .content .records-page .records-text {
+        text-align: justify; }
+    .app .main .content .description-page {
+      padding: 10px; }
+      .app .main .content .description-page .description-title {
+        text-align: center;
+        margin-bottom: 20px; }
+      .app .main .content .description-page .description-text {
+        text-align: justify; }
+    .app .main .content .error-page .error-img {
+      text-align: center;
+      margin-bottom: 20px; }
+    .app .main .content .error-page .error-text {
+      text-align: justify; }
+    .app .main .content canvas {
+      width: 100vw;
+      height: 100vh; }
+
+/*App styles end*/
+
+/*# sourceMappingURL=style.css.map */

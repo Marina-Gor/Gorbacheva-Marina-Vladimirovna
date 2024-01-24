@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+
+	<script>
+		function compress(str) {
+			let n = 0;
+			let summ = ``;
+			for (let i = 0; i < str.length; i++) {
+				if (str[i] === str[i + 1]) {
+					n++
+				} else {
+					summ += str[i] + (n ? n + 1 : ``);
+					n = 0;
+				}
+				result = `"${str}" => "${summ}"`;
+			}
+			return result;
+		}
+		console.log(compress(`aaaaajjjjdddkkke`));
+
+		function uncompress(str) {
+			let result = ``;
+			for (let i = 0; i < str.length; i += 1) {
+				if (isNaN(str[i])) {
+					result += str[i].repeat(parseInt(str.slice([i + 1])));
+				} else {
+					result += ``;
+				}
+			}
+			return result;
+		}
+		console.log(uncompress(`t20i10`));
+	</script>
+</body>
+
+</html>

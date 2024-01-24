@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="clock" width="400" height="400"></canvas>
+	<script>
+		const canvasClock = document.getElementById('clock');
+		const ctx = canvasClock.getContext("2d");
+		const clockRadius = canvasClock.width / 2; // Радиус часов
+		const radius = 0.85 * clockRadius;
+		let widthHalf = canvasClock.width / 2; //Половин ширины
+		let heightHalf = canvasClock.height / 2; //Половин высоты
+
+		function updateClock() {
+			drawBodyclock(ctx, clockRadius);
+			drawHours(ctx, clockRadius, radius);
+			drawTime(ctx, widthHalf, heightHalf);
+			showTime(ctx);
+		}
+
+		function drawBodyclock(ctx, clockRadius) {
+			ctx.beginPath();
+			ctx.arc(widthHalf, heightHalf, clockRadius, 0, 2 * Math.PI);
+			ctx.fillStyle = "#fcca66";
+			ctx.fill();
+			ctx.lineWidth = 1;
+			ctx.strokeStyle = '#fcca66';
+			ctx.stroke();
+		}
+
+		function drawHours(ctx, clockRadius, radius) {
+			const angle = 30;
+			for (let i = 1; i <= 12; i++) {
+				let angleRadian = (angle * i * Math.PI) / 180;
+				let hourCenterX = (clockRadius + (radius) * Math.sin(angleRadian));
+				let hourCenterY = (clockRadius - (radius) * Math.cos(angleRadian));
+
+				ctx.beginPath();
+				ctx.arc(hourCenterX, hourCenterY, 20, 0, 2 * Math.PI);
+				ctx.fillStyle = "#48b382";
+				ctx.fill();
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = '#48b382';
+				ctx.stroke();
+
+				let theString = i;
+				ctx.font = "bold 24px Arial";
+				ctx.fillStyle = "#000000";
+				ctx.fillText(theString, hourCenterX, hourCenterY);
+				ctx.textBaseline = "middle";
+				ctx.textAlign = "center";
+			}
+		}
+
+		function drawTime(ctx, widthHalf, heightHalf) {
+			let now = new Date();
+			let hours = (now.getHours() * 30 + (now.getMinutes() / 60));
+			let minutes = (now.getMinutes() * 6 + (now.getSeconds() / 60));
+			let seconds = (now.getSeconds() * 6);
+
+			//Секунды
+			ctx.beginPath();
+			ctx.strokeStyle = "#000000";
+			ctx.lineWidth = 2;
+			ctx.moveTo(widthHalf, heightHalf);
+			ctx.lineTo(widthHalf + 180 * Math.cos(Math.PI / 2 - seconds * (Math.PI / 180)), heightHalf - 180 * Math.sin(Math.PI / 2 - seconds * (Math.PI / 180)));
+			ctx.lineCap = "round";
+			ctx.stroke();
+			ctx.closePath();
+
+			//Минуты
+			ctx.beginPath();
+			ctx.strokeStyle = "#ff0000";
+			ctx.lineWidth = 6;
+			ctx.moveTo(widthHalf, heightHalf);
+			ctx.lineTo(widthHalf + 150 * Math.cos(Math.PI / 2 - minutes * (Math.PI / 180)), heightHalf - 150 * Math.sin(Math.PI / 2 - minutes * (Math.PI / 180)));
+			ctx.lineCap = "round";
+			ctx.stroke();
+			ctx.closePath();
+
+			//Часы
+			ctx.beginPath();
+			ctx.strokeStyle = "#9acd32";
+			ctx.lineWidth = 10;
+			ctx.moveTo(widthHalf, heightHalf);
+			ctx.lineTo(widthHalf + 140 * Math.cos(Math.PI / 2 - hours * (Math.PI / 180)), heightHalf - 140 * Math.sin(Math.PI / 2 - hours * (Math.PI / 180)));
+			ctx.lineCap = "round";
+			ctx.stroke();
+			ctx.closePath();
+		}
+
+		function showTime(ctx) {
+			let now = new Date();
+			let textHour = now.getHours();
+			let textMinutes = now.getMinutes();
+			let textSeconds = now.getSeconds();
+			let theString = textContent = textHour + ':' + textMinutes + ':' + textSeconds;
+
+			ctx.beginPath();
+			ctx.font = "bold 24px Arial";
+			ctx.fillStyle = "#000000";
+			ctx.fillText(theString, 200, 150);
+			ctx.textBaseline = "middle";
+			ctx.textAlign = "center";
+		}
+		setInterval(updateClock, 1000);
+	</script>
+</body>
+
+</html>

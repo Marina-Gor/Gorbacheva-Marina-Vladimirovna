@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.score {
+			font-size: 32px;
+		}
+
+		.container {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin: 20px;
+		}
+
+		#start {
+			width: 80px;
+			height: 20px;
+		}
+
+		#timer {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+			font-size: 72px;
+			color: rgba(0, 0, 0, 0.7)
+		}
+
+		#field {
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<button type="button" id="start">Старт!</button>
+		<div class="score">0 : 0</div>
+		<canvas id="field" width="500" height="300"></canvas>
+		<div id="timer"></div>
+	</div>
+	<script>
+		const start = document.getElementById('start');
+		const score = document.querySelector('.score');
+		const canvasField = document.getElementById('field');
+		const ctx = canvasField.getContext("2d");
+		const width = canvasField.width;
+		const height = canvasField.height;
+		const racketHeight = 80;
+		const racketWidth = 10;
+		const ballRadius = 10;
+		let leftScore = 0;
+		let rightScore = 0;
+
+		const ball = {
+			posX: width / 2,
+			posY: height / 2,
+			speedX: Math.random() < 0.5 ? -2 : 2,
+			speedY: Math.random() < 0.5 ? -2 : 2,
+			moving: false,
+			radius: 10,
+		};
+
+		const rightR = {
+			posX: width - racketWidth,
+			posY: height / 2 - racketHeight / 2,
+			speed: 5,
+			pressingUp: false,
+			pressingDown: false,
+		};
+
+		const leftR = {
+			posX: 0,
+			posY: height / 2 - racketHeight / 2,
+			speed: 5,
+			pressingUp: false,
+			pressingDown: false,
+		};
+
+		function drawField() {
+			ctx.fillStyle = 'rgb(241, 235, 123)';
+			ctx.strokeStyle = '#000000';
+			ctx.lineWidth = 2;
+			ctx.fillRect(0, 0, width, height);
+			ctx.strokeRect(0, 0, width, height);
+		}
+		drawField();
+
+		function drawBall() {
+			ctx.fillStyle = '#ff0000';
+			ctx.beginPath();
+			ctx.arc(ball.posX, ball.posY, ballRadius, 0, Math.PI * 2, true);
+			ctx.fill();
+			ctx.closePath();
+		}
+		drawBall();
+
+		function drawRackets() {
+			ctx.fillStyle = '#0000ff';
+			ctx.fillRect(0, leftR.posY, racketWidth, racketHeight);
+			ctx.fillStyle = '#008000';
+			ctx.fillRect(width - racketWidth, rightR.posY, racketWidth, racketHeight);
+		}
+		drawRackets();
+
+		function moveRackets() {
+			if (leftR.pressingUp && leftR.posY > 0) {
+				leftR.posY -= leftR.speed;
+			}
+			if (leftR.pressingDown && leftR.posY < height - racketHeight) {
+				leftR.posY += leftR.speed;
+			}
+			if (rightR.pressingUp && rightR.posY > 0) {
+				rightR.posY -= rightR.speed;
+			}
+			if (rightR.pressingDown && rightR.posY < height - racketHeight) {
+				rightR.posY += rightR.speed;
+			}
+		}
+
+		document.addEventListener('keydown', function (event) {
+			if (event.code === "ShiftLeft") {
+				leftR.pressingUp = true;
+			} else if (event.code === "ControlLeft") {
+				leftR.pressingDown = true;
+			} else if (event.code === "ArrowUp") {
+				rightR.pressingUp = true;
+			} else if (event.code === "ArrowDown") {
+				rightR.pressingDown = true;
+			}
+		});
+
+		document.addEventListener('keyup', function (event) {
+			if (event.code === "ShiftLeft") {
+				leftR.pressingUp = false;
+			} else if (event.code === "ControlLeft") {
+				leftR.pressingDown = false;
+			} else if (event.code === "ArrowUp") {
+				rightR.pressingUp = false;
+			} else if (event.code === "ArrowDown") {
+				rightR.pressingDown = false;
+			}
+		});
+
+		function checkCollision() {
+			if (ball.posY - ballRadius <= 0 || ball.posY + ballRadius >= height) {
+				ball.speedY = -ball.speedY;
+			}
+
+			if (ball.posX - ballRadius <= racketWidth && (ball.posY + ballRadius >= leftR.posY && ball.posY - ballRadius <= leftR.posY + racketHeight)) {
+				ball.speedX = Math.abs(ball.speedX);
+			}
+
+			if (ball.posX + ballRadius >= width - racketWidth && (ball.posY + ballRadius >= rightR.posY && ball.posY - ballRadius <= rightR.posY + racketHeight)) {
+				ball.speedX = -Math.abs(ball.speedX);
+			}
+
+			if (ball.posX - ballRadius <= 0) {
+				ball.moving = false;
+				rightScore++;
+				updateScore();
+				if (leftScore === 5 || rightScore === 5) {
+					endGame();
+				} else {
+					resetGame();
+					startCountdown();
+				}
+			}
+			if (ball.posX + ballRadius >= width) {
+				ball.moving = false;
+				leftScore++;
+				updateScore();
+				if (leftScore === 5 || rightScore === 5) {
+					endGame();
+				} else {
+					resetGame();
+					startCountdown();
+				}
+			}
+		}
+
+		function updateScore() {
+			score.innerHTML = `${leftScore} : ${rightScore}`;
+		}
+
+		function resetGame() {
+			ball.posX = width / 2;
+			ball.posY = height / 2;
+			ball.speedX = 0;
+			ball.speedY = 0;
+			setTimeout(game, 3000);
+		}
+
+		function game() {
+			ball.speedX = 3 * (Math.random() > 0.5 ? 1 : -1);
+			ball.speedY = 3 * (Math.random() * 2 - 1);
+		}
+
+		function startCountdown() {
+			let count = 3;
+			let countdown = setInterval(function () {
+				if (count > 0) {
+					timer.textContent = count;
+					count--;
+				} else {
+					timer.textContent = '';
+					clearInterval(countdown);
+					startGame();
+				}
+			}, 1000);
+		}
+
+		function endGame() {
+			ball.posX = width / 2;
+			ball.posY = height / 2;
+			ball.moving = false;
+			leftScore = 0;
+			rightScore = 0;
+			updateScore();
+		}
+
+		function draw() {
+			if (ball.moving) {
+				ctx.clearRect(0, 0, width, height);
+				drawField();
+				drawBall();
+				drawRackets();
+				moveRackets();
+				ball.posX += ball.speedX;
+				ball.posY += ball.speedY;
+				checkCollision();
+				requestAnimationFrame(draw);
+			}
+		}
+
+		function startGame() {
+			ball.moving = true;
+			draw();
+		};
+		start.addEventListener('click', startGame);
+	</script>
+</body>
+
+</html>

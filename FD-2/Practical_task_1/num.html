@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <script>
+      let num = Number(prompt('Ввидите число'));
+      let EvenOrOdd, IntegerOrFraction, NegativeOrPositive;
+      IntegerOrFraction = 'целым';
+      EvenOrOdd = '';
+      if (num === 0) {
+         result = `Число ${num} является: ${IntegerOrFraction}.`;
+      } else {
+         num % 1 === 0
+            ? (num % 2 === 0
+               ? EvenOrOdd = 'четным,'
+               : EvenOrOdd = 'нечетным,')
+            : IntegerOrFraction = 'дробным';
+         num < 0
+            ? NegativeOrPositive = 'отрицательным'
+            : NegativeOrPositive = 'положительным';
+         result = `Число ${num} является ${IntegerOrFraction}, ${EvenOrOdd} ${NegativeOrPositive}.`;
+      }
+      console.log(result);
+   </script>
+</body>
+
+</html>
