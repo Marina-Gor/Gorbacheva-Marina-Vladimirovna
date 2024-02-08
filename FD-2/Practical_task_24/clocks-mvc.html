@@ -4,14 +4,630 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<style>
+		.container {
+			display: flex;
+			justify-content: space-between;
+			margin: 20px;
+		}
+
+		.clocks-dom,
+		.clocks-svg,
+		.clocks-canvas {
+			display: flex;
+			gap: 30px;
+			margin: 20px;
+			flex-direction: column;
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+		}
+	</style>
+	<title>Clocks MVC</title>
 </head>
 
 <body>
-
+	<div class="container">
+		<div class="clocks-dom">
+			<div id="clock-dom1" data-gmt="-4">
+				<div class="buttons">
+					<p>Нью-Йорк(GMT-4)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+			<div id="clock-dom2" data-gmt="+1">
+				<div class="buttons">
+					<p>Лондон(GMT)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+		</div>
+		<div class="clocks-svg">
+			<div id="clock-svg1" data-gmt="+2">
+				<div class="buttons">
+					<p>Берлин(GMT+1)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+			<div id="clock-svg2" data-gmt="+3">
+				<div class="buttons">
+					<p>Минск(GMT+3)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+		</div>
+		<div class="clocks-canvas">
+			<div id="clock-canvas1" data-gmt="+9">
+				<div class="buttons">
+					<p>Токио(GMT+9)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+			<div id="clock-canvas2" data-gmt="+10">
+				<div class="buttons">
+					<p>Владивосток(GMT+10)</p>
+					<button id="stop">Стоп</button>
+					<button id="start">Старт</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script>
+	/* ------- View -------- */
+	function ClockViewDOMView() {
+		let myClockContainer = null
+		let clockContainer = null
+		let circle = null
+		let hourLine = null
+		let minLine = null
+		let secLine = null
+		let digit = null
 
+		this.init = function (container) {
+			myClockContainer = container
+
+			clockContainer = document.createElement("div")
+			clockContainer.classList.add("container-clock-DOM")
+			myClockContainer.append(clockContainer)
+		}
+
+		this.createClock = function (
+			clockWidth,
+			clockHeight,
+			circleClockCenterX,
+			circleClockCenterY,
+		) {
+			clockContainer.style.position = "relative"
+			clockContainer.style.width = clockWidth + "px"
+			clockContainer.style.height = clockHeight + "px"
+
+			if (!circle) {
+				circle = document.createElement("div")
+				circle.classList.add("circle")
+				circle.style.position = "relative"
+				circle.style.width = clockWidth + "px"
+				circle.style.height = clockHeight + "px"
+				circle.style.borderRadius = "50%"
+				circle.style.backgroundColor = "#fccb66"
+				clockContainer.prepend(circle)
+			}
+		}
+
+		this.createClockDigits = function (
+			radius,
+			clockWidth,
+			clockHeight,
+			circleClockCenterX,
+			circleClockCenterY,
+			circleTimeCenterX,
+			circleTimeCenterY,
+			digitText,
+			digitTextX,
+			digitTextY
+		) {
+			digit = document.createElement("div")
+			digit.classList.add("digit")
+			digit.style.width = radius / 4 + "px"
+			digit.style.height = radius / 4 + "px"
+			digit.style.position = "absolute"
+			digit.style.backgroundColor = "#46b483"
+			digit.style.textAlign = "center"
+			digit.style.display = "flex"
+			digit.style.justifyContent = "center"
+			digit.style.alignItems = "center"
+			digit.style.borderRadius = "50%"
+			digit.style.fontSize = radius / 9 + "px"
+			digit.style.left = circleTimeCenterX - radius / 4 / 2 + "px"
+			digit.style.top = circleTimeCenterY - radius / 4 / 2 + "px"
+			digit.textContent = `${digitText}`
+			circle.append(digit)
+		}
+
+		this.createClockHands = function (clockWidth, clockHeight, radius, hours, minutes, seconds, secondsRad, minutesRad, hourRad, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY) {
+			if (secLine) {
+				secLine.remove()
+			}
+
+			secLine = document.createElement("div")
+			secLine.classList.add("sec-line")
+			secLine.style.width = radius / 60 + "px"
+			secLine.style.height = radius / 1.1 + "px"
+			secLine.style.position = "absolute"
+			secLine.style.backgroundColor = "black"
+			secLine.style.left = "50%"
+			secLine.style.bottom = "50%"
+			secLine.style.transformOrigin = "50% 100%"
+			secLine.style.zIndex = "1"
+			circle.append(secLine)
+
+			if (minLine) {
+				minLine.remove()
+			}
+			minLine = document.createElement("div")
+			minLine.classList.add("min-line")
+			minLine.style.width = radius / 27 + "px"
+			minLine.style.height = radius / 1.4 + "px"
+			minLine.style.position = "absolute"
+			minLine.style.backgroundColor = "black"
+			minLine.style.left = "50%"
+			minLine.style.bottom = "50%"
+			minLine.style.transformOrigin = "50% 100%"
+			circle.append(minLine)
+
+			if (hourLine) {
+				hourLine.remove()
+			}
+			hourLine = document.createElement("div")
+			hourLine.classList.add("hour-line")
+			hourLine.style.width = radius / 15 + "px"
+			hourLine.style.height = radius / 2 + "px"
+			hourLine.style.position = "absolute"
+			hourLine.style.backgroundColor = "black"
+			hourLine.style.left = "50%"
+			hourLine.style.bottom = "50%"
+			hourLine.style.transformOrigin = "50% 100%"
+			circle.append(hourLine)
+
+			hourLine.style.transform = `rotate(${hours * 30 + minutes / 2}deg)`
+			minLine.style.transform = `rotate(${minutes * 6}deg)`
+			secLine.style.transform = `rotate(${seconds * 6}deg)`
+		}
+	}
+
+	function ClockViewSVG() {
+		let clockContainer = null
+		let svg = null
+		const svgNS = "http://www.w3.org/2000/svg"
+		let circle = null
+		let hourLine = null
+		let minLine = null
+		let secLine = null
+		let clockDigitCircle = null
+		let clockDigit = null
+
+		this.init = function (container) {
+			clockContainer = container
+
+			svg = document.createElementNS(svgNS, "svg")
+			svg.classList.add("svg")
+			svg.id = clockContainer.id
+			clockContainer.append(svg)
+		}
+
+		this.createClock = function (
+			clockWidth,
+			clockHeight,
+			circleClockCenterX,
+			circleClockCenterY,
+		) {
+			svg.style.width = clockWidth + "px"
+			svg.style.height = clockHeight + "px"
+
+			if (!circle) {
+				circle = document.createElementNS(svgNS, "circle")
+				circle.setAttributeNS(null, "cx", clockWidth / 2)
+				circle.setAttributeNS(null, "cy", clockHeight / 2)
+				circle.setAttributeNS(null, "r", clockWidth / 2)
+				circle.setAttributeNS(null, "fill", "#fccb66")
+				svg.append(circle)
+			}
+		}
+
+		this.createClockDigits = function (radius, clockWidth, clockHeight, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY) {
+			clockDigitCircle = document.createElementNS(svgNS, "circle")
+			clockDigitCircle.setAttributeNS(null, "cx", circleTimeCenterX)
+			clockDigitCircle.setAttributeNS(null, "cy", circleTimeCenterY)
+			clockDigitCircle.setAttributeNS(null, "r", radius / 7)
+			clockDigitCircle.setAttributeNS(null, "fill", "#46b483")
+			svg.append(clockDigitCircle)
+
+			clockDigit = document.createElementNS(svgNS, "text")
+			clockDigit.setAttributeNS(null, "dominant-baseline", "middle")
+			clockDigit.setAttributeNS(null, "text-anchor", "middle")
+			clockDigit.setAttributeNS(null, "x", circleTimeCenterX)
+			clockDigit.setAttributeNS(null, "y", circleTimeCenterY)
+			clockDigit.setAttributeNS(null, "font-size", radius / 9)
+
+			clockDigit.textContent = digitText
+			svg.append(clockDigit)
+		}
+
+		this.createClockHands = function (clockWidth, clockHeight, radius, hours, minutes, seconds, secondsRad, minutesRad, hourRad, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY) {
+			if (hourLine) {
+				hourLine.remove()
+			}
+			hourLine = document.createElementNS(svgNS, "line")
+			hourLine.setAttributeNS(null, "x1", circleClockCenterX)
+			hourLine.setAttributeNS(null, "y1", circleClockCenterY)
+			hourLine.setAttributeNS(
+				null,
+				"x2",
+				circleClockCenterX + (radius / 2) * Math.sin(hourRad)
+			)
+			hourLine.setAttributeNS(
+				null,
+				"y2",
+				circleClockCenterY - (radius / 2) * Math.cos(hourRad)
+			)
+
+			hourLine.setAttributeNS(null, "stroke", "black")
+			hourLine.setAttributeNS(null, "stroke-width", radius / 15)
+			hourLine.setAttributeNS(null, "id", "hourLine")
+
+			svg.append(hourLine)
+
+			if (minLine) {
+				minLine.remove()
+			}
+			minLine = document.createElementNS(svgNS, "line")
+			minLine.setAttributeNS(null, "x1", circleClockCenterX)
+			minLine.setAttributeNS(null, "y1", circleClockCenterY)
+			minLine.setAttributeNS(
+				null,
+				"x2",
+				circleClockCenterX + (radius / 1.4) * Math.sin(minutesRad)
+			)
+			minLine.setAttributeNS(
+				null,
+				"y2",
+				circleClockCenterY - (radius / 1.4) * Math.cos(minutesRad)
+			)
+
+			minLine.setAttributeNS(null, "stroke", "black")
+			minLine.setAttributeNS(null, "stroke-width", radius / 27)
+			minLine.setAttributeNS(null, "id", "minLine")
+
+			svg.append(minLine)
+
+			if (secLine) {
+				secLine.remove()
+			}
+
+			secLine = document.createElementNS(svgNS, "line")
+			secLine.setAttributeNS(null, "x1", circleClockCenterX)
+			secLine.setAttributeNS(null, "y1", circleClockCenterY)
+			secLine.setAttributeNS(
+				null,
+				"x2",
+				circleClockCenterX + (radius / 1.1) * Math.sin(secondsRad)
+			)
+			secLine.setAttributeNS(
+				null,
+				"y2",
+				circleClockCenterY - (radius / 1.1) * Math.cos(secondsRad)
+			)
+
+			secLine.setAttributeNS(null, "stroke", "black")
+			secLine.setAttributeNS(null, "stroke-width", radius / 60)
+			secLine.setAttributeNS(null, "id", "secLine")
+
+			svg.append(secLine)
+		}
+	}
+
+	function ClockViewCanvas() {
+		let clockContainer = null
+		let canvas = null
+		let ctx = null
+		let angle = 0
+
+		this.init = function (container) {
+			clockContainer = container
+
+			canvas = document.createElement("canvas")
+			clockContainer.append(canvas)
+			ctx = canvas.getContext("2d")
+		}
+
+		this.createClock = function (clockWidth, clockHeight, circleClockCenterX, circleClockCenterY,) {
+			canvas.width = clockWidth
+			canvas.height = clockHeight
+
+			ctx.clearRect(0, 0, clockWidth, clockHeight)
+			ctx.fillStyle = "#fccb66"
+			ctx.beginPath()
+			ctx.arc(
+				circleClockCenterX,
+				circleClockCenterY,
+				clockWidth / 2,
+				0,
+				2 * Math.PI
+			)
+			ctx.fillStyle = "#fccb66"
+			ctx.fill()
+		}
+
+		this.createClockDigits = function (radius, clockWidth, clockHeight, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY) {
+			for (let i = 0; i < 12; i++) {
+				angleRadians = (parseFloat(angle) / 180) * Math.PI
+				angle += 30
+				circleTimeCenterX = circleClockCenterX + radius * Math.sin(angleRadians)
+				circleTimeCenterY = circleClockCenterY - radius * Math.cos(angleRadians)
+				ctx.fillStyle = "#46b483"
+				ctx.strokeStyle = "#fccb66"
+				ctx.beginPath()
+				ctx.arc(circleTimeCenterX, circleTimeCenterY, radius / 6, 0, 2 * Math.PI)
+				ctx.fill()
+				ctx.stroke()
+
+				if (i == 0) {
+					digitText = 12
+				} else {
+					digitText = i
+				}
+				digitTextY =
+					circleClockCenterY + radius / 32 - radius * Math.cos(angleRadians)
+				if (digitText < 10) {
+					digitTextX =
+						circleClockCenterX - radius / 36 + radius * Math.sin(angleRadians)
+					ctx.font = radius / 9 + "px sans-serif"
+					ctx.fillStyle = "black"
+					ctx.fillText(digitText, digitTextX, digitTextY)
+				} else {
+					digitTextX =
+						circleClockCenterX - radius / 18 + radius * Math.sin(angleRadians)
+					ctx.font = radius / 9 + "px sans-serif"
+					ctx.fillStyle = "black"
+					ctx.fillText(digitText, digitTextX, digitTextY)
+				}
+			}
+		}
+
+		this.createClockHands = function (clockWidth, clockHeight, radius, hours, minutes, seconds, secondsRad, minutesRad, hourRad, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY) {
+			// hour
+			this.createClock(clockWidth, clockHeight, circleClockCenterX, circleClockCenterY,)
+			this.createClockDigits(radius, clockWidth, clockHeight, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY)
+			ctx.strokeStyle = "black"
+			ctx.lineWidth = 7.5
+			ctx.beginPath()
+			ctx.moveTo(circleClockCenterX, circleClockCenterY)
+			ctx.lineTo(
+				circleClockCenterX + (radius / 2) * Math.sin(hourRad),
+				circleClockCenterY - (radius / 2) * Math.cos(hourRad)
+			)
+			ctx.stroke()
+
+			//minutes
+			ctx.strokeStyle = "black"
+			ctx.lineWidth = 5
+			ctx.beginPath()
+			ctx.moveTo(circleClockCenterX, circleClockCenterY)
+			ctx.lineTo(
+				circleClockCenterX + (radius / 1.4) * Math.sin(minutesRad),
+				circleClockCenterY - (radius / 1.4) * Math.cos(minutesRad)
+			)
+			ctx.stroke()
+
+			//seconds
+			ctx.strokeStyle = "black"
+			ctx.lineWidth = 3
+			ctx.beginPath()
+			ctx.moveTo(circleClockCenterX, circleClockCenterY)
+			ctx.lineTo(
+				circleClockCenterX + (radius / 1.1) * Math.sin(secondsRad),
+				circleClockCenterY - (radius / 1.1) * Math.cos(secondsRad)
+			)
+			ctx.stroke()
+		}
+	}
+
+	/* ------- Model -------- */
+	function ClockModel() {
+		let clockView = null
+		let clockWidth = 300
+		let clockHeight = 300
+		let angle = null
+		let radius = null
+		let angleRadians = null
+		let circleClockCenterX = null
+		let circleClockCenterY = null
+		let circleTimeCenterX = null
+		let circleTimeCenterY = null
+		let time = null
+		let hours = null
+		let minutes = null
+		let seconds = null
+		let secondsAngle = null
+		let secondsRad = null
+		let minutesAngle = null
+		let minutesRad = null
+		let hourAngle = null
+		let hourRad = null
+		let timeChange = null
+		let digitText = 0
+
+		this.init = function (view) {
+			clockView = view
+			angle = 0
+			radius = (clockWidth * 0.8) / 2
+			circleClockCenterX = clockWidth / 2
+			circleClockCenterY = clockHeight / 2
+		}
+
+		this.startClock = function (gmt) {
+			clockView.createClock(clockWidth, clockHeight, circleClockCenterX, circleClockCenterY)
+
+			for (let i = 0; i < 12; i++) {
+				angleRadians = (parseFloat(angle) / 180) * Math.PI
+				angle += 30
+
+				circleTimeCenterX = circleClockCenterX + radius * Math.sin(angleRadians)
+				circleTimeCenterY = circleClockCenterY - radius * Math.cos(angleRadians)
+				if (i == 0) {
+					digitText = 12
+				} else {
+					digitText = i
+				}
+				digitTextY =
+					circleClockCenterY + radius / 32 - radius * Math.cos(angleRadians)
+				if (digitText < 10) {
+					digitTextX =
+						circleClockCenterX - radius / 36 + radius * Math.sin(angleRadians)
+				} else {
+					digitTextX =
+						circleClockCenterX - radius / 18 + radius * Math.sin(angleRadians)
+				}
+				clockView.createClockDigits(radius, clockWidth, clockHeight, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY)
+			}
+			timeChange = setInterval(() => this.createClockHands(gmt), 100)
+		}
+
+		this.createClockHands = function (gmt) {
+			time = new Date()
+
+			hours = time.getUTCHours() + Number(gmt)
+			minutes = time.getMinutes()
+			seconds = time.getSeconds()
+
+			secondsAngle = 6 * seconds
+			secondsRad = (parseFloat(secondsAngle) / 180) * Math.PI
+			minutesAngle = 6 * minutes
+			minutesRad = (parseFloat(minutesAngle) / 180) * Math.PI
+			hourAngle = 30 * hours + minutes / 2
+			hourRad = (parseFloat(hourAngle) / 180) * Math.PI
+
+			clockView.createClockHands(clockWidth, clockHeight, radius, hours, minutes, seconds, secondsRad, minutesRad, hourRad, circleClockCenterX, circleClockCenterY, circleTimeCenterX, circleTimeCenterY, digitText, digitTextX, digitTextY)
+		}
+
+		this.stopClock = function () {
+			clearInterval(timeChange);
+		}
+	}
+
+
+	/* ------- Controller -------- */
+	function ClockController() {
+		let clockModel = null;
+		let clockContainer = null;
+		let gmt = null;
+		let btnStop = null;
+		let btnStart = null;
+
+		this.init = function (modal, container) {
+			clockModel = modal
+			clockContainer = container
+			gmt = clockContainer.dataset.gmt
+			btnStop = document.getElementById("stop");
+			btnStart = document.getElementById("start");
+
+			btnStop.addEventListener("click", this.stop);
+			btnStart.addEventListener("click", this.start);
+			this.start();
+		}
+
+		this.start = function () {
+			clockModel.startClock(gmt);
+		}
+
+		this.stop = function () {
+			clockModel.stopClock();
+		}
+	}
+
+
+	/*--------DOM--------*/
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelDOM1 = new ClockModel()
+	const clockViewDOM1 = new ClockViewDOMView()
+	const clockControllerDOM1 = new ClockController()
+
+	// связываем компоненты друг с другом, указывая в каком контейнере/поле им работать
+	const clockContainerDOM1 = document.querySelector("#clock-dom1")
+
+	clockModelDOM1.init(clockViewDOM1)
+	clockViewDOM1.init(clockContainerDOM1)
+	clockControllerDOM1.init(clockModelDOM1, clockContainerDOM1)
+
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelDOM2 = new ClockModel()
+	const clockViewDOM2 = new ClockViewDOMView()
+	const clockControllerDOM2 = new ClockController()
+
+	const clockContainerDOM2 = document.querySelector("#clock-dom2")
+
+	clockModelDOM2.init(clockViewDOM2)
+	clockViewDOM2.init(clockContainerDOM2)
+	clockControllerDOM2.init(clockModelDOM2, clockContainerDOM2)
+
+	/*--------svg--------*/
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelSVG1 = new ClockModel()
+	const clockViewSVG1 = new ClockViewSVG()
+	const clockControllerSVG1 = new ClockController()
+	// связываем компоненты друг с другом, указывая в каком контейнере/поле им работать
+
+	const clockContainerSVG1 = document.querySelector("#clock-svg1")
+
+	clockModelSVG1.init(clockViewSVG1)
+	clockViewSVG1.init(clockContainerSVG1)
+	clockControllerSVG1.init(clockModelSVG1, clockContainerSVG1)
+
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelSVG2 = new ClockModel()
+	const clockViewSVG2 = new ClockViewSVG()
+	const clockControllerSVG2 = new ClockController()
+	// связываем компоненты друг с другом, указывая в каком контейнере/поле им работать
+
+	const clockContainerSVG2 = document.querySelector("#clock-svg2")
+
+	clockModelSVG2.init(clockViewSVG2)
+	clockViewSVG2.init(clockContainerSVG2)
+	clockControllerSVG2.init(clockModelSVG2, clockContainerSVG2)
+
+	/*--------canvas--------*/
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelCanvas1 = new ClockModel()
+	const clockViewCanvas1 = new ClockViewCanvas()
+	const clockControllerCanvas1 = new ClockController()
+	// связываем компоненты друг с другом, указывая в каком контейнере/поле им работать
+
+	const clockContainerCanvas1 = document.querySelector("#clock-canvas1")
+
+	clockModelCanvas1.init(clockViewCanvas1)
+	clockViewCanvas1.init(clockContainerCanvas1)
+	clockControllerCanvas1.init(clockModelCanvas1, clockContainerCanvas1)
+
+	/*--------настройка, инициализация первого комплекта--------*/
+	const clockModelCanvas2 = new ClockModel()
+	const clockViewCanvas2 = new ClockViewCanvas()
+	const clockControllerCanvas2 = new ClockController()
+	// связываем компоненты друг с другом, указывая в каком контейнере/поле им работать
+
+	const clockContainerCanvas2 = document.querySelector("#clock-canvas2")
+
+	clockModelCanvas2.init(clockViewCanvas2)
+	clockViewCanvas2.init(clockContainerCanvas2)
+	clockControllerCanvas2.init(clockModelCanvas2, clockContainerCanvas2)
 </script>
 
 </html>

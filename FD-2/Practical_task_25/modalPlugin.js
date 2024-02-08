@@ -43,8 +43,15 @@ const ModalPlugin = (function () {
 			const modalElement = document.getElementById(modalId);
 			const titleElement = modalElement.querySelector('h1');
 			const contentElement = modalElement.querySelector('p');
-			titleElement.innerText = modalTitle;
-			contentElement.innerText = modalContent;
+			const videoContainer = document.getElementById('video-container');
+			if (modalContent.includes("src")) {
+				titleElement.innerText = modalTitle;
+				videoContainer.innerHTML = modalContent;
+
+			} else {
+				titleElement.innerText = modalTitle;
+				contentElement.innerText = modalContent;
+			};
 
 		}
 	}
@@ -56,26 +63,23 @@ const ModalPlugin = (function () {
 			myModalView = view;
 		}
 
-		this.checkingEvents = function (event) {
-			if (event.target.classList.contains('close-modal')) {
-				const modalId = event.target.parentElement.id;
-				myModalView.hide(modalId);
-			}
+		this.hide = function (modalId) {
+			myModalView.hide(modalId);
 		}
 
-		this.checkingAttribute = function (modalId, modalTitle, modalContent) {
-			const existingModal = document.getElementById(modalId);
-			if (existingModal) {
-				if (modalTitle && modalContent) {
-					myModalView.updateModalContent(modalId, modalTitle, modalContent);
-				}
-				myModalView.show(modalId);
-			} else {
-				if (modalTitle && modalContent) {
-					myModalView.createModalElement(modalId, modalTitle, modalContent);
-				}
-			}
+		this.show = function (modalId) {
+			myModalView.show(modalId);
 		}
+
+		this.updateModalContent = function (modalId, modalTitle, modalContent) {
+			myModalView.updateModalContent(modalId, modalTitle, modalContent);
+		}
+
+		this.createModalElement = function (modalId, modalTitle, modalContent) {
+			myModalView.createModalElement(modalId, modalTitle, modalContent);
+		}
+
+
 	}
 
 	function ModalController() {
@@ -91,10 +95,10 @@ const ModalPlugin = (function () {
 			elements = container.querySelectorAll('[data-supermodal]');
 
 			elements.forEach((link) => {
-				link.addEventListener('click', this.getLinkData);
+				link.addEventListener('click', (event) => this.getLinkData(event));
 			});
 
-			modal.addEventListener('click', this.checkingEvents);
+			modal.addEventListener('click', (event) => this.checkingEvents(event));
 		}
 
 		this.getLinkData = function (event) {
@@ -103,12 +107,30 @@ const ModalPlugin = (function () {
 			const modalId = link.getAttribute('data-supermodal');
 			const modalTitle = link.getAttribute('data-supermodal-title');
 			const modalContent = link.getAttribute('data-supermodal-content');
-			myModalModel.checkingAttribute(modalId, modalTitle, modalContent);
+			this.checkingAttribute(modalId, modalTitle, modalContent);
+		}
+
+		this.checkingAttribute = function (modalId, modalTitle, modalContent) {
+			const existingModal = document.getElementById(modalId);
+			if (existingModal) {
+				if (modalTitle && modalContent) {
+					myModalModel.updateModalContent(modalId, modalTitle, modalContent);
+				}
+				myModalModel.show(modalId);
+			} else {
+				if (modalTitle && modalContent) {
+					myModalModel.createModalElement(modalId, modalTitle, modalContent);
+				}
+			}
 		}
 
 		this.checkingEvents = function (event) {
-			myModalModel.checkingEvents(event);
+			if (event.target.classList.contains('close-modal')) {
+				const modalId = event.target.parentElement.id;
+				myModalModel.hide(modalId);
+			}
 		}
+
 	}
 
 	return {
@@ -128,17 +150,3 @@ window.addEventListener('DOMContentLoaded', () => {
 	const container = document.querySelector('.container');
 	ModalPlugin.init(container);
 });
-
-return {
-	init: function () {
-		const appModalView = new ModalView();
-		const appModalModel = new ModalModel();
-		const appModalController = new ModalController();
-
-		appModalView.init(document.querySelector('.container'));
-		appModalModel.init(appModalView);
-		appModalController.init(appModalModel, document.querySelector('.container'));
-	}
-}
-}())
-document.addEventListener("DOMContentLoaded", module.init());
