@@ -16,7 +16,6 @@ class CanvasController {
 	draw() {
 		this.view.draw();
 		this.ballController.draw();
-		console.log("я тут")
 		this.frogController.draw();
 	}
 }

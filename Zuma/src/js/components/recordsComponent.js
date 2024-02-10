@@ -12,6 +12,12 @@ export const RecordsComponent = {
 					<button class="addBtn" id="addBtn">&#x2B</button>
 				</div>
 			</form>
+			<table class="records-table">
+					<tr class="top">
+						<td></td>
+						<td></td>
+					</tr>
+			</table>
 		</section>
 	`;
 	}
