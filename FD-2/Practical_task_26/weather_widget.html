@@ -7,18 +7,19 @@
 	<style>
 		body {
 			box-sizing: border-box;
-			color: #929292;
-			font-size: 16px;
+			color: rgb(208, 208, 208);
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
+			overflow: hidden;
 		}
 
 		.weather-widget {
-			width: 250px;
+			width: 422px;
 			background-color: #272727;
 			position: absolute;
 			top: 10px;
-			right: -250px;
+			right: -422px;
 			transition: all 1s;
 		}
 
@@ -28,27 +29,46 @@
 
 		.weather-widget-close {
 			position: absolute;
-			left: -20px;
-			width: 20px;
-			height: 30px;
-			color: #272727;
+			left: -32px;
+			width: 32px;
+			height: 32px;
+			color: #FCD54C;
 			text-align: center;
-			border-radius: 20px 0px 0px 20px;
+			border-radius: 8px 0px 0px 8px;
+			background-color: #272727;
+			font-size: 24px;
+			cursor: pointer;
+			transition: 1s;
+
+		}
+
+		.weather-widget-close.active {
+			position: absolute;
+			left: 0px;
+			width: 32px;
+			height: 32px;
+			color: #777;
+			text-align: center;
 			background-color: #FCD54C;
 			font-size: 24px;
 			cursor: pointer;
+			transition: 1s;
 		}
 
+
 		.weather-widget-info {
-			padding: 15px;
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			align-items: left;
+			padding: 20px;
 		}
 
 		.info-temp {
 			display: flex;
 			align-items: center;
+			font-size: 32px;
+			justify-content: end;
+			text-transform: capitalize;
 		}
 
 		.info-description {
@@ -65,10 +85,15 @@
 			width: auto;
 			border: none;
 			width: fit-content;
+			border-radius: 8px;
+			min-width: 148px;
 		}
 
 		.info-forecast {
 			margin: 10px 0px;
+			display: flex;
+			grid-gap: 0 10px;
+
 		}
 
 		.info-forecast-item {
@@ -76,6 +101,12 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			margin-bottom: 12px;
+		}
+
+		.weather-widget-close.rotate {
+			transform: rotate(180deg);
+			transition: transform 0.3s ease;
 		}
 	</style>
 	<title>Document</title>
@@ -86,8 +117,8 @@
 		class WheatherWidget {
 			constructor() {
 				this.apiUrl = 'https://api.openweathermap.org/data/2.5/'
-				this.apiKey = 'a8e80d16514635295b7916eb45190ac0'
-				this.cityID = '625144'
+				this.apiKey = '80ef4a57f6e9402ca37e5b769683a811'
+				this.cityID = '625144' //minsk - 625144, hrodna 627904, warsaw 756135
 				this.currentDay = new Date().getDate()
 				this.forecastButton = null
 				this.forecast = null
@@ -99,30 +130,26 @@
 
 				const closeButton = document.createElement('div')
 				closeButton.classList.add('weather-widget-close')
-				closeButton.innerHTML = '...'
+				closeButton.innerHTML = '&#8249;'
 
 				const weatherInfo = document.createElement('div')
 				weatherInfo.classList = 'weather-widget-info'
 
 				const title = document.createElement('h1')
 				title.classList.add('info-title')
-				title.innerHTML = 'Погода'
-
-				const town = document.createElement('h2')
-				town.classList.add('info-town')
-				town.innerHTML = `${data.name}`
+				title.innerHTML = `Сейчас в ${data.name}`
 
 				const temp = document.createElement('div')
 				temp.classList.add('info-temp')
-				temp.innerHTML = `<span>${data.main.temp} &#176;C</span><img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="50" height="50">`
+				temp.innerHTML = `<span>${Math.round(data.main.temp)} &#176;C</span><img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="64" height="64" > ${(data.weather[0].description)}`
 
 				const description = document.createElement('div')
 				description.classList.add('info-description')
-				description.innerHTML = `<span>ощущается<strong>${data.main.feels_like} &#176;С</strong></span> <span><strong>${data.weather[0].description}</strong></span> <span>ветер<strong> ${data.wind.speed} м/c</strong></span>`
+				description.innerHTML = `<span>Ощущается как <strong>${Math.round(data.main.feels_like)} &#176;С</strong></span><span>Ветер<strong> ${Math.round(data.wind.speed)} м/c</strong></span>`
 
 				const forecastButton = document.createElement('button')
 				forecastButton.classList.add('info-forecast-button')
-				forecastButton.innerHTML = 'Прогноз на пять дней'
+				forecastButton.innerHTML = 'На следущие 5 дней'
 				this.forecastButton = forecastButton
 
 				const forecast = document.createElement('div')
@@ -130,7 +157,6 @@
 				this.forecast = forecast
 
 				weatherInfo.append(title)
-				weatherInfo.append(town)
 				weatherInfo.append(temp)
 				weatherInfo.append(description)
 				weatherInfo.append(forecastButton)
@@ -138,6 +164,8 @@
 
 				closeButton.addEventListener('click', () => {
 					weatherWidget.classList.toggle('active')
+					closeButton.classList.toggle('active')
+					closeButton.classList.toggle('rotate')
 				})
 
 				forecastButton.addEventListener('click', () => {
@@ -153,8 +181,8 @@
 				this.forecast.innerHTML = ''
 
 				data.list.forEach(data => {
-					let date = data.dt_txt.split(' ') //получение даты
-					let dateText = `${date[0].slice(8)}.${date[0].slice(5, 7)}` //подготовка даты для отображения на странице 
+					let date = data.dt_txt.split(' ')
+					let dateText = `${date[0].slice(8)}.${date[0].slice(5, 7)}`
 
 					if (Number(date[1].slice(0, 2)) === 12 && Number(date[0].slice(8)) !== this.currentDay) {
 						const forecastItem = document.createElement('div')
@@ -166,7 +194,7 @@
 
 						const temp = document.createElement('div')
 						temp.classList.add('info__temp')
-						temp.innerHTML = `<span>${data.main.temp} &#176;C</span><img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="50" height="50">`
+						temp.innerHTML = `<span>${Math.round(data.main.temp)} &#176;C</span><img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width="50" height="50">`
 
 						forecastItem.append(dayWeek)
 						forecastItem.append(temp)
@@ -176,15 +204,14 @@
 			}
 
 			getWeatherForecast() {
-				this.forecast.innerHTML = '<img src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87.gif" width="50" height="50">'
-
+				this.forecastButton.innerHTML = '<img src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87.gif" width="12" height="12">'
 				let _this = this
-				const apiWeather = this.apiUrl + '/forecast?id=' + this.cityID + '&units=metric&lang=ru&appid=' + this.apiKey;
+				const apiWeather = this.apiUrl + '/forecast?id=' + this.cityID + '&units=metric&appid=' + this.apiKey;
 				fetch(apiWeather)
 					.then(response => response.json())
 					.then(data => _this.printForecast(data))
 					.catch(error => console.error('ошибка'))
-
+				setTimeout(() => { this.forecastButton.innerHTML = 'На следущие 5 дней'; }, 275)
 			}
 
 			getWeather() {
