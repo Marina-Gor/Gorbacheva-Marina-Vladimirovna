@@ -1,0 +1,307 @@
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+@font-face {
+	font-family: 'Kashmir';
+	src: url("/src/assets/fonts/KASHMIR.TTF") format("truetype");
+}
+
+$yellow: #FCD54C;
+$light-black: #272727;
+$brown: #3c342e;
+$font-main: 'Kashmir', sans-serif;
+$uppercase-font: 'Bangers', system-ui;
+
+@mixin button-template($pt, $ps, $he, $wi) {
+	text-decoration: none;
+	display: inline-block;
+	padding: $pt $ps;
+	height: $he;
+	border-radius: 10px;
+	box-shadow: 0 0 40px 40px $brown inset, 0 0 0 0 $brown;
+	font-family: $font-main;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 0px;
+	color: $yellow;
+	transition: .15s ease-in-out;
+	width: $wi;
+}
+
+@mixin button-hover {
+	&:hover {
+		background: $yellow;
+		box-shadow: 0 0 10px 0 $brown inset, 0 0 10px 4px $brown;
+		color: $brown;
+		transform: translateY(-10px);
+	}
+}
+
+@mixin button-active {
+	&:active {
+		background: $yellow;
+		box-shadow: none;
+	}
+}
+
+html {
+	box-sizing: border-box;
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: $uppercase-font;
+	font-size: 24px;
+	background-color: $light-black;
+	background-image: url("/src/assets/images/bac.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	color: $light-black;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.app {
+
+	& .login {
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba($brown, 0.9);
+		z-index: 15;
+
+		&-form {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			min-width: 250px;
+			width: auto;
+			height: auto;
+			padding: 20px;
+			border: 2px solid $yellow;
+			border-radius: 30px;
+			box-shadow: 0 0 60px 10px rgba($yellow, 0.8);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: stretch;
+
+
+			.item {
+				text-align: center;
+				padding: 6px;
+
+				.input-login {
+					padding: 4px;
+					background: $yellow;
+					margin-top: 10px;
+					width: 100%;
+					border: none;
+					border-radius: 4px;
+					opacity: 0.3;
+				}
+			}
+
+			&-btn {
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+
+				& button {
+					@include button-template(6px, 6px, auto, 120px);
+					@include button-hover;
+					@include button-active;
+					margin: 4px;
+					font-size: 20px;
+					cursor: pointer;
+				}
+			}
+
+			&-error {
+				& .errorlabel {
+					text-align: center;
+					font-size: 14px;
+					color: $yellow;
+					width: 100%;
+					padding: 4px;
+				}
+			}
+		}
+	}
+
+	& .header {
+		display: flex;
+		justify-content: center;
+		position: relative;
+
+		&-logo {
+			width: 450px;
+			height: 150px;
+		}
+
+		& .exit {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: 24px;
+			height: 24px;
+			background-image: url("../assets/images/exit.png");
+		}
+
+	}
+
+	& .main {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width: auto;
+		height: auto;
+		position: relative;
+
+		&-menu {
+			width: 100%;
+
+			& .menu-list {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: row;
+				flex-wrap: wrap;
+
+				& .menu-link {
+					@include button-template(10px, 10px, 50px, 140px);
+					@include button-hover;
+					@include button-active;
+					margin: 10px;
+					height: auto;
+					font-size: 28px;
+				}
+			}
+		}
+
+		& .content {
+
+			& .main {
+				&-title {
+					padding: 10px;
+					text-align: center;
+					font-size: 28px;
+				}
+
+			}
+
+			& .rules {
+				max-width: 500px;
+				height: 300px;
+				max-height: 100%;
+				padding: 10px;
+				border-radius: 25px;
+				box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.8);
+
+				&-title {
+					text-align: center;
+					font-size: 28px;
+				}
+
+				&-text {
+					text-align: center;
+					margin-top: 20px;
+				}
+			}
+
+			& .records {
+				width: 500px;
+				max-width: 500px;
+				height: 300px;
+				max-height: 100%;
+				padding: 10px;
+				border-radius: 25px;
+				box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.8);
+
+				&-title {
+					text-align: center;
+					font-size: 28px;
+					margin-bottom: 6px;
+				}
+
+				&-form {
+					& .field {
+						display: flex;
+						justify-content: space-around;
+						align-items: center;
+
+						& .text {
+							text-align: center;
+							font-size: 20px;
+						}
+
+						& input {
+							padding: 4px;
+							background: $yellow;
+							width: auto;
+							border: none;
+							border-radius: 4px;
+							opacity: 0.8;
+						}
+
+						& input::-webkit-input-placeholder {
+							font-family: $uppercase-font;
+						}
+
+
+						& .addBtn {
+							@include button-template(0, 0, auto, 40px);
+							@include button-hover;
+							@include button-active;
+							font-size: 20px;
+							cursor: pointer;
+						}
+					}
+				}
+
+				&-table {}
+			}
+
+			& .error {
+				&-text {
+					text-align: center;
+				}
+
+				a {
+					color: #FCD54C;
+				}
+			}
+
+			& .game {
+				& .game-field {
+					display: flex;
+					justify-content: space-between;
+				}
+
+				& canvas {
+					width: auto;
+					height: auto;
+				}
+			}
+		}
+	}
+}
